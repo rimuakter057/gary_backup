@@ -1,9 +1,9 @@
 import 'package:flutter/gestures.dart' show TapGestureRecognizer;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gary_goodger/features/on_boarding/presentation/widgets/bottom_sheet_create_account.dart';
-import 'package:gary_goodger/features/on_boarding/controllers/onboarding_controller.dart';
-import 'package:gary_goodger/features/on_boarding/presentation/widgets/bottom_sheet_login.dart';
+import 'package:gary_goodger/features/auth/presentation/widgets/bottom_sheet_create_account.dart';
+import 'package:gary_goodger/features/auth/controllers/onboarding_controller.dart';
+import 'package:gary_goodger/features/auth/presentation/widgets/bottom_sheet_login.dart';
 import 'package:gary_goodger/share/widgets/custom_button/custom_button.dart';
 import 'package:gary_goodger/share/widgets/custom_svg_icon/custom_svg_icon.dart';
 import 'package:gary_goodger/share/widgets/custom_text_button/custom_text_button.dart';

@@ -50,7 +50,6 @@ class ActionTextWidget extends StatelessWidget {
             padding: const EdgeInsets.only(left: 4.0),
             child:Text(
               actionText,
-
             style: GoogleFonts.instrumentSans(
               fontSize:fontSizeAction?? 16.sp,
               fontWeight:fontWeightAction?? FontWeight.w600,

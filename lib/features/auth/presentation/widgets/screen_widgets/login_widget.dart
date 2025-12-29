@@ -1,31 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gary_goodger/features/on_boarding/controllers/onboarding_controller.dart';
-import 'package:gary_goodger/features/on_boarding/presentation/widgets/action_text_widget.dart';
+import 'package:gary_goodger/features/auth/controllers/onboarding_controller.dart';
 import 'package:gary_goodger/share/widgets/custom_button/custom_button.dart';
 import 'package:gary_goodger/share/widgets/custom_divider/custom_divider.dart';
+import 'package:gary_goodger/share/widgets/custom_svg_icon/custom_svg_icon.dart';
 import 'package:gary_goodger/share/widgets/custom_text_field/custom_text_field.dart';
 import 'package:gary_goodger/share/widgets/custom_text_field_parent/custom_text_field_parent.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
+import 'package:gary_goodger/utils/app_icons/app_icons.dart';
 import 'package:gary_goodger/utils/app_text/app_strings.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../onboarding_heading_widget.dart';
 
-class ResetPasswordWidget extends StatefulWidget {
-  const ResetPasswordWidget({super.key});
-
-  @override
-  State<ResetPasswordWidget> createState() => _ResetPasswordWidgetState();
-}
-
-class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
+class LoginWidget extends StatelessWidget {
+  LoginWidget({super.key});
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   final OnBoardingController onBoardingController =
-      Get.find<OnBoardingController>();
-
-  final TextEditingController controller = TextEditingController();
-
-  bool isValue = false;
-
+  Get.find<OnBoardingController>();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -43,8 +36,9 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
           children: [
             ///heading sections==================================
             OnboardingHeadingWidget(
-              title: AppText.createNewPassword,
-              subTitle: AppText.resetPasswordHint,
+              title: AppText.loginToYourAccount,
+              subTitle:
+                  AppText.fillInformation,
             ),
 
             SizedBox(height: 32.h),
@@ -54,23 +48,34 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
               child: Column(
                 children: [
                   CustomTextField(
-                    labelText: AppText.enterPass,
-                    controller: controller,
+                    keyboardType: TextInputType.emailAddress,
+                    labelText: AppText.emailAddress,
+                    prefixIcon: CustomSvgIcon(
+                      icon: AppIcons.email,
+                      height: 14.h,
+                      width: 14.w,
+                    ),
+                    controller: emailController,
                     obscureText: true,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return "Password is required";
+                        return "Email address is required";
                       }
-                      if (!AppText.passRegexp.hasMatch(value)) {
-                        return "Minimum 8 characters with upper & lower case letters";
+                      if (!AppText.emailRegexp.hasMatch(value)) {
+                        return "Please enter a valid email address";
                       }
                       return null;
                     },
                   ),
                   CustomDivider(),
                   CustomTextField(
-                    labelText: AppText.reEnterPass,
-                    controller: controller,
+                    labelText: AppText.password,
+                    prefixIcon: CustomSvgIcon(
+                      icon: AppIcons.pass,
+                      height: 14.h,
+                      width: 14.w,
+                    ),
+                    controller: passwordController,
                     obscureText: true,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -85,53 +90,32 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
                 ],
               ),
             ),
-            SizedBox(height: 36.h),
-
-            ///container green =======================================================================
-            _buildRowContainer(),
 
             SizedBox(height: 16.h),
+/// forget password text=======================================================================
+            Text(
+              AppText.forgotYourPassword,
 
-            /// password type======================================================================
-            ActionTextWidget(
-              prefixText: AppText.passStrength,
-              actionText: AppText.strong,
-              onActionTapped: () {},
+              style: GoogleFonts.instrumentSans(
+                fontSize: 17.sp,
+                fontWeight: FontWeight.w500,
+                color: AppColors.textBlack,
+                decoration: TextDecoration.underline, // underline active
+                decorationColor: AppColors.black, // underline color
+              ),
             ),
 
+            /// enable authentication===================================================================
             SizedBox(height: 164.h),
 
             /// custom button================================================================
-            CustomButton(
-              onTap: () {
-                onBoardingController.nextStepCreateAccount();
-              },
-
-              title: AppText.resetPassword,
-            ),
+            CustomButton(onTap: () {
+              onBoardingController.nextStepLogin();
+            }, title: AppText.login),
             SizedBox(height: 8.h),
           ],
         ),
       ),
-    );
-  }
-
-  /// build row container================================================================================
-  Row _buildRowContainer() {
-    return Row(
-      children: [
-        Expanded(
-          child: Container(height: 5.h, color: AppColors.grey),
-        ),
-        SizedBox(width: 8.w),
-        Expanded(
-          child: Container(height: 5.h, color: AppColors.grey),
-        ),
-        SizedBox(width: 8.w),
-        Expanded(
-          child: Container(height: 5.h, color: AppColors.green),
-        ),
-      ],
     );
   }
 }

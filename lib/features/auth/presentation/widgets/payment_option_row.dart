@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gary_goodger/features/on_boarding/controllers/onboarding_controller.dart';
+import 'package:gary_goodger/features/auth/controllers/onboarding_controller.dart';
 import 'package:gary_goodger/share/widgets/custom_container/custom_container.dart';
 import 'package:gary_goodger/share/widgets/custom_text/custom_text.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';

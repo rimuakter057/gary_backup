@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gary_goodger/features/on_boarding/controllers/onboarding_controller.dart';
-import 'package:gary_goodger/features/on_boarding/presentation/widgets/action_text_widget.dart';
-import 'package:gary_goodger/features/on_boarding/presentation/widgets/otp_field_widget.dart';
+import 'package:gary_goodger/features/auth/controllers/onboarding_controller.dart';
+import 'package:gary_goodger/features/auth/presentation/widgets/action_text_widget.dart';
+import 'package:gary_goodger/features/auth/presentation/widgets/otp_field_widget.dart';
 import 'package:gary_goodger/share/widgets/custom_button/custom_button.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 import 'package:gary_goodger/utils/app_text/app_strings.dart';

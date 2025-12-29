@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gary_goodger/features/on_boarding/controllers/onboarding_controller.dart';
+import 'package:gary_goodger/features/auth/controllers/onboarding_controller.dart';
 import 'package:gary_goodger/utils/enum/enum.dart';
 import 'package:get/get.dart';
 import 'screen_widgets/create_account_widget.dart';

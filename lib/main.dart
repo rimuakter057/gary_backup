@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
 import 'core/dependency/dependency_injection.dart';
-import 'features/on_boarding/presentation/screens/on_boarding_one_screen.dart';
+import 'features/auth/presentation/screens/on_boarding_one_screen.dart';
 
 
 void main() {
@@ -20,7 +19,6 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-
         return GetMaterialApp(
           initialBinding: DependencyInjection(),
           debugShowCheckedModeBanner: false,

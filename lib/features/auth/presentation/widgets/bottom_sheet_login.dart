@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:gary_goodger/features/on_boarding/controllers/onboarding_controller.dart';
-import 'package:gary_goodger/features/on_boarding/presentation/widgets/screen_widgets/login_widget.dart';
-import 'package:gary_goodger/features/on_boarding/presentation/widgets/screen_widgets/password_recovery_widget.dart';
-import 'package:gary_goodger/features/on_boarding/presentation/widgets/screen_widgets/reset_password.dart';
-import 'package:gary_goodger/features/on_boarding/presentation/widgets/screen_widgets/verify_otp.dart';
+import 'package:gary_goodger/features/auth/controllers/onboarding_controller.dart';
+import 'package:gary_goodger/features/auth/presentation/widgets/screen_widgets/login_widget.dart';
+import 'package:gary_goodger/features/auth/presentation/widgets/screen_widgets/password_recovery_widget.dart';
+import 'package:gary_goodger/features/auth/presentation/widgets/screen_widgets/reset_password.dart';
+import 'package:gary_goodger/features/auth/presentation/widgets/screen_widgets/verify_otp.dart';
 import 'package:gary_goodger/utils/enum/enum.dart';
 import 'package:get/get.dart';
 
