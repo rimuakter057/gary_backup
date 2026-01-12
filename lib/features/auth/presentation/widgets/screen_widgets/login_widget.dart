@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gary_goodger/core/routes/app_routes.dart';
 import 'package:gary_goodger/features/auth/controllers/onboarding_controller.dart';
 import 'package:gary_goodger/share/widgets/custom_button/custom_button.dart';
 import 'package:gary_goodger/share/widgets/custom_divider/custom_divider.dart';
@@ -93,15 +94,20 @@ class LoginWidget extends StatelessWidget {
 
             SizedBox(height: 16.h),
 /// forget password text=======================================================================
-            Text(
-              AppText.forgotYourPassword,
+            GestureDetector(
+              onTap: (){
+                onBoardingController.nextStepLogin();
+              },
+              child: Text(
+                AppText.forgotYourPassword,
 
-              style: GoogleFonts.instrumentSans(
-                fontSize: 17.sp,
-                fontWeight: FontWeight.w500,
-                color: AppColors.textBlack,
-                decoration: TextDecoration.underline, // underline active
-                decorationColor: AppColors.black, // underline color
+                style: GoogleFonts.instrumentSans(
+                  fontSize: 17.sp,
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.textBlack,
+                  decoration: TextDecoration.underline, // underline active
+                  decorationColor: AppColors.black, // underline color
+                ),
               ),
             ),
 
@@ -110,7 +116,11 @@ class LoginWidget extends StatelessWidget {
 
             /// custom button================================================================
             CustomButton(onTap: () {
-              onBoardingController.nextStepLogin();
+
+              Get.toNamed(AppRoutes.homeScreen);
+
+
+
             }, title: AppText.login),
             SizedBox(height: 8.h),
           ],

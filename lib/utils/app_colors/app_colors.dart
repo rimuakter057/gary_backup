@@ -58,20 +58,6 @@ class AppColors {
   static const backgroundColor = Color(0xffF7F8FA);
   static const dividerColor=Color(0xFFE6EAED);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   static const Color shedOfPrimary = Color(0xff6C75A1);
   static const Color subPrimary = Color(0xff4E5D66); //#C7D2FE
   static const Color naveUnselected = Color(0xff6F6F6F);

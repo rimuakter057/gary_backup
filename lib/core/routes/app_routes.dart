@@ -1,31 +1,24 @@
 
+import 'package:gary_goodger/features/auth/presentation/screens/auth_flow_screen.dart';
+import 'package:gary_goodger/features/home/presentation/screens/home_screen.dart';
+import 'package:gary_goodger/features/splash/presentation/screens/splash_screen.dart';
 import 'package:get/get.dart';
 
 ///=========================App Routes=========================
 
 class AppRoutes {
-  // static const String splashScreen = "/SplashScreen";
-  // static const String loginScreen = "/LoginScreen";
-  // static const String homeScreen = "/HomeScreen";
-  //
-  // static const String battleLogScreen = "/BattleLogScreen";
-  // static const String createBattleScreen = "/CreateBattleScreen";
-  // static const String onBoardingOneScreen = "/OnBoardingOne";
-  // static const String emptyHome = "/empty-home";
-  // static const String updateBattle = "/update-battle";
-  // static const String postScreen = "/post-screen";
+  static const String splashScreen = "/onBoarding";
+   static const String authFlowScreen = "/authFlow";
+  static const String homeScreen = "/homeScreen";
 
   static List<GetPage> routes = [
     ///===========================Authentication==========================
-    // GetPage(name: splashScreen, page: () => SplashScreen()),
-    // GetPage(name: onBoardingOneScreen, page: ()=>OnBoardingOneScreen()),
-     //GetPage(name: loginScreen, page: () => LoginScreen()),
-    // GetPage(name: homeScreen, page: () => HomeScreen()),
-    //
-    // GetPage(name: createBattleScreen, page: () => CreateBattleScreen()),
-    // //GetPage(name: emptyHome, page: () => EmptyHomeScreen()),
-    //
-    //
-    // GetPage(name: postScreen, page: () => PostScreen()),
+
+    GetPage(name: splashScreen, page: ()=>SplashScreen()),
+
+    GetPage(name: splashScreen, page: ()=>AuthFlowScreen()),
+
+    GetPage(name: homeScreen, page: ()=>HomeScreen()),
+
   ];
 }

@@ -6,7 +6,7 @@ class DependencyInjection extends Bindings {
   @override
   void dependencies() {
   Get.put(OnBoardingController());
-    // Get.lazyPut(() => VerifyAccountOtpController(), fenix: true);
+
   }
 
 }

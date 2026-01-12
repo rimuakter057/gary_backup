@@ -9,14 +9,14 @@ import 'package:gary_goodger/utils/app_text/app_strings.dart';
 
 import '../../../auth/presentation/screens/auth_flow_screen.dart';
 
-class OnBoardingScreen extends StatelessWidget {
-  const OnBoardingScreen({super.key});
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Future.delayed(const Duration(seconds: 3), () {
+      Future.delayed(const Duration(seconds: 10), () {
         Get.to(() =>  AuthFlowScreen()); // Next screen
       });
     });
