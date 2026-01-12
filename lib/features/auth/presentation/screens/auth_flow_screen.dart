@@ -13,8 +13,8 @@ import 'package:gary_goodger/utils/app_text/app_strings.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class OnBoardingScreen extends StatelessWidget {
-  OnBoardingScreen({super.key});
+class AuthFlowScreen extends StatelessWidget {
+  AuthFlowScreen({super.key});
   final OnBoardingController onBoardingController =
       Get.find<OnBoardingController>();
 

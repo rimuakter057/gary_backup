@@ -7,17 +7,17 @@ import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 import 'package:gary_goodger/utils/app_icons/app_icons.dart';
 import 'package:gary_goodger/utils/app_text/app_strings.dart';
 
-import 'on_boarding_screen.dart';
+import '../../../auth/presentation/screens/auth_flow_screen.dart';
 
-class OnBoardingOneScreen extends StatelessWidget {
-  const OnBoardingOneScreen({super.key});
+class OnBoardingScreen extends StatelessWidget {
+  const OnBoardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Future.delayed(const Duration(seconds: 3), () {
-        Get.to(() =>  OnBoardingScreen()); // Next screen
+        Get.to(() =>  AuthFlowScreen()); // Next screen
       });
     });
 
