@@ -6,11 +6,11 @@ import 'features/auth/presentation/screens/on_boarding_one_screen.dart';
 
 
 void main() {
-  runApp(const MyApp());
+  runApp(const TradersConnect());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class TradersConnect extends StatelessWidget {
+  const TradersConnect({super.key});
 
   @override
   Widget build(BuildContext context) {

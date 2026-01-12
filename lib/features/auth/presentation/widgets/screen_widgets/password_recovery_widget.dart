@@ -58,7 +58,7 @@ class PasswordRecoveryWidget extends StatelessWidget {
             ),
 
             SizedBox(height: 8.h),
-///contact support===================================================================
+        ///contact support===================================================================
             ActionTextWidget(
               prefixText: AppText.forgotEmail,
               prefixColor: AppColors.black,
