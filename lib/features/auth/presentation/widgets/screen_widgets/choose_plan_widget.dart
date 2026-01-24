@@ -60,7 +60,7 @@ class ChoosePlanWidget extends StatelessWidget {
             /// custom container beginner===================================
             _buildBeginnerPopularContainer(
               borderColor: AppColors.primary,
-              bgColor: Color(0xFFE0F2F1),
+              bgColor: AppColors.primaryShade100,
               boxColor: AppColors.primary,
               boxTextColor: AppColors.white,
               level: 'Pro',

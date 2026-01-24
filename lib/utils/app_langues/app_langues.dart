@@ -18,7 +18,7 @@ class AppTranslations extends Translations {
       "Passwords do not match": "Passwords do not match",
       "No Data Found": "No Data Found",
 
-      "Let's dive in into your account!": "Let's dive in into your account!",
+      "Let's dive in into your copier!": "Let's dive in into your copier!",
       "Continue with Google": "Continue with Google",
       "Continue with Facebook": "Continue with Facebook",
       "Continue with Apple": "Continue with Apple",
@@ -123,8 +123,8 @@ class AppTranslations extends Translations {
       "RemoveLabel": "Remove",
       "Link": "Link",
       "Account Deletion": "Account Deletion",
-      "Once you delete your account, all your data will be permanently removed.":
-          "Once you delete your account, all your data will be permanently removed.",
+      "Once you delete your copier, all your data will be permanently removed.":
+          "Once you delete your copier, all your data will be permanently removed.",
       "Delete Account": "Delete Account",
 
       "Help & Support": "Help & Support",
@@ -168,8 +168,8 @@ class AppTranslations extends Translations {
       "Please enter your age": "Please enter your age",
       "Delete": "Delete",
       "Delete Account": "Delete Account",
-      "Are you sure you want to delete your account? This action cannot be undone.":
-          "Are you sure you want to delete your account? This action cannot be undone.",
+      "Are you sure you want to delete your copier? This action cannot be undone.":
+          "Are you sure you want to delete your copier? This action cannot be undone.",
       "Accept": "Accept",
       "You will never find them again.": "You will never find them again.",
       "Cancel": "Cancel",
@@ -186,7 +186,7 @@ class AppTranslations extends Translations {
       "Passwords do not match": "Las contraseñas no coinciden",
       "No Data Found": "No se encontraron datos",
 
-      "Let's dive in into your account!": "¡Vamos a entrar en tu cuenta!",
+      "Let's dive in into your copier!": "¡Vamos a entrar en tu cuenta!",
       "Continue with Google": "Continuar con Google",
       "Continue with Facebook": "Continuar con Facebook",
       "Continue with Apple": "Continuar con Apple",
@@ -292,7 +292,7 @@ class AppTranslations extends Translations {
       "RemoveLabel": "Eliminar",
       "Link": "Vincular",
       "Account Deletion": "Eliminación de cuenta",
-      "Once you delete your account, all your data will be permanently removed.":
+      "Once you delete your copier, all your data will be permanently removed.":
           "Una vez que elimines tu cuenta, todos tus datos se eliminarán permanentemente.",
       "Delete Account": "Eliminar cuenta",
 
@@ -338,7 +338,7 @@ class AppTranslations extends Translations {
       "Please enter your age": "Por favor, introduce tu edad",
       "Delete": "Eliminar",
       "Delete Account": "Eliminar cuenta",
-      "Are you sure you want to delete your account? This action cannot be undone.":
+      "Are you sure you want to delete your copier? This action cannot be undone.":
           "¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.",
 
       "Accept": "Aceptar",
@@ -361,7 +361,7 @@ class AppTranslations extends Translations {
 //       'passwordNotMatch': "Passwords do not match",
 //       'noDataFound': "No Data Found",
 
-//       'letsDive': "Let's dive in into your account!",
+//       'letsDive': "Let's dive in into your copier!",
 //       'continueWithGoogle': "Continue with Google",
 //       'continueWithFacebook': "Continue with Facebook",
 //       'continueWithApple': "Continue with Apple",
@@ -468,7 +468,7 @@ class AppTranslations extends Translations {
 //       'linkLabel': "Link",
 //       'accountDeletionTitle': "Account Deletion",
 //       'accountDeletionSubtitle':
-//           "Once you delete your account, all your data will be permanently removed.",
+//           "Once you delete your copier, all your data will be permanently removed.",
 //       'deleteAccountButton': "Delete Account",
 
 //       'helpSupportTitle': "Help & Support",
@@ -685,7 +685,7 @@ class AppTranslations extends Translations {
 //       'passwordNotMatch': "Passwords do not match",
 //       'noDataFound': "No Data Found",
 
-//       'letsDive': "Let's dive in into your account!",
+//       'letsDive': "Let's dive in into your copier!",
 //       'continueWithGoogle': "Continue with Google",
 //       'continueWithFacebook': "Continue with Facebook",
 //       'continueWithApple': "Continue with Apple",
@@ -791,7 +791,7 @@ class AppTranslations extends Translations {
 //       'linkLabel': "Link",
 //       'accountDeletionTitle': "Account Deletion",
 //       'accountDeletionSubtitle':
-//           "Once you delete your account, all your data will be permanently removed.",
+//           "Once you delete your copier, all your data will be permanently removed.",
 //       'deleteAccountButton': "Delete Account",
 
 //       'helpSupportTitle': "Help & Support",
@@ -1008,7 +1008,7 @@ class AppTranslations extends Translations {
 //       'passwordNotMatch': "Passwords do not match",
 //       'noDataFound': "No Data Found",
 
-//       'letsDive': "Let’s dive in into your account!",
+//       'letsDive': "Let’s dive in into your copier!",
 //       'continueWithGoogle': "Continue with Google",
 //       'continueWithFacebook': "Continue with Facebook",
 //       'continueWithApple': "Continue with Apple",
@@ -1114,7 +1114,7 @@ class AppTranslations extends Translations {
 //       'linkLabel': "Link",
 //       'accountDeletionTitle': "Account Deletion",
 //       'accountDeletionSubtitle':
-//           "Once you delete your account, all your data will be permanently removed.",
+//           "Once you delete your copier, all your data will be permanently removed.",
 //       'deleteAccountButton': "Delete Account",
 
 //       'helpSupportTitle': "Help & Support",

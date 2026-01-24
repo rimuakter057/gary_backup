@@ -35,7 +35,7 @@ class OnBoardingController extends GetxController {
   }
 
 
-  ///screen navigate Create account==============================
+  ///screen navigate Create copier==============================
 
 
 

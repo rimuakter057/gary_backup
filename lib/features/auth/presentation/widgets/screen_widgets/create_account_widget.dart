@@ -8,8 +8,9 @@ import 'package:gary_goodger/share/widgets/custom_svg_icon/custom_svg_icon.dart'
 import 'package:gary_goodger/share/widgets/custom_text/custom_text.dart';
 import 'package:gary_goodger/share/widgets/custom_text_field/custom_text_field.dart';
 import 'package:gary_goodger/share/widgets/custom_text_field_parent/custom_text_field_parent.dart';
+import 'package:gary_goodger/utils/app_assets/app_icons.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart' show AppColors;
-import 'package:gary_goodger/utils/app_icons/app_icons.dart';
+
 import 'package:gary_goodger/utils/app_text/app_strings.dart';
 import 'package:get/get.dart';
 
@@ -87,7 +88,7 @@ class CreateAccountWidget extends StatelessWidget {
                       underline: SizedBox(),
                       value: "",
                       icon: CustomSvgIcon(
-                        icon: AppIcons.dropdown,
+                        icon: AppAssets.dropdown,
                         height: 7.h,
                         width: 12.w,
                       ),

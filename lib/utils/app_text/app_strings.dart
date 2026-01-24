@@ -19,16 +19,16 @@ class AppText {
   static const String termsOfUse = "Terms of Use";
   static const String and = " and ";
 
-///create account section===============================================================
+///create copier section===============================================================
 
   static const String login = "Login";
-  static const String createAccount = "Create an account";
+  static const String createAccount = "Create an copier";
   static const String empowerAnalyzeConnect = "Empower. Analyze. Connect";
 
 
   // Buttons / Actions
   static const String continueButton = "Continue";
- // static const String createAccount = "Create your account";
+ // static const String createAccount = "Create your copier";
 
   // OTP / Verification
   static const String otpInfo = "You will receive a code to confirm your identity";
@@ -44,7 +44,7 @@ class AppText {
   static const String startTracking =
       "Start tracking your trades and connect with the world’s top traders.";
 
-  ///verify account section===============================================================
+  ///verify copier section===============================================================
 
 
   static const String verifyEmail = "Verify Email";
@@ -65,7 +65,7 @@ class AppText {
 
 
   static const String createSecure="Create a Secure Password";
-  static const String protectAccount="Protect your account with a strong password. Minimum 8 Characters, include a number and symbol";
+  static const String protectAccount="Protect your copier with a strong password. Minimum 8 Characters, include a number and symbol";
 
   static const String enterPass="Enter Password";
   static const String reEnterPass="Re Enter Password";
@@ -97,7 +97,7 @@ class AppText {
 
   ///login widget========================================================================================
 
-  static const String loginToYourAccount = "Login to your account";
+  static const String loginToYourAccount = "Login to your copier";
   static const String fillInformation =
       "Please fill the information to make it easier for us to get to know you";
   static const String password = "Password";
@@ -125,7 +125,7 @@ class AppText {
 
   static const String resetPassword = "Reset Password";
   static const String createNewPassword = "Create a New Password";
-  static const String resetPasswordHint = "Protect your account with a strong password.Minimum 8 characters, include a number and symbol";
+  static const String resetPasswordHint = "Protect your copier with a strong password.Minimum 8 characters, include a number and symbol";
 
 
 

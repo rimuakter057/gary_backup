@@ -21,7 +21,7 @@ class LogoutDialog extends StatelessWidget {
           width: 300,
           padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
-            color: AppColors.naveWhite,
+            color: AppColors.white,
             borderRadius: BorderRadius.circular(16),
           ),
           child: Column(

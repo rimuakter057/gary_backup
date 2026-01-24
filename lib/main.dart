@@ -28,7 +28,7 @@ class TradersConnect extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           ),
           // Set initial route
-          initialRoute: AppRoutes.splashScreen,
+          initialRoute: AppRoutes.graphChartScreen,
           // Connect routes
           getPages: AppRoutes.routes,
         );
