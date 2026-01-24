@@ -127,77 +127,78 @@ class AppText {
   static const String createNewPassword = "Create a New Password";
   static const String resetPasswordHint = "Protect your copier with a strong password.Minimum 8 characters, include a number and symbol";
 
+///dashboard========================================================================================
+
+
+  static const String dashboard = "Dashboard";
+  static const String account = "Account";
+  static const String overview = "Overview";
+  static const String linkedAccounts = "Linked Accounts";
+  static const String smartInsights = "Smart Insights";
+
+  // Subscription / Upgrade
+  static const String unlockProTrader = "Unlock Pro Trader";
+  static const String upgrade = "Upgrade";
+  static const String advancedAnalyticsAndCopiers =
+      "Advanced analytics & 5 copier accounts";
+
+  // Time Filters
+  static const String open = "Open";
+  static const String week = "Week";
+  static const String month = "Month";
+  static const String year = "Year";
+
+  // Days
+  static const String sun = "Sun";
+  static const String mon = "Mon";
+  static const String tue = "Tue";
+  static const String wed = "Wed";
+  static const String thu = "Thu";
+  static const String fri = "Fri";
+  static const String sat = "Sat";
+
+  // Quantity / Limits
+  static const String ten = "10";
+  static const String fifty = "50";
+  static const String hundred = "100";
+  static const String oneFifty = "150";
+  static const String fiveHundred = "500";
+  static const String oneKPlus = "1k+";
+
+  // Account Status
+  static const String active = "Active";
+  static const String warning = "Warning";
+  static const String atRisk = "At Risk";
+  static const String disabled = "Disabled";
+
+  // Trading Metrics
+  static const String pnl = "PnL";
+  static const String winRate = "Win Rate";
+
+  // Brokers
+  static const String exness = "Exness";
+  static const String icMarkets = "IC Markets";
+  static const String stp = "STP";
+
+  // Accounts
+  static const String copiersAccounts = "Copiers Accounts";
+  static const String masterAccount2 = "Master Account 2";
+
+  // Insights / Rankings
+  static const String bestRoiWindow = "Best ROI Window";
+  static const String high = "High";
+  static const String topTraders = "Top Traders";
+  static const String followers = "Followers";
+
+  // Account Selection / Search
+  static const String selectAccount = "Select Account";
+  static const String showingAllAccounts =
+      "Showing the list of all the accounts";
+  static const String search = "Search";
+  static const String addAccount = "Add Account";
 
 
 
-
-
-
-
-
-//=================================================================
-
-
-  static const String smokingDetox = 'Smoking Detox';
-  static const String drugDetox = 'Saving Money Battle';
-  static const String socialMediaDetox = 'Social Media Detox';
-  static const String toxicRelationship = 'Toxic Relationship Battle';
-  static const String shoppingDetox = 'Shopping Detox';
-  static const String junkFoodBattle = 'Junk Food Battle';
-
-  static const String caved="Caved";
-  static const String craved="Craved";
-  static const String missed="Missed";
-
-  static const List<String> addictionTypes = [
-    smokingDetox,
-    drugDetox,
-    socialMediaDetox,
-    toxicRelationship,
-    shoppingDetox,
-    junkFoodBattle,
-  ];
-
-
-  // Addiction Levels
-  static const String veryLow = 'Very Low';
-  static const String low = 'Low';
-  static const String medium = 'Medium';
-  static const String high = 'High';
-  static const String veryHigh = 'Very High';
-
-  static const List<String> addictionLevels = [
-    veryLow,
-    low,
-    medium,
-    high,
-    veryHigh,
-  ];
-
-
-
-  static const String ccLegend = "CC Legend";
-  static const String positivePowerhouse = "Positive Powerhouse";
-  static const String milestoneAchiever = "Milestone Achiever";
-  static const String victoryStreaker = "Victory Streaker";
-  static const String focusFighter = "Focus Fighter";
-  static const String monsterMaster = "Monster Master";
-  static const String consistencyChamp = "Consistency Champ";
-  static const String starterSpark = "Starter Spark";
-
-
-
-  // Optional: সব titles list এ রাখতে চাইলে
-  static const List<String> all = [
-    ccLegend,
-    positivePowerhouse,
-    milestoneAchiever,
-    victoryStreaker,
-    focusFighter,
-    monsterMaster,
-    consistencyChamp,
-    starterSpark,
-  ];
 
 
 
