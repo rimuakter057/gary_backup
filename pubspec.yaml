@@ -91,7 +91,12 @@ flutter:
     - assets/images/
     - assets/icons/logo/
     - assets/icons/common/
-    - assets/icons/onboarding/
+    - assets/icons/auth/
+    - assets/icons/compare/
+    - assets/icons/copier/
+    - assets/icons/dash_board/
+    - assets/icons/profile_setting/
+    - assets/icons/social/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

@@ -4,112 +4,129 @@ class AppAssets {
 
   ///==========================================all icon path=======================================
 
-
-
-
   ///logo icon=======================
 
-  static const String logoIconPath="$basePath/logo";
+  static const String logoIconPath = "$basePath/logo";
   static const String logo = "$logoIconPath/logo.png";
   static const String logoIcon = "$logoIconPath/logo_icon.svg";
   static const String logoOnboarding = "$logoIconPath/on_boarding_logo.svg";
 
-
-  ///onboarding section==========================================
-  static const String onboardingIconPath="$basePath/onboarding";
-
+  ///==================================auth section==========================================
+  static const String onboardingIconPath = "$basePath/auth";
+  //===================================================================================
   static const String close = "$onboardingIconPath/close.svg";
   static const String face = "$onboardingIconPath/face.svg";
 
   static const String email = "$onboardingIconPath/email.svg";
   static const String pass = "$onboardingIconPath/password.svg";
 
+  ///=============================common icon============================================
 
-///common icon============================================
-
-  static const String commonIconPath="$basePath/common";
-
+  static const String commonIconPath = "$basePath/common";
+  //=================================================================
   static const String dropdown = "$commonIconPath/drop_down.svg";
+  static const String add = "$commonIconPath/add.svg";
+  static const String arrowBack = "$commonIconPath/arrow_back.svg";
+  static const String arrowFront = "$commonIconPath/arrow_front.svg";
+  static const String dropUp = "$commonIconPath/drop_up.svg";
+  static const String filter = "$commonIconPath/filter.svg";
+  static const String masterAccountShare =
+      "$commonIconPath/master_account_share.svg";
+  static const String menu = "$commonIconPath/menu.svg";
+  static const String notification = "$commonIconPath/notification.svg";
+  static const String search = "$commonIconPath/search.svg";
+  static const String setting = "$commonIconPath/setting.svg";
+  static const String topArrow = "$commonIconPath/top_arrow.svg";
+  static const String upgrade = "$commonIconPath/upgrade.svg";
 
+  static const String navOne = "$commonIconPath/nav_one.svg";
+  static const String navTwo = "$commonIconPath/nav_two.svg";
+  static const String navThree = "$commonIconPath/nav_three.svg";
+  static const String navFour = "$commonIconPath/nav_four.svg";
+  static const String navFive = "$commonIconPath/nav_five.svg";
 
+  ///=============================dash_board icon============================================
+  static const String dashBoardIconPath = "$basePath/dash_board";
+  //============================================================
 
+  static const String accountManagementDashboard =
+      "$dashBoardIconPath/account_management.svg";
+  static const String bottomArrowDashboard =
+      "$dashBoardIconPath/bottom_arrow.svg";
+  static const String brokerAccountDashboard =
+      "$dashBoardIconPath/broker_account_icon.svg";
+  static const String deleteAccountDashboard =
+      "$dashBoardIconPath/delete_account.svg";
+  static const String equityProtectorDashboard =
+      "$dashBoardIconPath/equity_protector.svg";
+  static const String highDashBoardDashboard =
+      "$dashBoardIconPath/high_dashboard_icon.svg";
+  static const String insightsDashboard =
+      "$dashBoardIconPath/insights_dashboard_icon.svg";
+  static const String nameAccountDashboard =
+      "$dashBoardIconPath/name_account_icon.svg";
+  static const String platformAccountDashboard =
+      "$dashBoardIconPath/platform_account_icon.svg";
+  static const String topTraderDashboard =
+      "$dashBoardIconPath/top_trader_dashboard_icon.svg";
+  static const String tradingSymbolDashboard =
+      "$dashBoardIconPath/trading_symbol.svg";
+  static const String typeAccountDashboard =
+      "$dashBoardIconPath/type_account_icon.svg";
 
+  ///=============================copier===========================================
+  static const String copierIconPath = "$basePath/copier";
+  //===================================================================================
+  static const String addSlaveCopier = "$copierIconPath/add_slave.svg";
+  static const String calculatorCopier = "$copierIconPath/calculator.svg";
+  static const String editCopier = "$copierIconPath/edit.svg";
+  static const String exportCopier = "$copierIconPath/export_link.svg";
+  static const String threeDotCopier = "$copierIconPath/three_dot_menu.svg";
 
+  ///=============================analyzer===========================================
+  static const String analyzerIconPath = "$basePath/analyzer";
+  //================================================================================
+  static const String insightsAnalyzer =
+      "$analyzerIconPath/insight_analyzer.svg";
 
+  /// ============================compare============================================
+  static const String compareIconPath = "$basePath/compare";
+  //===============================================================================
+  static const String addFirmCompare = "$analyzerIconPath/add_firm.svg";
+  static const String pinnedCompare = "$analyzerIconPath/pinned.svg";
 
+  /// =============================social============================================
+  static const String socialIconPath = "$basePath/social";
+  //======================================================================================
+  static const String albumSocial = "$socialIconPath/album.svg";
+  static const String chartSocial = "$socialIconPath/chart.svg";
+  static const String emojiSocial = "$socialIconPath/emoji.svg";
+  static const String sendMessageSocial = "$socialIconPath/send_message.svg";
+  static const String sentSocial = "$socialIconPath/sent.svg";
+  static const String shareSocial = "$socialIconPath/share.svg";
 
+  /// =============================profile_setting============================================
+  static const String profileIconPath = "$basePath/profile_setting";
+  //============================================================================================
 
-
-
-
-
-
-
-
-
-  // static const String eye = "$basePath/eye.svg";
-  // static const String eyeOff = "$basePath/eyeOff.svg";
-  //
-  // ///=========================Nab bar Icon ======================
-  //
-  // //==================================== Nave Bar Icon ===========================
-  //
-  // static const String home = "$basePath/dashboard_account.svg";
-  // static const String emptyHome = "$basePath/empty_home.png";
-  // static const String send = "$basePath/send.svg";
-  // static const String addImage = "$basePath/add_image.svg";
-  // static const String battle = "$basePath/battle.svg";
-  // static const String battleNow = "$basePath/battleNow.png";
-  // static const String community = "$basePath/community.svg";
-  // static const String profile = "$basePath/profile.svg";
-  // static const String reward = "$basePath/reward.svg";
-  // static const String selectCommunity = "$basePath/selectCommunity.svg";
-  // static const String selectedBattle = "$basePath/selectedBattle.svg";
-  // static const String selectHome = "$basePath/selectHome.svg";
-  // static const String selectReward = "$basePath/selectReward.svg";
-  // static const String selectProfile = "$basePath/selectProfile.svg";
-  // static const String add = "$basePath/add.svg";
-  // static const String calender = "$basePath/calender.svg";
-  // static const String cross = "$basePath/cross.svg";
-  // static const String download = "$basePath/download.svg";
-  // static const String edit = "$basePath/edit.svg";
-  // static const String heart = "$basePath/heart.svg";
-  // static const String image = "$basePath/image.svg";
-  // static const String battlePrimaryColor = "$basePath/battlePrimaryColor.svg";
-  // static const String happyMonster = "$basePath/happyMonster.png";
-  // static const String junkFood = "$basePath/junkFood.png";
-  // static const String notification = "$basePath/notification.svg";
-  // static const String savingsMoney = "$basePath/savingsMoney.png";
-  // static const String shopping = "$basePath/shopping.png";
-  // static const String socialMedia = "$basePath/socialMedia.png";
-  // static const String tipsIcon = "$basePath/tipsIcon.svg";
-  // static const String toxicRelationship = "$basePath/toxicRelationship.png";
-  // static const String appLogoSmall = "$basePath/appLogoSmall.svg";
-  // static const String tipsCircular = "$basePath/tipsCircular.svg";
-  // static const String tipsPng = "$basePath/tipsPng.png";
-  // static const String smallMonster = "$basePath/smallMonster.png";
-  // static const String cavedComplete = "$basePath/small_monster.png";
-  // static const String smoke = "$basePath/smoke.png";
-  // static const String tipsBackground = "$basePath/tipsBackground.png";
-  // static const String battlePng = "$basePath/battlePng.png";
-  // static const String todayTipsBackgroundImage = "$basePath/todayTipsBackgroundImage.svg";
-  // static const String alarm = "$basePath/alarm.svg";
-  // static const String music = "$basePath/music.png";
-  // static const String caved = "$basePath/caved.svg";
-  // ///reward icon
-  // static const String starSpark = "$basePath/starter_spark.png";
-  // static const String monsterMaster = "$basePath/monster_master.png";
-  // static const String consistencyChamp = "$basePath/consistency_champ.png";
-  // static const String ccLegend = "$basePath/cc_legend.png";
-  // static const String focusFighter = "$basePath/focus_fighter.png";
-  // static const String victoryStreaker = "$basePath/victory_streaker.png";
-  //
-  // static const String milestoneAchiever = "$basePath/milestone_achiever.png";
-  // static const String positivePowerHouse = "$basePath/positive_power.png";
-  //
-  // static const String claim = "$basePath/claim.png";
-  // static const String missed = "$basePath/missed.png";
-  //
-  // static const String lottieBattle="$basePath/lottie_battle.json";
-
+  static const String billingProfile = "$profileIconPath/billing.svg";
+  static const String checkProfile = "$profileIconPath/check.svg";
+  static const String deviceProfile = "$profileIconPath/device.svg";
+  static const String downloadProfile = "$profileIconPath/download.svg";
+  static const String calenderProfile =
+      "$profileIconPath/economic_calendar.svg";
+  static const String editExnessProfile = "$profileIconPath/edit_exness.svg";
+  static const String leaderBoardProfile = "$profileIconPath/leader_board.svg";
+  static const String legalProfile = "$profileIconPath/legal.svg";
+  static const String linkAccountProfile = "$profileIconPath/link_account.svg";
+  static const String linkExnessProfile = "$profileIconPath/link_exness.png";
+  static const String liveChatProfile = "$profileIconPath/live_chat.svg";
+  static const String liveDetectorProfile =
+      "$profileIconPath/live_detector.svg";
+  static const String marketNewsProfile = "$profileIconPath/market_news.svg";
+  static const String refreshExnessProfile =
+      "$profileIconPath/refresh_exness.svg";
+  static const String securityProfile = "$profileIconPath/security.svg";
+  static const String socialHubProfile = "$profileIconPath/social_hub.svg";
+  static const String supportProfile = "$profileIconPath/support.svg";
 }
