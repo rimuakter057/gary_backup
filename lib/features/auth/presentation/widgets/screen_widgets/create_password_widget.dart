@@ -161,11 +161,11 @@ class _CreatePasswordWidgetState extends State<CreatePasswordWidget> {
     return Row(
       children: [
         Expanded(
-          child: Container(height: 5.h, color: AppColors.grey),
+          child: Container(height: 5.h, color: AppColors.subPrimary),
         ),
         SizedBox(width: 8.w),
         Expanded(
-          child: Container(height: 5.h, color: AppColors.grey),
+          child: Container(height: 5.h, color: AppColors.subPrimary),
         ),
         SizedBox(width: 8.w),
         Expanded(

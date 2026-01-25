@@ -111,9 +111,9 @@ TextSpan _buildTextSpanTermsPrivacy({
   return TextSpan(
     text: title,
     style: GoogleFonts.instrumentSans(
-      color: AppColors.labelTextColor,
+      color: AppColors.subPrimary,
       decoration: TextDecoration.underline,
-      decorationColor: AppColors.labelTextColor,
+      decorationColor: AppColors.subPrimary,
       decorationThickness: 2,
       fontWeight: FontWeight.bold,
     ),

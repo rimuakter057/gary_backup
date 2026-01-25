@@ -200,6 +200,7 @@ class CustomTextField extends StatelessWidget {
     return Padding(
       padding:  EdgeInsets.symmetric(horizontal: 10.h,vertical: 6.w),
       child: TextFormField(
+
         textAlignVertical: TextAlignVertical.center,
         style: GoogleFonts.instrumentSans(
           fontWeight: FontWeight.w500,
@@ -217,11 +218,14 @@ class CustomTextField extends StatelessWidget {
           labelStyle: GoogleFonts.instrumentSans(
             fontWeight: FontWeight.w500,
             fontSize: 16.sp,
-            color: AppColors.labelTextColor,
+            color: AppColors.subPrimary,
           ),
-
+          filled: true,                     // enable background fill
+          fillColor: AppColors.textFieldBg, // background color
           border: border ?? InputBorder.none,
 
+          enabledBorder: InputBorder.none,
+          focusedBorder: InputBorder.none,
           prefixIcon: prefixIcon ,
 
           // icon box size

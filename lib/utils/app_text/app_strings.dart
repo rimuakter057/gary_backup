@@ -23,7 +23,7 @@ class AppText {
 ///create copier section===============================================================
 
   static const String login = "Login";
-  static const String createAccount = "Create an copier";
+  static const String createAccount = "Create an account";
   static const String empowerAnalyzeConnect = "Empower. Analyze. Connect";
 
 

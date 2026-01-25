@@ -51,8 +51,8 @@ class VerifyOtpWidget extends StatelessWidget {
             ActionTextWidget(
               prefixText: AppText.haventReceivedCode,
               actionText: AppText.sendAgain,
-              prefixColor: AppColors.labelTextColor,
-              actionColor: AppColors.labelTextColor,
+              prefixColor: AppColors.subPrimary,
+              actionColor: AppColors.subPrimary,
 
               onActionTapped: () {},
             ),

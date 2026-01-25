@@ -64,7 +64,7 @@ class PaymentOptionRow extends StatelessWidget {
         // Saving Container
 
         CustomContainer(
-          padding: 8,
+
           backgroundColor: AppColors.yellowShade,
             child: CustomText(text: "${AppText.save} 20%",
             color: AppColors.brown,

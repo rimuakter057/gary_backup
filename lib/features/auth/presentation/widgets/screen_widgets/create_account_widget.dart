@@ -141,7 +141,7 @@ class CreateAccountWidget extends StatelessWidget {
             CustomText(text: AppText.otpInfo,
               fontWeight: FontWeight.w400,
               fontSize: 14.sp,
-              color: AppColors.labelTextColor,),
+              color: AppColors.subPrimary,),
             SizedBox(height: 64.h,),
         /// custom button================================================================
             CustomButton(onTap: (){

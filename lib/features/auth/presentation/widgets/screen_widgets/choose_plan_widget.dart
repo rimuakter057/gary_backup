@@ -81,7 +81,7 @@ class ChoosePlanWidget extends StatelessWidget {
                   child: ActionTextWidget(
                     prefixText: AppText.tradersConnect,
                     actionText: AppText.elite,
-                    actionColor: AppColors.labelTextColor,
+                    actionColor: AppColors.subPrimary,
                     onActionTapped: () {},
                   ),
                 ),
@@ -139,7 +139,7 @@ class ChoosePlanWidget extends StatelessWidget {
                 _buildSmallContainer(
                   title: levelBox,
                   bgColorSm: boxColor ?? Color(0xFFF7F9FA),
-                  textColor: boxTextColor ?? AppColors.labelTextColor,
+                  textColor: boxTextColor ?? AppColors.subPrimary,
                 ),
               ],
             ),
@@ -169,7 +169,7 @@ class ChoosePlanWidget extends StatelessWidget {
             /// column text section==========================================
             CustomText(
               fontSize: 12.sp,
-              color: AppColors.labelTextColor,
+              color: AppColors.subPrimary,
               text: text,
             ),
 
@@ -188,10 +188,9 @@ class ChoosePlanWidget extends StatelessWidget {
   }) {
     return CustomContainer(
       backgroundColor: bgColorSm ?? Color(0xFFF7F9FA),
-      padding: 8,
       child: CustomText(
         text: title,
-        color: textColor ?? AppColors.labelTextColor,
+        color: textColor ?? AppColors.subPrimary,
         fontSize: 14.sp,
       ),
     );

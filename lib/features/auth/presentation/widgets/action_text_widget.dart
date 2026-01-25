@@ -41,7 +41,7 @@ class ActionTextWidget extends StatelessWidget {
             text: prefixText,
             fontSize:fontSize?? 16,
             fontWeight:fontWeight?? FontWeight.w400,
-            color:prefixColor??AppColors.labelTextColor,
+            color:prefixColor??AppColors.subPrimary,
           ),
         ),
         GestureDetector(
@@ -57,7 +57,7 @@ class ActionTextWidget extends StatelessWidget {
               decoration:
               isUnderline ? TextDecoration.underline : TextDecoration.none,
               decorationColor:
-              isUnderline ? (underlineColor ?? AppColors.grey) : null,
+              isUnderline ? (underlineColor ?? AppColors.subPrimary) : null,
             ),
 
             ),

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'core/dependency/dependency_injection.dart';
 import 'core/routes/app_routes.dart';
+import 'core/theme/light_theme.dart' as AppTheme;
 
 
 
@@ -24,11 +25,9 @@ class TradersConnect extends StatelessWidget {
           initialBinding: DependencyInjection(),
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          ),
+          theme: AppTheme.lightTheme,
           // Set initial route
-          initialRoute: AppRoutes.graphChartScreen,
+          initialRoute: AppRoutes.splashScreen,
           // Connect routes
           getPages: AppRoutes.routes,
         );

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
-class CustomTextOutlineButton extends StatelessWidget {
+class CustomOutlineButton extends StatelessWidget {
   final String title;          // ✅ final
   final VoidCallback onTap;    // ✅ final, use VoidCallback
 
-  const CustomTextOutlineButton({
+  const CustomOutlineButton({
     super.key, required this.title,required this.onTap
   });
 
@@ -16,7 +16,7 @@ class CustomTextOutlineButton extends StatelessWidget {
       onPressed:onTap,
       style: OutlinedButton.styleFrom(
         minimumSize: Size(double.infinity, 61.h), // Full width & height 50
-        side: BorderSide(color: Color(0xFF7E8A93), width: 1), // Outline color & thickness
+        side: BorderSide(color: AppColors.outlineBorder, width: 1), // Outline color & thickness
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12), // Rounded corner
         ),

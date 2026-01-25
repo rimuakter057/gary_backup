@@ -31,16 +31,17 @@ import 'package:flutter/material.dart';
 class AppColors {
   static const Color primary = Color(0xff00897B);
   static const Color primaryShade100 = Color(0xFFE0F2F1);
-  static const Color grey=Color(0xFFCDD3D9);
+  //static const Color grey=Color(0xFFCDD3D9);
   static const Color dotedGrey=Color(0x33FFFFFF);
   static const Color yellowOnBoardingText=Color(0xFFFFC009);
   static const Color yellowShade=Color(0xFFFFECB3);
   static const Color brown=Color(0xFF9B7300);
  static const Color textBlack=Color(0xFF0B0F20);
   static const Color boarderTextField=Color(0xffC8C8C8);
-  static const Color fillTextField=Color(0xffFFFFFF);
+  static const Color textFieldBg=Color(0xffFFFFFF);
   static const Color hintText=Color(0xff7E8A93);
-  static const Color labelTextColor=Color(0xFF4E5D66);
+  static const Color subPrimary=Color(0xFF4E5D66);
+  //static const Color fieldIconColor=Color(0xFF4E5D66);
  static const Color subTitle=Color(0xFF2C3440);
   static const Color green = Color(0xff44A047);
   static const Gradient onBoardingGradient = LinearGradient(
@@ -58,11 +59,11 @@ class AppColors {
   );
   static const backgroundColor = Color(0xffF7F8FA);
   static const dividerColor=Color(0xFFE6EAED);
-  static const Color subPrimary = Color(0xff4E5D66);
+ // static const Color subPrimary = Color(0xff4E5D66);
   static const Color white = Color(0xffFFFFFF);
   static const Color black = Color(0xff000000);
   static const Color errorColor = Color(0xffFF0000);
-
+ static const Color outlineBorder=Color(0xFF7E8A93);
   static const Color background = Color(0xFFF5F7F8);
   static const Color cardDark = Color(0xFF0D1424);
 
@@ -70,6 +71,10 @@ class AppColors {
   static const Color textGrey = Color(0xFF7A7A7A);
   static const Color accentOrange = Color(0xFFF2994A);
   static const Color accentGreen = Color(0xFF27AE60);
+  static const Color red = Color(0xFFF53F3F);
+  static const Color labelText = Color(0xFF7E8A93);
+
+
 
 
 

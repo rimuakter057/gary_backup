@@ -11,6 +11,7 @@ import 'package:gary_goodger/utils/app_assets/app_icons.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 
 import 'package:gary_goodger/utils/app_text/app_strings.dart';
+import 'package:gary_goodger/utils/extension/base_extension.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../onboarding_heading_widget.dart';
@@ -49,6 +50,35 @@ class LoginWidget extends StatelessWidget {
             CustomTextFieldParent(
               child: Column(
                 children: [
+           // TextFormField(
+           //   keyboardType: TextInputType.emailAddress,
+           //   style: context.labelMedium,
+           //   controller: emailController,
+           //
+           //   decoration: InputDecoration(
+           //       prefixIcon: CustomSvgIcon(
+           //         icon: AppAssets.email,
+           //
+           //       ),
+           //     labelText: AppText.email
+           //   ),
+           //
+           //   validator: (value) {
+           //     if (value == null || value.isEmpty) {
+           //       return "Email address is required";
+           //     }
+           //     if (!AppText.emailRegexp.hasMatch(value)) {
+           //       return "Please enter a valid email address";
+           //     }
+           //     return null;
+           //   },
+           //
+           //
+           //
+           // ),
+
+
+                SizedBox(height: 4,),
                   CustomTextField(
                     keyboardType: TextInputType.emailAddress,
                     labelText: AppText.emailAddress,
@@ -58,7 +88,7 @@ class LoginWidget extends StatelessWidget {
                       width: 14.w,
                     ),
                     controller: emailController,
-                    obscureText: true,
+
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return "Email address is required";
@@ -69,7 +99,9 @@ class LoginWidget extends StatelessWidget {
                       return null;
                     },
                   ),
+                  SizedBox(height: 2.h,),
                   CustomDivider(),
+                  SizedBox(height: 2.h,),
                   CustomTextField(
                     labelText: AppText.password,
                     prefixIcon: CustomSvgIcon(

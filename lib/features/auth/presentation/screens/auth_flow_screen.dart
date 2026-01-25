@@ -125,40 +125,34 @@ class AuthFlowScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       /// outline log in button===================================================
-                      CustomTextOutlineButton(
-                        title: AppText.login,
-                        onTap: () {
-
+                      OutlinedButton(
+                        onPressed: () {
                           onBoardingController.resetFlowLogin();
                           Get.bottomSheet(
                             AuthFlowBottomSheetLogIn(),
                             isScrollControlled: true,
                           );
-
                         },
+                        child: Text(AppText.login),
                       ),
 
                       SizedBox(height: 20.h),
 
                       ///create account button==================================================
-                      CustomButton(
-                        onTap: () {
+                      ElevatedButton(
+                        onPressed: () {
                           onBoardingController.resetFlowCreateAccount();
                           Get.bottomSheet(
                             AuthFlowBottomSheetCreateAccount(),
                             isScrollControlled: true,
                           );
                         },
-                        title: AppText.createAccount,
+                        child: Text(AppText.createAccount),
                       ),
 
-
-
-
-
-
                       SizedBox(height: 18.h),
-///text section==============================================
+
+                      ///text section==============================================
                       Center(
                         child: RichText(
                           textAlign: TextAlign.center,
@@ -208,7 +202,7 @@ class AuthFlowScreen extends StatelessWidget {
       style: GoogleFonts.instrumentSans(
         color: AppColors.textBlack,
         decoration: TextDecoration.underline,
-        decorationColor: AppColors.grey,
+        decorationColor: AppColors.subPrimary,
         decorationThickness: 2,
         fontWeight: FontWeight.bold,
       ),
@@ -228,5 +222,3 @@ class AuthFlowScreen extends StatelessWidget {
     );
   }
 }
-
-
