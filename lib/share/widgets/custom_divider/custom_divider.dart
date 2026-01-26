@@ -11,7 +11,7 @@ final Color? color;
     return SizedBox(
       width: double.infinity,  // full screen width
       child: Divider(
-        color:color??AppColors.subPrimary,
+        color:color??AppColors.boarderColor,
         thickness: 1,
       ),
     );

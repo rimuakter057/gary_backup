@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
+import 'package:gary_goodger/utils/extension/base_extension.dart';
 
 import 'dash_board_chart.dart';
 
@@ -15,13 +16,7 @@ class PerformanceCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.cardDark, // Dark contrast card
         borderRadius: BorderRadius.circular(24.r),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 10,
-            offset: Offset(0, 5),
-          ),
-        ],
+
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,23 +29,33 @@ class PerformanceCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('\$175,320.58',
-                      style: TextStyle(
-                        fontSize: 22
-                      )
+                      style: context.bodyLarge.copyWith(color: AppColors.white)
 
                   ),
                   SizedBox(height: 4.h),
                   Text('+18%',
-                      style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold, fontSize: 14.sp)),
+                      style: context.titleMedium.copyWith(color: AppColors.primaryShade)
+                  ),
                 ],
               ),
-              Text('\$256.36 open',
-                  style: TextStyle(color: Colors.white60, fontSize: 12.sp)),
+              Row(
+                children: [
+                  Text('\$256.36',
+                      style: context.titleMedium.copyWith(color: AppColors.white)
+                  ),
+                  Text('  open',
+                      style: context.titleMedium.copyWith(color: AppColors.subPrimary)
+                  ),
+                ],
+              ),
             ],
           ),
           SizedBox(height: 20.h),
 
-          // Custom Tab Selector (Week, Month, Year)
+
+
+
+
           Container(
             height: 36.h,
             padding: EdgeInsets.all(4.w),

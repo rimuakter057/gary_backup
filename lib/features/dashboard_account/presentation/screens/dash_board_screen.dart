@@ -54,14 +54,24 @@ class DashBoardScreen extends StatelessWidget {
             PerformanceCard(),
             SizedBox(height: 20.h),
             _sectionHeader("Linked Accounts"),
-            AccountTile(id: "MT5-104392", broker: "Exness", amount: "\$1,624", status: "Active", statusColor: AppColors.accentGreen),
-            AccountTile(id: "MT5-104392", broker: "IC Markets", amount: "\$1,624", status: "Pending", statusColor: Colors.orange),
+            AccountTile(id: "MT5-104392", broker: "Exness", amount: "\$1,624", status: "Active",
+              statusTextColor:  AppColors.primary,
+              statusBgColor: AppColors.primaryShade100,
+              statusBorderColor: AppColors.primary,
+              // statusColor: AppColors.accentGreen
+            ),
+            AccountTile(id: "MT5-104392", broker: "IC Markets", amount: "\$1,624", status: "Pending",
+              statusTextColor:  AppColors.primary,
+              statusBgColor: AppColors.primaryShade100,
+              statusBorderColor: AppColors.primary,
+              //  statusColor: Colors.orange
+            ),
 
             SizedBox(height: 15.h),
             _sectionHeader("Copiers Accounts"),
             // Horizontal scrollable list
             SizedBox(
-              height: 130.h, // Overflow thik korar jonno height ektu barano holo
+              height: 130.h,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [

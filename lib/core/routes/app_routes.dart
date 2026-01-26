@@ -7,6 +7,7 @@ import 'package:gary_goodger/features/common/pesentation/screens/graph_chart_scr
 import 'package:gary_goodger/features/compare/presentation/screens/compare_screens.dart';
 import 'package:gary_goodger/features/copier/presentation/screens/copier_screen.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/screens/dash_board_screen.dart';
+import 'package:gary_goodger/features/dashboard_account/presentation/screens/home.dart';
 import 'package:gary_goodger/features/sentiments/presentation/screens/sentiments_screen.dart';
 
 import 'package:gary_goodger/features/splash/presentation/screens/splash_screen.dart';
@@ -25,6 +26,7 @@ class AppRoutes {
   static const String compareScreen = "/compareScreen";
   static const String sentimentsScreen="/sentimentsScreen";
   static const String graphChartScreen="/graphChartScreen";
+  static const String homeScreen="/homeScreen";
 
   static List<GetPage> routes = [
     ///===========================Authentication==========================
@@ -41,6 +43,7 @@ class AppRoutes {
     GetPage(name: compareScreen, page: ()=>ComparePropScreen()),
     GetPage(name: sentimentsScreen, page: ()=>SentimentsScreen()),
     GetPage(name: graphChartScreen, page: ()=>GraphChartScreen()),
+    GetPage(name: homeScreen, page: ()=>HomeDashboard()),
 
   ];
 }

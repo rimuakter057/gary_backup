@@ -319,7 +319,7 @@ class AppText {
 
   // static const exness = "Exness";
   // static const active = "Active";
-  static const mt5104392 = "MT5-104392";
+  static const mt4104392 = "MT4-104392";
 //===============================================================
   static const calculateRiskSettings = "Calculate Risk Settings";
   static const lotRefiner = "Lot Refiner";

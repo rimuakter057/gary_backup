@@ -31,7 +31,7 @@ import 'package:flutter/material.dart';
 class AppColors {
   static const Color primary = Color(0xff00897B);
   static const Color primaryShade100 = Color(0xFFE0F2F1);
-  //static const Color grey=Color(0xFFCDD3D9);
+  static const Color primaryShade = Color(0xFF27A69A);
   static const Color dotedGrey=Color(0x33FFFFFF);
   static const Color yellowOnBoardingText=Color(0xFFFFC009);
   static const Color yellowShade=Color(0xFFFFECB3);
@@ -59,9 +59,10 @@ class AppColors {
   );
   static const backgroundColor = Color(0xffF7F8FA);
   static const dividerColor=Color(0xFFE6EAED);
- // static const Color subPrimary = Color(0xff4E5D66);
+ static const Color greyShade = Color(0xffEEF0F4);
   static const Color white = Color(0xffFFFFFF);
   static const Color black = Color(0xff000000);
+  static const Color blackShade=Color(0xff2C3440);
   static const Color errorColor = Color(0xffFF0000);
  static const Color outlineBorder=Color(0xFF7E8A93);
   static const Color background = Color(0xFFF5F7F8);
@@ -73,6 +74,7 @@ class AppColors {
   static const Color accentGreen = Color(0xFF27AE60);
   static const Color red = Color(0xFFF53F3F);
   static const Color labelText = Color(0xFF7E8A93);
+  static const Color boarderColor = Color(0xFFE1E1E1);
 
 
 

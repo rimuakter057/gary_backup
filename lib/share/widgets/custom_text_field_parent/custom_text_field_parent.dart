@@ -13,7 +13,7 @@ class CustomTextFieldParent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomContainer(
-        padding: 0,
+        padding: EdgeInsets.all(0),
         radius: 8.r,
         borderColor: AppColors.boarderTextField,
         width: double.infinity,

@@ -1,60 +1,80 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gary_goodger/share/widgets/custom_container/custom_container.dart';
+import 'package:gary_goodger/share/widgets/custom_image/custom_image.dart';
+import 'package:gary_goodger/utils/app_assets/app_icons.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
+import 'package:gary_goodger/utils/extension/base_extension.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class AccountTile extends StatelessWidget {
   final String id, broker, amount, status;
-  final Color statusColor;
+  final Color statusTextColor;
+  final Color statusBgColor;
+  final Color statusBorderColor;
 
   const AccountTile({super.key,
     required this.id, required this.broker,
-    required this.amount, required this.status, required this.statusColor
+    required this.amount, required this.status, required this.statusTextColor, required this.statusBgColor, required this.statusBorderColor,
+    //required this.statusColor
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 12.h),
-      padding: EdgeInsets.all(12.w),
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(12.r),
-        border: Border.all(color: AppColors.black),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Text(id, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp)),
-                    SizedBox(width: 8.w),
-                    Container(
+    return Row(
+      children: [
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Text(id, style: context.titleSmall.copyWith(color: AppColors.textBlack)
+                  ),
+                  SizedBox(width: 8.w),
+
+
+                  CustomContainer(
+                    backgroundColor: AppColors.primaryShade100,
+                      borderColor: AppColors.primary,
                       padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
-                      decoration: BoxDecoration(
-                        color: statusColor.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(4.r),
+                      child: Text("active",style: GoogleFonts.instrumentSans(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 12.sp,
+                        color: AppColors.primary
                       ),
-                      child: Text(status, style: TextStyle(color: statusColor, fontSize: 10.sp, fontWeight: FontWeight.bold)),
-                    ),
-                  ],
-                ),
-                Text(broker, style: TextStyle(color: AppColors.textGrey, fontSize: 12.sp)),
+                      )),
+
+                ],
+              ),
+              Text(broker, style:context.titleSmall.copyWith(
+                color: AppColors.blackShade,
+                fontSize: 14,
+                fontWeight: FontWeight.w400
+              )),
+            ],
+          ),
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Text(amount, style:context.bodyMedium
+
+            ),
+            Row(
+              children: [
+                Text("+0.1%", style: context.bodySmall.copyWith(
+                  color: AppColors.primary,
+                  fontSize: 12
+                )),
+                
+                CustomImage(imageSrc: AppAssets.topArrow)
               ],
             ),
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Text(amount, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp)),
-              Text("+0.1%", style: TextStyle(color: AppColors.accentGreen, fontSize: 11.sp)),
-            ],
-          )
-        ],
-      ),
+          ],
+        )
+      ],
     );
   }
 }

@@ -7,9 +7,9 @@ final ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   scaffoldBackgroundColor: AppColors.backgroundColor,
  // fontFamily: AppConfig.questrial,
-  ///appbar===============================================
+  ///custom_appbar===============================================
   appBarTheme:  AppBarTheme(
-    backgroundColor: AppColors.backgroundColor,
+    backgroundColor: AppColors.white,
     elevation: 0,
     centerTitle: true,
 
@@ -141,9 +141,15 @@ final ThemeData lightTheme = ThemeData(
       color: AppColors.textBlack,
     ),
 
-    titleSmall:  GoogleFonts.instrumentSans(
+    titleMedium:  GoogleFonts.instrumentSans(
       fontSize: 17,
       fontWeight: FontWeight.w400,
+      color: AppColors.subTitle,
+    ),
+
+    titleSmall:  GoogleFonts.instrumentSans(
+      fontSize: 16,
+      fontWeight: FontWeight.w600,
       color: AppColors.subTitle,
     ),
     labelMedium:   GoogleFonts.instrumentSans(
