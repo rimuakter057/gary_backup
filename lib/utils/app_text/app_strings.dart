@@ -187,7 +187,7 @@ class AppText {
 
   // Insights / Rankings
   static const String bestRoiWindow = "Best ROI Window";
-  static const String high = "High";
+  static const String high = " High";
   static const String topTraders = "Top Traders";
   static const String followers = "Followers";
 
@@ -197,6 +197,14 @@ class AppText {
       "Showing the list of all the accounts";
   static const String search = "Search";
   static const String addAccount = "Add Account";
+//===========================================================
+  static const String name = "Name";
+  static const String platform = "Platform";
+  static const String type = "Type";
+  static const String broker = "Broker";
+
+  static const String eh = "EH";
+
 
 //============================================================================
 

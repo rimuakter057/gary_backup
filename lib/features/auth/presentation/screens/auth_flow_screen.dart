@@ -7,7 +7,7 @@ import 'package:gary_goodger/features/auth/presentation/widgets/bottom_sheet_log
 import 'package:gary_goodger/share/widgets/custom_button/custom_button.dart';
 import 'package:gary_goodger/share/widgets/custom_svg_icon/custom_svg_icon.dart';
 import 'package:gary_goodger/share/widgets/custom_text_button/custom_text_button.dart';
-import 'package:gary_goodger/utils/app_assets/app_icons.dart';
+import 'package:gary_goodger/utils/app_assets/app_assets.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 
 import 'package:gary_goodger/utils/app_text/app_strings.dart';

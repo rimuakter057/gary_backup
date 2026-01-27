@@ -8,7 +8,7 @@ class TraderTile extends StatelessWidget {
   final String name, followers, profit;
   final Color badgeColor;
 
-  const TraderTile({required this.rank, required this.name, required this.followers, required this.profit, required this.badgeColor});
+  const TraderTile({super.key, required this.rank, required this.name, required this.followers, required this.profit, required this.badgeColor});
 
   @override
   Widget build(BuildContext context) {

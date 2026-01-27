@@ -33,7 +33,7 @@ class AppAssets {
   static const String masterAccountShare =
       "$commonIconPath/master_account_share.svg";
   static const String menu = "$commonIconPath/menu.svg";
-  static const String notification = "$commonIconPath/notification.svg";
+  static const String notification = "$commonIconPath/notification_common.svg";
   static const String search = "$commonIconPath/search.svg";
   static const String setting = "$commonIconPath/setting.svg";
   static const String topArrow = "$commonIconPath/top_arrow.svg";
@@ -73,6 +73,8 @@ class AppAssets {
       "$dashBoardIconPath/trading_symbol.svg";
   static const String typeAccountDashboard =
       "$dashBoardIconPath/type_account_icon.svg";
+  static const String notificationPrimary =
+      "$dashBoardIconPath/notification_primary.svg";
 
   ///=============================copier===========================================
   static const String copierIconPath = "$basePath/copier";
@@ -88,6 +90,8 @@ class AppAssets {
   //================================================================================
   static const String insightsAnalyzer =
       "$analyzerIconPath/insight_analyzer.svg";
+  static const String clock =
+      "$analyzerIconPath/clock.svg";
 
   /// ============================compare============================================
   static const String compareIconPath = "$basePath/compare";

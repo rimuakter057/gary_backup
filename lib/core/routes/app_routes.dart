@@ -3,7 +3,7 @@ import 'package:gary_goodger/features/analyzer/presentation/screens/analyzer_det
 import 'package:gary_goodger/features/analyzer/presentation/screens/analyzer_heat_map_screen.dart';
 import 'package:gary_goodger/features/analyzer/presentation/screens/analyzer_screen.dart';
 import 'package:gary_goodger/features/auth/presentation/screens/auth_flow_screen.dart';
-import 'package:gary_goodger/features/common/pesentation/screens/graph_chart_screen.dart';
+import 'package:gary_goodger/features/common/presentation/screens/graph_chart_screen.dart';
 import 'package:gary_goodger/features/compare/presentation/screens/compare_screens.dart';
 import 'package:gary_goodger/features/copier/presentation/screens/copier_screen.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/screens/dash_board_screen.dart';

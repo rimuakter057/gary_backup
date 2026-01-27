@@ -93,6 +93,7 @@ flutter:
     - assets/icons/common/
     - assets/icons/auth/
     - assets/icons/compare/
+    - assets/icons/analyzer/
     - assets/icons/copier/
     - assets/icons/dash_board/
     - assets/icons/profile_setting/

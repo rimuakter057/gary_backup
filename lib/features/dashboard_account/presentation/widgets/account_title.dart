@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gary_goodger/features/common/presentation/widgets/status_outline_container.dart';
 import 'package:gary_goodger/share/widgets/custom_container/custom_container.dart';
 import 'package:gary_goodger/share/widgets/custom_image/custom_image.dart';
-import 'package:gary_goodger/utils/app_assets/app_icons.dart';
+import 'package:gary_goodger/utils/app_assets/app_assets.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 import 'package:gary_goodger/utils/extension/base_extension.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -35,16 +36,7 @@ class AccountTile extends StatelessWidget {
                   SizedBox(width: 8.w),
 
 
-                  CustomContainer(
-                    backgroundColor: AppColors.primaryShade100,
-                      borderColor: AppColors.primary,
-                      padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
-                      child: Text("active",style: GoogleFonts.instrumentSans(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 12.sp,
-                        color: AppColors.primary
-                      ),
-                      )),
+                  StatusOutlineContainer(statusBgColor: statusBgColor, statusBorderColor: statusBorderColor, status: status, statusTextColor: statusTextColor),
 
                 ],
               ),
@@ -78,3 +70,4 @@ class AccountTile extends StatelessWidget {
     );
   }
 }
+

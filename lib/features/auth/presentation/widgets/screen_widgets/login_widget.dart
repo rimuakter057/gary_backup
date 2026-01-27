@@ -7,7 +7,7 @@ import 'package:gary_goodger/share/widgets/custom_divider/custom_divider.dart';
 import 'package:gary_goodger/share/widgets/custom_svg_icon/custom_svg_icon.dart';
 import 'package:gary_goodger/share/widgets/custom_text_field/custom_text_field.dart';
 import 'package:gary_goodger/share/widgets/custom_text_field_parent/custom_text_field_parent.dart';
-import 'package:gary_goodger/utils/app_assets/app_icons.dart';
+import 'package:gary_goodger/utils/app_assets/app_assets.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 
 import 'package:gary_goodger/utils/app_text/app_strings.dart';

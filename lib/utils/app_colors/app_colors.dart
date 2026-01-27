@@ -60,6 +60,7 @@ class AppColors {
   static const backgroundColor = Color(0xffF7F8FA);
   static const dividerColor=Color(0xFFE6EAED);
  static const Color greyShade = Color(0xffEEF0F4);
+  static const Color greySwitch = Color(0xFFBDBDBD);
   static const Color white = Color(0xffFFFFFF);
   static const Color black = Color(0xff000000);
   static const Color blackShade=Color(0xff2C3440);
@@ -70,6 +71,8 @@ class AppColors {
 
   static const Color textDark = Color(0xFF1A1A1A);
   static const Color textGrey = Color(0xFF7A7A7A);
+  static const Color blueGrey = Color(0xFF97BFE1);
+  static const Color orange = Color(0xFFE67E22);
   static const Color accentOrange = Color(0xFFF2994A);
   static const Color accentGreen = Color(0xFF27AE60);
   static const Color red = Color(0xFFF53F3F);
