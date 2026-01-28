@@ -703,6 +703,11 @@ class AppText {
   static const saved = "Saved";
   static const allNews = "All News";
 
+  static const highCapital = "HIGH";
+  static const mediumCapital = "MEDIUM";
+  static const bearishCapital = "BEARISH";
+
+
   ///calender=======================================================================================================
   static const alert = "Alert";
   static const economicCalendar = "Economic Calendar";

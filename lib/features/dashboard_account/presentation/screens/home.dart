@@ -234,7 +234,7 @@ class _HomeDashboardState extends State<HomeDashboard> {
             ),
           ),
 
-          /// top traders  lis====================================================
+          // /// top traders  lis====================================================
           SliverToBoxAdapter(
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 16),
@@ -268,9 +268,16 @@ class _HomeDashboardState extends State<HomeDashboard> {
           ),
 
           // Bottom Spacing
-          SliverToBoxAdapter(child: SizedBox(height: 40.h)),
+          SliverToBoxAdapter(child: Column(
+            children: [
+              SizedBox(height: 40.h),
+              _buildSectionHeader("account tile", context),
+            ],
+          )),
 
           ///select account tile===========================================================
+
+
           SliverToBoxAdapter(
             child: CustomContainer(
               borderColor: AppColors.primaryShade,

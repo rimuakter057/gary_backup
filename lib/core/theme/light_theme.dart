@@ -19,9 +19,9 @@ final ThemeData lightTheme = ThemeData(
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       backgroundColor:AppColors.primary,
-      minimumSize: const Size(double.infinity, 61), // full width, fixed height
+      minimumSize: const Size(double.infinity, 50), // full width, fixed height
       shadowColor: Colors.transparent,
-      padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+      //padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6.r)),
       foregroundColor: AppColors.white,
 

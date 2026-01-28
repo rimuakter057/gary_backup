@@ -8,11 +8,12 @@ import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 class CustomTealSwitch extends StatefulWidget {
   final bool value;
   final ValueChanged<bool> onChanged;
-
+  final Color? activeColor;
   const CustomTealSwitch({
     super.key,
     required this.value,
     required this.onChanged,
+     this.activeColor,
   });
 
   @override
@@ -31,9 +32,9 @@ class _CustomTealSwitchState extends State<CustomTealSwitch> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.r),
 
-          color: widget.value ?AppColors.primary: AppColors.greySwitch,
+          color: widget.value ?widget.activeColor?? AppColors.primary: AppColors.greySwitch,
           border: Border.all(
-            color: widget.value ?  AppColors.primary : AppColors.greySwitch,
+            color: widget.value ?widget.activeColor?? AppColors.primary : AppColors.greySwitch,
             width: 2,
           ),
         ),

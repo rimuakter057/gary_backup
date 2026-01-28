@@ -10,6 +10,7 @@ import 'package:gary_goodger/utils/app_assets/app_assets.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 import 'package:gary_goodger/utils/app_text/app_strings.dart';
 import 'package:gary_goodger/utils/extension/base_extension.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AnalyzerScreen extends StatelessWidget {
   const AnalyzerScreen({super.key});
@@ -38,7 +39,7 @@ class AnalyzerScreen extends StatelessWidget {
           children: [
             _buildDropdownHeader(),
             SizedBox(height: 15.h),
-            _buildTabSelector(),
+            _buildTabSelector(context),
             SizedBox(height: 20.h),
             PortfolioGauge(),
             SizedBox(height: 20.h),
@@ -180,82 +181,99 @@ class AnalyzerScreen extends StatelessWidget {
             Text("AI Insights Trail", textAlign: TextAlign.center),
             CustomContainer(
               backgroundColor: AppColors.primaryShade100,
-
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: Row(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      CustomContainer(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 4,
-                          horizontal: 4,
-                        ),
-                        backgroundColor: AppColors.primaryShade100,
-                        borderColor: AppColors.primary,
-                        child: Row(
+                  Container(
+                       width:4 ,
+                    height: 200,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                      color: AppColors.red
+                    ),
+
+                  ),
+                  SizedBox(width: 12.w,),
+
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            CustomImage(imageSrc: AppAssets.insightsAnalyzer),
+                            CustomContainer(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 4,
+                                horizontal: 4,
+                              ),
+                              backgroundColor: AppColors.primaryShade100,
+                              borderColor: AppColors.primary,
+                              child: Row(
+                                children: [
+                                  CustomImage(imageSrc: AppAssets.insightsAnalyzer),
+                                  Text(
+                                    AppText.strong,
+                                    style: context.bodySmall.copyWith(
+                                      fontWeight: FontWeight.w700,
+                                      color: AppColors.primary,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+
+                            Row(
+                              children: [
+                                CustomImage(imageSrc: AppAssets.clock),
+                                SizedBox(width: 4.w),
+                                Text("2 min ago", style: context.bodySmall),
+                              ],
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 16,),
+                        Text(
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          "Risk — Wed 18-21 UTC Drawdown Cluster",
+                          style: context.bodyMedium,
+                        ),
+                        SizedBox(height: 8,),
+                        Text(
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          "DD risk +23% vs baseline; losing streaks originate here.",
+                          style: context.bodySmall,
+                        ),
+                        SizedBox(height: 8,),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
                             Text(
-                              AppText.strong,
-                              style: context.bodySmall.copyWith(
-                                fontWeight: FontWeight.w700,
-                                color: AppColors.primary,
+
+                              "Tip: ",
+                              style: context.bodySmall.copyWith(fontWeight: FontWeight.w700),
+                            ),
+
+                            Expanded(
+                              child: Text(
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                "Avoid entries after 18:00 UTC on Fridays for NAS100",
+                                style: context.bodySmall,
                               ),
                             ),
                           ],
                         ),
-                      ),
-
-                      Row(
-                        children: [
-                          CustomImage(imageSrc: AppAssets.clock),
-                          SizedBox(width: 4.w),
-                          Text("2 min ago", style: context.bodySmall),
-                        ],
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                  SizedBox(height: 16,),
-                  Text(
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    "Risk — Wed 18-21 UTC Drawdown Cluster",
-                    style: context.bodyMedium,
-                  ),
-                  SizedBox(height: 8,),
-                  Text(
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                   "DD risk +23% vs baseline; losing streaks originate here.",
-                    style: context.bodySmall,
-                  ),
-                  SizedBox(height: 8,),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-
-                        "Tip: ",
-                        style: context.bodySmall.copyWith(fontWeight: FontWeight.w700),
-                      ),
-
-                      Expanded(
-                        child: Text(
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          "Avoid entries after 18:00 UTC on Fridays for NAS100",
-                          style: context.bodySmall,
-                        ),
-                      ),
-                    ],
-                  ),
-
 
 
                 ],
               ),
+
+
             ),
 
             SizedBox(height: 38),
@@ -267,17 +285,18 @@ class AnalyzerScreen extends StatelessWidget {
 
   // Same dropdown logic as Dashboard
   Widget _buildDropdownHeader() {
-    /* code from previous response */
+
     return Container();
   }
 
-  Widget _buildTabSelector() {
-    return Container(
+
+  ///tab selector
+  Widget _buildTabSelector(BuildContext context) {
+    return CustomContainer(
+      backgroundColor: AppColors.grey,
+      borderColor: AppColors.tabBoarderColor,
       padding: EdgeInsets.all(4.w),
-      decoration: BoxDecoration(
-        color: Color(0xFFE0E4E7),
-        borderRadius: BorderRadius.circular(10.r),
-      ),
+      radius: 10.r,
       child: Row(
         children: [
           Expanded(
@@ -290,12 +309,36 @@ class AnalyzerScreen extends StatelessWidget {
               child: Center(
                 child: Text(
                   "Performance",
-                  style: TextStyle(color: Colors.white),
+                  style: GoogleFonts.inter(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.white
+
+                  ),
                 ),
               ),
             ),
           ),
-          Expanded(child: Center(child: Text("Analysis Hub"))),
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.all(8.h),
+              decoration: BoxDecoration(
+                color: AppColors.grey,
+                borderRadius: BorderRadius.circular(8.r),
+              ),
+              child: Center(
+                child: Text(
+                  "Analysis Hub",
+                  style: GoogleFonts.inter(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.textBlack
+
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -321,3 +364,18 @@ class AnalyzerScreen extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

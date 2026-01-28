@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 
 class CustomDivider extends StatelessWidget {
   const CustomDivider({
-    super.key, this.color,
+    super.key, this.color, this.thickness,
   });
 final Color? color;
+final double?thickness;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,  // full screen width
       child: Divider(
         color:color??AppColors.boarderColor,
-        thickness: 1,
+        thickness:thickness?? 1.h,
       ),
     );
   }

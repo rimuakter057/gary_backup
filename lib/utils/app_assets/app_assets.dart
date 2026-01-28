@@ -96,8 +96,8 @@ class AppAssets {
   /// ============================compare============================================
   static const String compareIconPath = "$basePath/compare";
   //===============================================================================
-  static const String addFirmCompare = "$analyzerIconPath/add_firm.svg";
-  static const String pinnedCompare = "$analyzerIconPath/pinned.svg";
+  static const String addFirmCompare = "$compareIconPath/add_firm.svg";
+  static const String pinnedCompare = "$compareIconPath/pinned.svg";
 
   /// =============================social============================================
   static const String socialIconPath = "$basePath/social";

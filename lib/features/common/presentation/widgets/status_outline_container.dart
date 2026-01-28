@@ -11,12 +11,17 @@ class StatusOutlineContainer extends StatelessWidget {
     required this.statusBorderColor,
     required this.status,
     required this.statusTextColor,
+    this.horizontalPadding,
+    this.verticalPadding, this.fontSize,
   });
 
   final Color statusBgColor;
   final Color statusBorderColor;
   final String status;
   final Color statusTextColor;
+  final double ? horizontalPadding;
+  final double ? verticalPadding;
+  final double ? fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -24,12 +29,14 @@ class StatusOutlineContainer extends StatelessWidget {
         backgroundColor:statusBgColor,
         borderColor: statusBorderColor,
         radius: 6.r,
-        padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 1.h),
-        child: Text(status,style: GoogleFonts.instrumentSans(
-            fontWeight: FontWeight.w500,
-            fontSize: 12.sp,
-            color: statusTextColor
-        ),
+        padding: EdgeInsets.symmetric(horizontal:horizontalPadding?? 2.w, vertical:verticalPadding?? 1.h),
+        child: Center(
+          child: Text(status,style: GoogleFonts.instrumentSans(
+              fontWeight: FontWeight.w600,
+              fontSize:fontSize?? 12.sp,
+              color: statusTextColor
+          ),
+          ),
         ));
   }
 }

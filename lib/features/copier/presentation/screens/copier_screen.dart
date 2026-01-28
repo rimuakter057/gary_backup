@@ -1,11 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gary_goodger/features/copier/presentation/widgets/radio_tile_widget.dart';
 import 'package:gary_goodger/features/copier/presentation/widgets/master_account_card.dart';
+import 'package:gary_goodger/features/dashboard_account/presentation/widgets/account_title.dart';
+import 'package:gary_goodger/features/dashboard_account/presentation/widgets/custom_switch_button.dart';
+import 'package:gary_goodger/share/widgets/custom_container/custom_container.dart';
+import 'package:gary_goodger/share/widgets/custom_image/custom_image.dart';
+import 'package:gary_goodger/utils/app_assets/app_assets.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
+import 'package:gary_goodger/utils/app_text/app_strings.dart';
+import 'package:gary_goodger/utils/extension/base_extension.dart';
 
-class CopierScreen extends StatelessWidget {
+class CopierScreen extends StatefulWidget {
   const CopierScreen({super.key});
 
+  @override
+  State<CopierScreen> createState() => _CopierScreenState();
+}
+
+class _CopierScreenState extends State<CopierScreen> {
+  bool isSwitched = true;
+  bool isSelected = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,50 +65,149 @@ class CopierScreen extends StatelessWidget {
                   Text(
                     "Master Accounts",
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w400,
                       fontSize: 16.sp,
                     ),
                   ),
-                  SizedBox(height: 15.h),
+                  SizedBox(height: 16.h),
 
-                  // Sections
+                  /// master account tile===============================================================
                   _buildSectionHeader("Enabled (03)"),
-                  const MasterAccountCard(
+                  const MasterAccountCardAnalyzer(
                     title: "Master Account 1",
                     enabled: 7,
                     disabled: 3,
                   ),
-                  const MasterAccountCard(
-                    title: "Master Account 2",
-                    enabled: 7,
-                    disabled: 3,
-                  ),
-                  const MasterAccountCard(
-                    title: "Master Account 3",
-                    enabled: 7,
-                    disabled: 3,
+                  SizedBox(height: 16.h),
+                  Text(
+                    "slave account setting",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16.sp,
+                    ),
                   ),
 
-                  SizedBox(height: 15.h),
-                  _buildSectionHeader("Disabled - Monitor Existing (03)"),
-                  const MasterAccountCard(
-                    title: "Master Account 4",
-                    enabled: 7,
-                    disabled: 3,
-                  ),
-                  const MasterAccountCard(
-                    title: "Master Account 5",
-                    enabled: 7,
-                    disabled: 3,
+                  ///slave account setting=======================================================================
+                  ListTile(
+                    leading: CustomImage(imageSrc: AppAssets.editCopier),
+                    title: Text(AppText.editSlave, style: context.bodyMedium),
+                    subtitle: Text(
+                      AppText.descriptionWillGoHere,
+                      style: context.bodySmall,
+                    ),
+                    trailing: CustomImage(imageSrc: AppAssets.arrowFront),
                   ),
 
-                  SizedBox(height: 15.h),
-                  _buildSectionHeader("Disabled (03)"),
-                  const MasterAccountCard(
-                    title: "Master Account 7",
-                    enabled: 7,
-                    disabled: 3,
+                  /// master account slave===============================================================
+                  Text(
+                    "Master Accounts Slave",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16.sp,
+                    ),
                   ),
+                  CustomContainer(
+                    borderColor: AppColors.orange,
+                    backgroundColor: AppColors.orangeShadeBg,
+
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        // Left Side: Text Info
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                AppText.slaveAccount,
+                                style: context.bodyMedium,
+                              ),
+                              SizedBox(height: 4.h),
+                              Text(
+                                "RIsk Type: Lot Multiplier  Risk: 1%",
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: context.bodySmall.copyWith(
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.textBlack,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+
+                        CustomTealSwitch(
+                          activeColor: AppColors.orange,
+                          value: isSwitched,
+                          onChanged: (value) {
+                            setState(() {
+                              isSwitched = value;
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  SizedBox(height: 16.h),
+                  /// advance setting===============================================================
+                  Text(
+                    "advance setting",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16.sp,
+                    ),
+                  ),
+                  SizedBox(height: 16.h),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(AppText.eurUsd, style: context.titleSmall),
+                      CustomTealSwitch(
+                        value: isSwitched,
+                        onChanged: (value) {
+                          setState(() {
+                            isSwitched = value;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 16.h),
+                 ///copy from account tile======================================================
+                  Text(
+                    "copy from account title",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16.sp,
+                    ),
+                  ),
+                  CustomContainer(
+                    backgroundColor: AppColors.primaryShade100,
+                    borderColor: AppColors.primary,
+                    child: AccountTile(
+                      id: "MT5-104392",
+                      broker: "IC Markets",
+                      amount: "\$1,624",
+                      status: "active",
+                      statusTextColor: AppColors.primary,
+                      statusBgColor: AppColors.primaryShade100,
+                      statusBorderColor:
+                      AppColors.primary, // statusColor: Colors.orange
+                    ),
+                  ),
+                  SizedBox(height: 16.h),
+                  ///map to symbols======================================================
+                  Text(
+                    "map symbol",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16.sp,
+                    ),
+                  ),
+                  RadioTileWidget(isSelected: isSelected),
+
                 ],
               ),
             ),
@@ -102,6 +216,21 @@ class CopierScreen extends StatelessWidget {
       ),
     );
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   Widget _buildTopTabs() {
     return Container(
@@ -168,3 +297,24 @@ class CopierScreen extends StatelessWidget {
     );
   }
 }
+
+
+
+///switch Row
+
+///notification list tile=======================================
+
+// ListTile(
+// leading: CustomImage(
+// imageSrc: AppAssets.accountManagementDashboard,
+// ),
+// title: Text(AppText.accountManagement, style: context.bodyMedium),
+// subtitle: Text(
+// AppText.showingListOfAllAccounts,
+// style: context.bodySmall,
+// ),
+// trailing: CustomImage(imageSrc: AppAssets.arrowFront),
+// ),
+
+///copy from account title========================
+

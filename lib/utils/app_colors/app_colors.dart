@@ -59,6 +59,7 @@ class AppColors {
   );
   static const backgroundColor = Color(0xffF7F8FA);
   static const dividerColor=Color(0xFFE6EAED);
+  static const Color grey = Color(0xffE2E2E2);
  static const Color greyShade = Color(0xffEEF0F4);
   static const Color greySwitch = Color(0xFFBDBDBD);
   static const Color white = Color(0xffFFFFFF);
@@ -73,11 +74,15 @@ class AppColors {
   static const Color textGrey = Color(0xFF7A7A7A);
   static const Color blueGrey = Color(0xFF97BFE1);
   static const Color orange = Color(0xFFE67E22);
+  static const Color orangeShadeBg = Color(0x1AE67E22);
+
   static const Color accentOrange = Color(0xFFF2994A);
   static const Color accentGreen = Color(0xFF27AE60);
   static const Color red = Color(0xFFF53F3F);
+  static const Color redAccent = Color(0x0DF53F3F);
   static const Color labelText = Color(0xFF7E8A93);
   static const Color boarderColor = Color(0xFFE1E1E1);
+  static const Color tabBoarderColor = Color(0xFFD4DADF);
 
 
 
