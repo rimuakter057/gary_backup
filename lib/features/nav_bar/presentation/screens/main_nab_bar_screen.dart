@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gary_goodger/features/analyzer/presentation/screens/analyzer_screen.dart';
 import 'package:gary_goodger/features/copier/presentation/screens/copier_screen.dart';
-import 'package:gary_goodger/features/dashboard_account/presentation/screens/dash_board_screen.dart';
+import 'package:gary_goodger/features/dashboard_account/presentation/screens/account_screen.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 
 class MainNavigationScreen extends StatefulWidget {
@@ -17,7 +17,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 
   // Screen gulor list
   final List<Widget> _screens = [
-    const DashBoardScreen(), // Index 0
+    const AccountScreen(), // Index 0
     const CopierScreen(),    // Index 1
     const AnalyzerScreen(),  // Index 2
     const Center(child: Text("Wallet Screen")), // Placeholder Index 3

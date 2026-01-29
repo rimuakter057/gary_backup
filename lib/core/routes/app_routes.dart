@@ -6,8 +6,11 @@ import 'package:gary_goodger/features/auth/presentation/screens/auth_flow_screen
 import 'package:gary_goodger/features/common/presentation/screens/graph_chart_screen.dart';
 import 'package:gary_goodger/features/compare/presentation/screens/compare_screens.dart';
 import 'package:gary_goodger/features/copier/presentation/screens/copier_screen.dart';
-import 'package:gary_goodger/features/dashboard_account/presentation/screens/dash_board_screen.dart';
+import 'package:gary_goodger/features/dashboard_account/presentation/screens/account_screen.dart';
+import 'package:gary_goodger/features/dashboard_account/presentation/screens/add_account_screen.dart';
+import 'package:gary_goodger/features/dashboard_account/presentation/screens/equity_protector_screen.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/screens/home.dart';
+import 'package:gary_goodger/features/dashboard_account/presentation/screens/tranding_symbol_screen.dart';
 import 'package:gary_goodger/features/sentiments/presentation/screens/sentiments_screen.dart';
 
 import 'package:gary_goodger/features/splash/presentation/screens/splash_screen.dart';
@@ -18,7 +21,7 @@ import 'package:get/get.dart';
 class AppRoutes {
   static const String splashScreen = "/onBoarding";
    static const String authFlowScreen = "/authFlow";
-  static const String dashBoardScreen = "/dashBoardScreen";
+  static const String accountScreen = "/accountScreen";
   static const String copierScreen = "/copierScreen";
   static const String analyzerScreen = "/analyzerScreen";
   static const String analyzerDetailsScreen = "/analyzerDetailsScreen";
@@ -27,6 +30,9 @@ class AppRoutes {
   static const String sentimentsScreen="/sentimentsScreen";
   static const String graphChartScreen="/graphChartScreen";
   static const String homeScreen="/homeScreen";
+  static const String equityProtectorScreen='/equityProtectorScreen';
+  static const String tradingSymbolScreen='/tradingSymbolScreen';
+  static const String addAccountScreen='/addAccountScreen';
 
   static List<GetPage> routes = [
     ///===========================Authentication==========================
@@ -35,7 +41,7 @@ class AppRoutes {
 
     GetPage(name: splashScreen, page: ()=>AuthFlowScreen()),
 
-    GetPage(name: dashBoardScreen, page: ()=>DashBoardScreen()),
+    GetPage(name: accountScreen, page: ()=>AccountScreen()),
     GetPage(name: copierScreen, page: ()=>CopierScreen()),
     GetPage(name: analyzerScreen, page: ()=>AnalyzerScreen()),
     GetPage(name: analyzerDetailsScreen, page: ()=>AnalyzerDetailsScreen()),
@@ -44,6 +50,9 @@ class AppRoutes {
     GetPage(name: sentimentsScreen, page: ()=>SentimentsScreen()),
     GetPage(name: graphChartScreen, page: ()=>GraphChartScreen()),
     GetPage(name: homeScreen, page: ()=>HomeDashboard()),
+    GetPage(name: equityProtectorScreen, page: ()=>EquityProtectorScreen()),
+    GetPage(name: tradingSymbolScreen, page: ()=>TradingSymbolScreen()),
+    GetPage(name: addAccountScreen, page: ()=>AddAccountScreen()),
 
   ];
 }

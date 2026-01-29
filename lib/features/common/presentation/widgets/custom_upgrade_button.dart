@@ -19,6 +19,8 @@ class CustomUpgradeButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child:  CustomContainer(
+    horizontal: 6.w,
+        vertical: 4.h,
         backgroundColor: AppColors.primary,
         child: Row(children: [
 

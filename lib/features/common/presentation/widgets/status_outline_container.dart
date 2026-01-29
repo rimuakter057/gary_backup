@@ -29,7 +29,7 @@ class StatusOutlineContainer extends StatelessWidget {
         backgroundColor:statusBgColor,
         borderColor: statusBorderColor,
         radius: 6.r,
-        padding: EdgeInsets.symmetric(horizontal:horizontalPadding?? 2.w, vertical:verticalPadding?? 1.h),
+    horizontal:horizontalPadding?? 2.w, vertical:verticalPadding?? 1.h,
         child: Center(
           child: Text(status,style: GoogleFonts.instrumentSans(
               fontWeight: FontWeight.w600,

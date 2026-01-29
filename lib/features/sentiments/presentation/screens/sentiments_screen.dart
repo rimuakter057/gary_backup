@@ -183,7 +183,8 @@ class SentimentsScreen extends StatelessWidget {
               SizedBox(width: 4.w),
               Expanded(
                 child: CustomContainer(
-                  padding: EdgeInsets.all(2),
+                  horizontal: 2,
+                  vertical: 2,
                   backgroundColor: AppColors.greyShade,
                   child: _sentimentBar(),
                 ),

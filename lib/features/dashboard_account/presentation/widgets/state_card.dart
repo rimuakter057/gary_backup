@@ -24,7 +24,8 @@ class StatCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomContainer(
-      padding: EdgeInsets.all(8),
+      horizontal: 8,
+      vertical: 8,
       width: 100.w,
       margin: EdgeInsets.only(right: 12.w),
       borderColor: AppColors.boarderColor,

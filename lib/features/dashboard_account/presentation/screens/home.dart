@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gary_goodger/core/routes/app_routes.dart';
 import 'package:gary_goodger/features/common/presentation/widgets/custom_upgrade_button.dart';
 import 'package:gary_goodger/features/common/presentation/widgets/high_insights_container.dart';
 import 'package:gary_goodger/features/common/presentation/widgets/status_outline_container.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/widgets/account_title.dart';
-import 'package:gary_goodger/features/dashboard_account/presentation/widgets/custom_switch_button.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/widgets/performance_card.dart';
-import 'package:gary_goodger/features/dashboard_account/presentation/widgets/radio-tile.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/widgets/state_card.dart';
 import 'package:gary_goodger/share/widgets/custom_appbar/custom_appbar_container.dart';
 import 'package:gary_goodger/share/widgets/custom_container/custom_container.dart';
@@ -16,6 +15,7 @@ import 'package:gary_goodger/utils/app_assets/app_assets.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 import 'package:gary_goodger/utils/app_text/app_strings.dart';
 import 'package:gary_goodger/utils/extension/base_extension.dart';
+import 'package:get/get.dart';
 
 class HomeDashboard extends StatefulWidget {
   const HomeDashboard({super.key});
@@ -26,7 +26,7 @@ class HomeDashboard extends StatefulWidget {
 
 class _HomeDashboardState extends State<HomeDashboard> {
   bool isSwitched = true;
-  int _selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +50,8 @@ class _HomeDashboardState extends State<HomeDashboard> {
 
                   ///upgrade container========================================================================
                   CustomContainer(
-                    padding: EdgeInsets.all(8.w),
+                    horizontal: 8,
+                    vertical: 8,
                     backgroundColor: AppColors.primaryShade100,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -91,9 +92,93 @@ class _HomeDashboardState extends State<HomeDashboard> {
 
                   ///insights horizontal list================================================================
                   const HorizontalStatsList(), // Middle Cards
-
+                  ///link account navigation bottom=============================
                   SizedBox(height: 24.h),
-                  _buildSectionHeader("Linked Accounts", context),
+                  GestureDetector(
+                    onTap: () {
+                      Get.bottomSheet(
+                        Container(
+                          height: MediaQuery.of(context).size.height * 0.8,
+                          padding: const EdgeInsets.all(16),
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.vertical(
+                              top: Radius.circular(20),
+                            ),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // Title
+                              Text(
+                                AppText.selectAccount,
+                                style: context.bodyLarge,
+                              ),
+
+                              const SizedBox(height: 4),
+
+                              Text(
+                                AppText.showingListOfAllAccounts,
+                                style: context.bodySmall,
+                              ),
+
+                              const SizedBox(height: 12),
+
+                              // Search Bar
+                              TextField(
+                                decoration: InputDecoration(
+                                  hintText: "Search...",
+                                  prefixIcon: const Icon(Icons.search),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                ),
+                              ),
+
+                              const SizedBox(height: 12),
+
+                              // List
+                              Expanded(
+                                child: ListView.builder(
+                                  itemCount: 10,
+                                  itemBuilder: (context, index) {
+                                    return CustomContainer(
+                                      margin: EdgeInsets.only(bottom: 12.h),
+
+                                      borderColor: AppColors.boarderColor,
+                                      child: AccountTile(
+                                        id: "MT5-104392",
+                                        broker: "IC Markets",
+                                        amount: "\$1,624",
+                                        status: AppText.active,
+                                        statusTextColor: AppColors.primary,
+                                        statusBgColor:
+                                            AppColors.primaryShade100,
+                                        statusBorderColor: AppColors
+                                            .primary, // statusColor: Colors.orange
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+
+                              // Bottom Button (Floating like)
+                              ElevatedButton(
+                                onPressed: () {
+                                  Get.back();
+                                },
+
+                                child: const Text(AppText.addAccount),
+                              ),
+                            ],
+                          ),
+                        ),
+                        isScrollControlled: true,
+                      );
+                    },
+
+                    child: _buildSectionHeader("Linked Accounts", context),
+                  ),
                   SizedBox(height: 8.h),
                 ],
               ),
@@ -148,7 +233,15 @@ class _HomeDashboardState extends State<HomeDashboard> {
               padding: EdgeInsets.all(16.w),
               child: Column(
                 children: [
-                  _buildSectionHeader(AppText.copiersAccounts, context),
+                  GestureDetector(
+                    onTap: () {
+                      Get.toNamed(AppRoutes.accountScreen);
+                    },
+                    child: _buildSectionHeader(
+                      AppText.copiersAccounts,
+                      context,
+                    ),
+                  ),
                   SizedBox(height: 12.h),
 
                   SizedBox(
@@ -174,19 +267,24 @@ class _HomeDashboardState extends State<HomeDashboard> {
                                 ),
                               ),
                               SizedBox(height: 6.h),
-                              StatusOutlineContainer(
-                                statusBgColor: AppColors.primaryShade100,
-                                statusBorderColor: AppColors.primary,
-                                status: AppText.active,
-                                statusTextColor: AppColors.primary,
+                              Row(
+                                children: [
+                                  StatusOutlineContainer(
+                                    statusBgColor: AppColors.primaryShade100,
+                                    statusBorderColor: AppColors.primary,
+                                    status: AppText.active,
+                                    statusTextColor: AppColors.primary,
+                                  ),
+                                  SizedBox(),
+                                ],
                               ),
                               SizedBox(height: 32.h),
                               CustomContainer(
                                 width: 64.w,
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 2.w,
-                                  vertical: 2.h,
-                                ),
+
+                                horizontal: 2.w,
+                                vertical: 2.h,
+
                                 radius: 50.r,
                                 backgroundColor: AppColors.orange,
                                 child: Row(
@@ -215,7 +313,7 @@ class _HomeDashboardState extends State<HomeDashboard> {
 
                   SizedBox(height: 8.h),
 
-              HighInsightsContainerWidget(),
+                  HighInsightsContainerWidget(),
                 ],
               ),
             ),
@@ -266,367 +364,6 @@ class _HomeDashboardState extends State<HomeDashboard> {
               ),
             ),
           ),
-
-          // Bottom Spacing
-          SliverToBoxAdapter(child: Column(
-            children: [
-              SizedBox(height: 40.h),
-              _buildSectionHeader("account tile", context),
-            ],
-          )),
-
-          ///select account tile===========================================================
-
-
-          SliverToBoxAdapter(
-            child: CustomContainer(
-              borderColor: AppColors.primaryShade,
-              backgroundColor: AppColors.primaryShade100,
-              child: const AccountTile(
-                id: "MT5-104392",
-                broker: "IC Markets",
-                amount: "\$1,624",
-                status: "Pending",
-                statusTextColor: AppColors.primary,
-                statusBgColor: AppColors.primaryShade100,
-                statusBorderColor:
-                    AppColors.primary, // statusColor: Colors.orange
-              ),
-            ),
-          ),
-
-          ///account header section==================================================
-          SliverToBoxAdapter(
-            child: CustomContainer(
-              margin: EdgeInsets.symmetric(horizontal: 16),
-              backgroundColor: AppColors.greyShade,
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      _buildAccountHeaderRow(
-                        context,
-                        imagePath: AppAssets.nameAccountDashboard,
-                        title: AppText.name,
-                        subTitle: AppText.mt4104392,
-                      ),
-
-                      _buildAccountHeaderRow(
-                        context,
-                        imagePath: AppAssets.typeAccountDashboard,
-                        title: AppText.type,
-                        subTitle: AppText.mt4104392,
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 16.h),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      _buildAccountHeaderRow(
-                        context,
-                        imagePath: AppAssets.brokerAccountDashboard,
-                        title: AppText.broker,
-                        subTitle: AppText.mt4104392,
-                      ),
-                      _buildAccountHeaderRow(
-                        context,
-                        imagePath: AppAssets.platformAccountDashboard,
-                        title: AppText.platform,
-                        subTitle: AppText.mt4104392,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-
-          ///Account Setting  tile===========================================================
-          SliverToBoxAdapter(
-            child: ListTile(
-              leading: CustomImage(
-                imageSrc: AppAssets.accountManagementDashboard,
-              ),
-              title: Text(AppText.accountManagement, style: context.bodyMedium),
-              subtitle: Text(
-                AppText.showingListOfAllAccounts,
-                style: context.bodySmall,
-              ),
-              trailing: CustomImage(imageSrc: AppAssets.arrowFront),
-            ),
-          ),
-
-          ///quit protection notification  title===========================================================
-          SliverToBoxAdapter(
-            child: ListTile(
-              leading: CustomImage(imageSrc: AppAssets.notificationPrimary),
-              title: Text(AppText.accountManagement, style: context.bodyMedium),
-              subtitle: Text(
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                AppText.descriptionWillGoHere,
-                style: context.bodySmall,
-              ),
-              trailing: CustomTealSwitch(
-                value: isSwitched,
-                onChanged: (value) {
-                  setState(() {
-                    isSwitched = value;
-                  });
-                },
-              ),
-
-              // trailing: Text("0.0%",style: context.bodyMedium.copyWith(color: AppColors.subPrimary),),
-            ),
-          ),
-
-          ///Trading Symbols  card===========================================================
-          SliverToBoxAdapter(
-            child: Padding(
-              padding:  EdgeInsets.all(8.0),
-              child: Card(
-                color: AppColors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8), // corner radius
-                  side: BorderSide(
-                    color: AppColors.boarderColor,
-                    width: 1, // border width
-                  ),
-                ),
-
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(AppText.forex, style: context.bodyMedium),
-                          Row(
-                            children: [
-                              Text("3 ${AppText.enabled}", style: context.bodySmall),
-                              CustomImage(imageSrc: AppAssets.dropUp,),
-
-                            ],
-                          ),
-
-
-
-
-                        ],
-                      ),
-
-                      CustomDivider(),
-
-
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(AppText.eurUsd,
-                              style: context.titleSmall
-                          ),
-                          CustomTealSwitch(
-                            value: isSwitched,
-                            onChanged: (value) {
-                              setState(() {
-                                isSwitched = value;
-                              });
-                            },
-                          ),
-
-                        ],
-                      ),
-
-
-                    ],
-                  ),
-                ),
-
-                // child: ListTile(
-                //   leading: CustomImage(imageSrc: AppAssets.notificationPrimary,),
-                //   title: Text(AppText.accountManagement,style: context.bodyMedium,),
-                //   subtitle:Text(
-                //     maxLines: 1,
-                //     overflow: TextOverflow.ellipsis,
-                //     AppText.descriptionWillGoHere,style: context.bodySmall,),
-                //   trailing: CustomTealSwitch(
-                //     value: isSwitched,
-                //     onChanged: (value) {
-                //       setState(() {
-                //         isSwitched = value;
-                //       });
-                //     },
-                //   ),
-                //
-                //
-                //
-                //
-                // ),
-              ),
-            ),
-          ),
-
-          ///select broker tile===========================================================
-          SliverToBoxAdapter(
-
-
-
-            child: CustomContainer(
-              borderColor: AppColors.primaryShade,
-              backgroundColor: AppColors.primaryShade100,
-              child:       Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-
-                  Row(
-                    children: [
-                      Card(
-                        color: AppColors.blueGrey,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(4), // 👈 radius
-                        ),
-                        child: SizedBox(
-                          height: 25.h, // adjust
-                          width: 25.w, // adjust
-                          child: Center(
-                            child: Text(
-
-                            AppText.eh,
-                              style: context.bodySmall.copyWith(
-                                color: Colors.white,
-                               fontWeight: FontWeight.w700,
-                                fontSize: 12.sp
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                             SizedBox(width: 4.w,),
-                      Text("360 Degrees Markets",
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: context.titleSmall
-                      ),
-                    ],
-                  ),
-                  _buildCustomRadio(
-                    true
-                  ),
-
-                ],
-              ),
-            ),
-
-
-
-
-          ),
-
-
-
-          ///key matrics card gridview=======================================================================
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: 6,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 8,
-                  crossAxisSpacing: 8,
-                  childAspectRatio: 1.2,
-                ),
-                itemBuilder: (context, index) {
-                  return _buildKeyMatricsCard(context);
-                },
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-///radio==========================================
-  Widget _buildCustomRadio(bool isSelected) {
-    return Container(
-      height: 24,
-      width: 24,
-      padding: const EdgeInsets.all(3),
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(
-          color:isSelected? AppColors.primary:AppColors.greySwitch,
-          width: 2,
-        ),
-      ),
-      child: isSelected
-          ? Container(
-        decoration:  BoxDecoration(
-          shape: BoxShape.circle,
-          color: isSelected? AppColors.primary:AppColors.greySwitch,
-        ),
-      )
-          : null,
-    );
-  }
-
-  ///account header row method===========================================
-  Row _buildAccountHeaderRow(
-    BuildContext context, {
-    required String imagePath,
-    required String title,
-    required String subTitle,
-  }) {
-    return Row(
-      children: [
-        CustomImage(imageSrc: imagePath),
-        SizedBox(width: 4.w),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(title, style: context.bodySmall),
-
-            Text(subTitle, style: context.titleSmall),
-          ],
-        ),
-      ],
-    );
-  }
-
-  ///key matrics card=======================================================================
-  CustomContainer _buildKeyMatricsCard(BuildContext context) {
-    return CustomContainer(
-      backgroundColor: AppColors.primaryShade100,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "status", // ← fixed + %
-            style: context.bodySmall.copyWith(fontWeight: FontWeight.w600),
-          ),
-
-          SizedBox(height: 24.h),
-          Text(
-            "\$32343", // ← fixed + %
-            style: context.bodyLarge,
-          ),
-
-          SizedBox(height: 4.h),
-
-          Row(
-            children: [
-              Text(
-                "+2.1%", // ← fixed + %
-                style: context.bodySmall.copyWith(color: AppColors.primary),
-              ),
-              CustomImage(imageSrc: AppAssets.topArrow),
-            ],
-          ),
         ],
       ),
     );
@@ -662,8 +399,6 @@ class _HomeDashboardState extends State<HomeDashboard> {
       ],
     );
   }
-
-
 
   /// --- Helper Methods ---==========================
 
@@ -704,8 +439,6 @@ class _HomeDashboardState extends State<HomeDashboard> {
   }
 }
 
-
-
 /// appbar header===============================================================
 
 class DashboardHeader extends StatelessWidget {
@@ -715,6 +448,7 @@ class DashboardHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final double toolbarHeight = 100.h;
     return SliverAppBar(
+      automaticallyImplyLeading: false,
       pinned: true,
       expandedHeight: 136.h,
       toolbarHeight: toolbarHeight,

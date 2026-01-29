@@ -29,7 +29,7 @@ class HighInsightsContainerWidget extends StatelessWidget {
                 style: context.titleSmall.copyWith(color: AppColors.white),
               ),
               CustomContainer(
-                padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
+               horizontal: 8.w, vertical: 4.h,
                 backgroundColor: AppColors.black,
                 child: Row(
                   children: [

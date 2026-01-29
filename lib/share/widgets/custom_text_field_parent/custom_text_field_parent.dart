@@ -6,16 +6,35 @@ import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 
 class CustomTextFieldParent extends StatelessWidget {
   const CustomTextFieldParent({
-    super.key, required this.child,
+    super.key, required this.child, this.horizontal, this.vertical, this.borderColor, this.marginTop, this.marginBottom, this.marginLeft, this.marginRight,
   });
 
   final Widget child;
+  final double? horizontal;
+  final double? vertical;
+  final Color?borderColor;
+  final double? marginTop;
+  final double? marginBottom;
+  final double? marginLeft;
+  final double? marginRight;
+
+
+
   @override
   Widget build(BuildContext context) {
     return CustomContainer(
-        padding: EdgeInsets.all(0),
+
+          horizontal:horizontal?? 0,
+          vertical:vertical?? 0,
+
+        margin:EdgeInsets.only(
+          left: marginLeft??0,
+          right: marginRight??0,
+          top: marginTop??0,
+          bottom: marginBottom??0
+        ) ,
         radius: 8.r,
-        borderColor: AppColors.boarderTextField,
+        borderColor:borderColor?? AppColors.boarderTextField,
         width: double.infinity,
 
         child: child

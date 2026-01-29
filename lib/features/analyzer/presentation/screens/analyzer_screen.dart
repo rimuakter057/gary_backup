@@ -175,24 +175,22 @@ class AnalyzerScreen extends StatelessWidget {
                 ],
               ),
             ),
-/// AI Insights Trail======================================================================
 
-
+            /// AI Insights Trail======================================================================
             Text("AI Insights Trail", textAlign: TextAlign.center),
             CustomContainer(
               backgroundColor: AppColors.primaryShade100,
               child: Row(
                 children: [
                   Container(
-                       width:4 ,
+                    width: 4,
                     height: 200,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(5)),
-                      color: AppColors.red
+                      color: AppColors.red,
                     ),
-
                   ),
-                  SizedBox(width: 12.w,),
+                  SizedBox(width: 12.w),
 
                   Expanded(
                     child: Column(
@@ -202,15 +200,16 @@ class AnalyzerScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             CustomContainer(
-                              padding: EdgeInsets.symmetric(
-                                vertical: 4,
-                                horizontal: 4,
-                              ),
+                              vertical: 4,
+                              horizontal: 4,
+
                               backgroundColor: AppColors.primaryShade100,
                               borderColor: AppColors.primary,
                               child: Row(
                                 children: [
-                                  CustomImage(imageSrc: AppAssets.insightsAnalyzer),
+                                  CustomImage(
+                                    imageSrc: AppAssets.insightsAnalyzer,
+                                  ),
                                   Text(
                                     AppText.strong,
                                     style: context.bodySmall.copyWith(
@@ -231,28 +230,29 @@ class AnalyzerScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: 16,),
+                        SizedBox(height: 16),
                         Text(
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           "Risk — Wed 18-21 UTC Drawdown Cluster",
                           style: context.bodyMedium,
                         ),
-                        SizedBox(height: 8,),
+                        SizedBox(height: 8),
                         Text(
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           "DD risk +23% vs baseline; losing streaks originate here.",
                           style: context.bodySmall,
                         ),
-                        SizedBox(height: 8,),
+                        SizedBox(height: 8),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-
                               "Tip: ",
-                              style: context.bodySmall.copyWith(fontWeight: FontWeight.w700),
+                              style: context.bodySmall.copyWith(
+                                fontWeight: FontWeight.w700,
+                              ),
                             ),
 
                             Expanded(
@@ -268,12 +268,8 @@ class AnalyzerScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-
-
                 ],
               ),
-
-
             ),
 
             SizedBox(height: 38),
@@ -285,17 +281,16 @@ class AnalyzerScreen extends StatelessWidget {
 
   // Same dropdown logic as Dashboard
   Widget _buildDropdownHeader() {
-
     return Container();
   }
-
 
   ///tab selector
   Widget _buildTabSelector(BuildContext context) {
     return CustomContainer(
       backgroundColor: AppColors.grey,
       borderColor: AppColors.tabBoarderColor,
-      padding: EdgeInsets.all(4.w),
+      horizontal: 4.w,
+      vertical: 4.h,
       radius: 10.r,
       child: Row(
         children: [
@@ -310,10 +305,9 @@ class AnalyzerScreen extends StatelessWidget {
                 child: Text(
                   "Performance",
                   style: GoogleFonts.inter(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.white
-
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.white,
                   ),
                 ),
               ),
@@ -332,8 +326,7 @@ class AnalyzerScreen extends StatelessWidget {
                   style: GoogleFonts.inter(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
-                    color: AppColors.textBlack
-
+                    color: AppColors.textBlack,
                   ),
                 ),
               ),
@@ -364,18 +357,3 @@ class AnalyzerScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

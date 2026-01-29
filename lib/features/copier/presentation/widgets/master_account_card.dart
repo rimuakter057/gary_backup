@@ -50,7 +50,7 @@ class MasterAccountCardAnalyzer extends StatelessWidget {
 
           CustomContainer(
             width: 64.w,
-            padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 2.h),
+     horizontal: 2.w, vertical: 2.h,
             radius: 50.r,
             backgroundColor: AppColors.orange,
             child: Row(
