@@ -50,7 +50,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
             SizedBox(height: 32.h),
 
             /// password field=============================================================================
-            CustomTextFieldParent(
+            CustomContainerBorderParent(
               child: Column(
                 children: [
                   CustomTextField(

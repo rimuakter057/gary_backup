@@ -1,0 +1,52 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gary_goodger/share/widgets/custom_container/custom_container.dart';
+import 'package:gary_goodger/share/widgets/custom_image/custom_image.dart';
+import 'package:gary_goodger/utils/app_assets/app_assets.dart';
+import 'package:gary_goodger/utils/app_colors/app_colors.dart';
+import 'package:gary_goodger/utils/extension/base_extension.dart';
+
+
+
+
+
+class LinkTradingWidget extends StatelessWidget {
+  const LinkTradingWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomContainer(
+      backgroundColor: AppColors.greyShade,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Primary - Exness",
+                style: context.titleSmall.copyWith(color: AppColors.textBlack),
+              ),
+              Text("MT5-104392", style: context.bodySmall),
+            ],
+          ),
+
+          Row(
+            children: [
+              CustomImage(imageSrc: AppAssets.editExnessProfile,height: 24,width: 24,),
+              SizedBox(width: 12.w,),
+              CustomImage(imageSrc: AppAssets.refreshExnessProfile),
+              SizedBox(width: 12.w,),
+              CustomImage(imageSrc: AppAssets.linkExnessProfile),
+
+
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}

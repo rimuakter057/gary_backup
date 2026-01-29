@@ -48,7 +48,7 @@ class CreateAccountWidget extends StatelessWidget {
             OnboardingHeadingWidget(title: AppText.createAccount,
               subTitle: AppText.startTracking,),
              /// text field sections==========================
-            CustomTextFieldParent(
+            CustomContainerBorderParent(
         
         
               child: Column(
@@ -121,7 +121,7 @@ class CreateAccountWidget extends StatelessWidget {
 
             SizedBox(height: 32.h,),
         /// email field=============================================================================
-            CustomTextFieldParent(
+            CustomContainerBorderParent(
               child: CustomTextField(
                 labelText: AppText.emailAddress,
 

@@ -41,7 +41,7 @@ class PasswordRecoveryWidget extends StatelessWidget {
             SizedBox(height: 32.h),
 
             ///email field================================================
-            CustomTextFieldParent(
+            CustomContainerBorderParent(
               child: CustomTextField(
                 labelText: AppText.emailAddress,
                 controller: controller,

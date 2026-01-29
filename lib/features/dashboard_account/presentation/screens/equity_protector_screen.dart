@@ -47,7 +47,7 @@ class _EquityProtectorScreenState extends State<EquityProtectorScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 12.w),
                 child: Column(
                   children: [
-                    CustomTextFieldParent(
+                    CustomContainerBorderParent(
                       borderColor: AppColors.boarderColor,
                       child: Padding(
                         padding: EdgeInsets.all(12.w),
@@ -107,7 +107,7 @@ class _EquityProtectorScreenState extends State<EquityProtectorScreen> {
                       ),
                     ),
                     SizedBox(height: 16.h),
-                    CustomTextFieldParent(
+                    CustomContainerBorderParent(
                       borderColor: AppColors.boarderColor,
                       child: Padding(
                         padding: EdgeInsets.all(12.w),
@@ -167,7 +167,7 @@ class _EquityProtectorScreenState extends State<EquityProtectorScreen> {
                       ),
                     ),
                     SizedBox(height: 16.h),
-                    CustomTextFieldParent(
+                    CustomContainerBorderParent(
                       borderColor: AppColors.boarderColor,
                       child: Padding(
                         padding: EdgeInsets.all(12.w),

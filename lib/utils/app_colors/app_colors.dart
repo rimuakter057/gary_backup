@@ -83,6 +83,8 @@ class AppColors {
   static const Color labelText = Color(0xFF7E8A93);
   static const Color boarderColor = Color(0xFFE1E1E1);
   static const Color tabBoarderColor = Color(0xFFD4DADF);
+  static const Color notificationBg = Color(0x0DC7680D);
+  static const Color notificationBorder = Color(0xffD8CAB2);
 
 
 

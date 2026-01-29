@@ -1,10 +1,12 @@
 
 import 'package:flutter/material.dart';
+import 'package:gary_goodger/core/routes/app_routes.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/screens/account_screen.dart';
 import 'package:gary_goodger/utils/app_assets/app_assets.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 import 'package:gary_goodger/utils/app_text/app_strings.dart';
 import 'package:gary_goodger/utils/extension/base_extension.dart';
+import 'package:get/get.dart';
 
 
 
@@ -51,13 +53,23 @@ class SettingBottomSheetWidget extends StatelessWidget {
                   icon: AppAssets.accountManagementDashboard,
                   title: AppText.accountManagement,
                 ),
-                SelectAccountTitleWidget(
-                  icon: AppAssets.equityProtectorDashboard,
-                  title: AppText.equityProtector,
+                GestureDetector(
+                  onTap: (){
+                    Get.toNamed(AppRoutes.equityProtectorScreen);
+                  },
+                  child: SelectAccountTitleWidget(
+                    icon: AppAssets.equityProtectorDashboard,
+                    title: AppText.equityProtector,
+                  ),
                 ),
-                SelectAccountTitleWidget(
-                  icon: AppAssets.tradingSymbolDashboard,
-                  title: AppText.tradingSymbols,
+                GestureDetector(
+                  onTap: (){
+                    Get.toNamed(AppRoutes.tradingSymbolScreen);
+                  },
+                  child: SelectAccountTitleWidget(
+                    icon: AppAssets.tradingSymbolDashboard,
+                    title: AppText.tradingSymbols,
+                  ),
                 ),
                 SelectAccountTitleWidget(
                   icon: AppAssets.deleteAccountDashboard,

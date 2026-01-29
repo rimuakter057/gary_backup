@@ -55,7 +55,7 @@ class _CreatePasswordWidgetState extends State<CreatePasswordWidget> {
             SizedBox(height: 32.h),
 
             /// password field=============================================================================
-            CustomTextFieldParent(
+            CustomContainerBorderParent(
               child: Column(
                 children: [
                   CustomTextField(

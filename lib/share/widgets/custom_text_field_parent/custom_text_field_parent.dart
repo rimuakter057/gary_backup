@@ -4,8 +4,8 @@ import 'package:gary_goodger/share/widgets/custom_container/custom_container.dar
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 
 
-class CustomTextFieldParent extends StatelessWidget {
-  const CustomTextFieldParent({
+class CustomContainerBorderParent extends StatelessWidget {
+  const CustomContainerBorderParent({
     super.key, required this.child, this.horizontal, this.vertical, this.borderColor, this.marginTop, this.marginBottom, this.marginLeft, this.marginRight,
   });
 

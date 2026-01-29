@@ -5,12 +5,24 @@ import 'package:gary_goodger/features/analyzer/presentation/screens/analyzer_scr
 import 'package:gary_goodger/features/auth/presentation/screens/auth_flow_screen.dart';
 import 'package:gary_goodger/features/common/presentation/screens/graph_chart_screen.dart';
 import 'package:gary_goodger/features/compare/presentation/screens/compare_screens.dart';
+import 'package:gary_goodger/features/compare/presentation/screens/comparison_screen.dart';
+import 'package:gary_goodger/features/compare/presentation/screens/filter_prop_screeen.dart';
+import 'package:gary_goodger/features/compare/presentation/screens/firm_details_screen.dart';
+import 'package:gary_goodger/features/copier/presentation/screens/advance_setting_screen.dart';
+import 'package:gary_goodger/features/copier/presentation/screens/calculate_risk_screen.dart';
 import 'package:gary_goodger/features/copier/presentation/screens/copier_screen.dart';
+import 'package:gary_goodger/features/copier/presentation/screens/edit_slave_screen.dart';
+import 'package:gary_goodger/features/copier/presentation/screens/edit_template_screen.dart';
+import 'package:gary_goodger/features/copier/presentation/screens/map_symbol_screen.dart';
+import 'package:gary_goodger/features/copier/presentation/screens/master_account_screen.dart';
+import 'package:gary_goodger/features/copier/presentation/screens/slave_account_screen.dart';
+import 'package:gary_goodger/features/copier/presentation/screens/trading_hour_screen.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/screens/account_screen.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/screens/add_account_screen.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/screens/equity_protector_screen.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/screens/home.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/screens/tranding_symbol_screen.dart';
+import 'package:gary_goodger/features/profile_screen/presentation/screens/profile_screen.dart';
 import 'package:gary_goodger/features/sentiments/presentation/screens/sentiments_screen.dart';
 
 import 'package:gary_goodger/features/splash/presentation/screens/splash_screen.dart';
@@ -22,37 +34,75 @@ class AppRoutes {
   static const String splashScreen = "/onBoarding";
    static const String authFlowScreen = "/authFlow";
   static const String accountScreen = "/accountScreen";
-  static const String copierScreen = "/copierScreen";
   static const String analyzerScreen = "/analyzerScreen";
   static const String analyzerDetailsScreen = "/analyzerDetailsScreen";
   static const String analyzerHeatMapScreen = "/analyzerHeatMapScreen";
-  static const String compareScreen = "/compareScreen";
+
   static const String sentimentsScreen="/sentimentsScreen";
   static const String graphChartScreen="/graphChartScreen";
   static const String homeScreen="/homeScreen";
   static const String equityProtectorScreen='/equityProtectorScreen';
   static const String tradingSymbolScreen='/tradingSymbolScreen';
   static const String addAccountScreen='/addAccountScreen';
+  ///compare section ========================================================
+  static const String compareScreen = "/compareScreen";
+  static const String comparisonScreen = "/comparisonScreen";
+  static const String filterPropScreen = "/filterPropScreen";
+  static const String firmDetailsScreen = "/firmDetailsScreen";
+
+  ///copier section ========================================================
+  static const String copierScreen = "/copierScreen";
+  static const String advanceSettingScreen = "/advanceSettingScreen";
+  static const String calculateRiskScreen = "/calculateRiskScreen";
+  static const String editSlaveScreen = "/editSlaveScreen";
+  static const String editTemplateScreen = "/editTemplateScreen";
+  static const String mapSymbolScreen = "/mapSymbolScreen";
+  static const String masterAccountScreen = "/masterAccountScreen";
+  static const String slaveAccountScreen = "/slaveAccountScreen";
+  static const String tradingHourScreen = "/tradingHourScreen";
+
+  ///profile section ========================================================
+  static const String profileScreen = "/profileScreen";
+
+
+
+
+
 
   static List<GetPage> routes = [
     ///===========================Authentication==========================
 
     GetPage(name: splashScreen, page: ()=>SplashScreen()),
-
     GetPage(name: splashScreen, page: ()=>AuthFlowScreen()),
-
     GetPage(name: accountScreen, page: ()=>AccountScreen()),
-    GetPage(name: copierScreen, page: ()=>CopierScreen()),
     GetPage(name: analyzerScreen, page: ()=>AnalyzerScreen()),
     GetPage(name: analyzerDetailsScreen, page: ()=>AnalyzerDetailsScreen()),
     GetPage(name: analyzerHeatMapScreen, page: ()=>AnalyzerHeatmapScreen()),
-    GetPage(name: compareScreen, page: ()=>ComparePropScreen()),
     GetPage(name: sentimentsScreen, page: ()=>SentimentsScreen()),
     GetPage(name: graphChartScreen, page: ()=>GraphChartScreen()),
     GetPage(name: homeScreen, page: ()=>HomeDashboard()),
     GetPage(name: equityProtectorScreen, page: ()=>EquityProtectorScreen()),
     GetPage(name: tradingSymbolScreen, page: ()=>TradingSymbolScreen()),
     GetPage(name: addAccountScreen, page: ()=>AddAccountScreen()),
+    ///copier section===================
+    GetPage(name: copierScreen, page: ()=>CopierScreen()),
+    GetPage(name: advanceSettingScreen, page: ()=>AdvanceSettingScreen()),
+    GetPage(name: calculateRiskScreen, page: ()=>CalculateRiskScreen()),
+    GetPage(name: editSlaveScreen, page: ()=>EditSlaveScreen()),
+    GetPage(name: editTemplateScreen, page: ()=>EditTemplateScreen()),
+    GetPage(name: mapSymbolScreen, page: ()=>MapSymbolScreen()),
+    GetPage(name: masterAccountScreen, page: ()=>MasterAccountScreen()),
+    GetPage(name: slaveAccountScreen, page: ()=>SlaveAccountScreen()),
+    GetPage(name: tradingHourScreen, page: ()=>TradingHourScreen()),
+
+    ///compare section===================
+    GetPage(name: compareScreen, page: ()=>ComparePropScreen()),
+    GetPage(name: comparisonScreen, page: ()=>ComparisonScreen()),
+    GetPage(name: filterPropScreen, page: ()=>FilterPropScreen()),
+    GetPage(name: firmDetailsScreen, page: ()=>FirmDetailsScreen()),
+
+    ///profile section===================
+    GetPage(name: profileScreen, page: ()=>ProfileScreen()),
 
   ];
 }

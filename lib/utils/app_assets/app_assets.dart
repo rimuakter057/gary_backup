@@ -117,19 +117,21 @@ class AppAssets {
   static const String checkProfile = "$profileIconPath/check.svg";
   static const String deviceProfile = "$profileIconPath/device.svg";
   static const String downloadProfile = "$profileIconPath/download.svg";
+  static const String deleteProfile = "$profileIconPath/delete_profile.svg";
   static const String calenderProfile =
       "$profileIconPath/economic_calendar.svg";
   static const String editExnessProfile = "$profileIconPath/edit_exness.svg";
   static const String leaderBoardProfile = "$profileIconPath/leader_board.svg";
   static const String legalProfile = "$profileIconPath/legal.svg";
   static const String linkAccountProfile = "$profileIconPath/link_account.svg";
-  static const String linkExnessProfile = "$profileIconPath/link_exness.png";
+
   static const String liveChatProfile = "$profileIconPath/live_chat.svg";
   static const String liveDetectorProfile =
       "$profileIconPath/live_detector.svg";
   static const String marketNewsProfile = "$profileIconPath/market_news.svg";
   static const String refreshExnessProfile =
       "$profileIconPath/refresh_exness.svg";
+  static const String linkExnessProfile = "$profileIconPath/link_exness.png";
   static const String securityProfile = "$profileIconPath/security.svg";
   static const String socialHubProfile = "$profileIconPath/social_hub.svg";
   static const String supportProfile = "$profileIconPath/support.svg";
