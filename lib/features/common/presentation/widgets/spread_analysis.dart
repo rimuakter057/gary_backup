@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
+
 
 class SpreadAnalysisWidget extends StatelessWidget {
   final String symbol; // e.g., 'XAUUSD'
@@ -16,35 +18,48 @@ class SpreadAnalysisWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: ResponsiveHelper.all(20),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: Colors.grey.shade200),
+        borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(24)),
+        border: Border.all(color: Colors.grey.shade200, width: ResponsiveHelper.width(1)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             "Spread",
-            style: TextStyle(color: Color(0xFF4A4A4A), fontSize: 18, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              color: const Color(0xFF4A4A4A),
+              fontSize: ResponsiveHelper.fontSize(18),
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          const SizedBox(height: 30),
+          SizedBox(height: ResponsiveHelper.height(30)),
           SizedBox(
-            height: 250,
+            height: ResponsiveHelper.height(250),
             child: BarChart(
               BarChartData(
                 maxY: 6,
                 barTouchData: BarTouchData(enabled: true),
                 titlesData: FlTitlesData(
                   leftTitles: AxisTitles(
-                    axisNameWidget: const Text("Spread (pips)", style: TextStyle(color: Colors.grey, fontSize: 10)),
+                    axisNameWidget: Text(
+                      "Spread (pips)",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: ResponsiveHelper.fontSize(10),
+                      ),
+                    ),
                     sideTitles: SideTitles(
                       showTitles: true,
-                      reservedSize: 30,
+                      reservedSize: ResponsiveHelper.width(30),
                       getTitlesWidget: (value, meta) => Text(
                         value.toInt().toString(),
-                        style: const TextStyle(color: Colors.grey, fontSize: 12),
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: ResponsiveHelper.fontSize(12),
+                        ),
                       ),
                     ),
                   ),
@@ -52,8 +67,14 @@ class SpreadAnalysisWidget extends StatelessWidget {
                     sideTitles: SideTitles(
                       showTitles: true,
                       getTitlesWidget: (value, meta) => Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: Text(symbol, style: const TextStyle(color: Colors.grey, fontSize: 12)),
+                        padding: EdgeInsets.only(top: ResponsiveHelper.height(10)),
+                        child: Text(
+                          symbol,
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: ResponsiveHelper.fontSize(12),
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -65,7 +86,7 @@ class SpreadAnalysisWidget extends StatelessWidget {
                   drawVerticalLine: false,
                   getDrawingHorizontalLine: (value) => FlLine(
                     color: Colors.grey.shade100,
-                    strokeWidth: 1,
+                    strokeWidth: ResponsiveHelper.width(1),
                     dashArray: [5, 5],
                   ),
                 ),
@@ -73,20 +94,18 @@ class SpreadAnalysisWidget extends StatelessWidget {
                 barGroups: [
                   BarChartGroupData(
                     x: 0,
-                    barsSpace: 0, // Dui bar-er majhe space thakbe na
+                    barsSpace: 0,
                     barRods: [
-                      // Average Spread Bar (Darker Teal)
                       BarChartRodData(
                         toY: avgSpread,
                         color: const Color(0xFF00796B),
-                        width: 80,
+                        width: ResponsiveHelper.width(80),
                         borderRadius: BorderRadius.zero,
                       ),
-                      // Maximum Spread Bar (Lighter Green)
                       BarChartRodData(
                         toY: maxSpread,
                         color: const Color(0xFF2ECC71),
-                        width: 80,
+                        width: ResponsiveHelper.width(80),
                         borderRadius: BorderRadius.zero,
                       ),
                     ],

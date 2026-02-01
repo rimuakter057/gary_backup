@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gary_goodger/features/common/presentation/widgets/status_outline_container.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_container/custom_container.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,7 +14,7 @@ class MarketNewsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Widget gap=SizedBox(height: 8.h,);
+    final Widget gap=SizedBox(height: ResponsiveHelper.height(8),);
     return CustomContainer(
       child: Column(
         children: [
@@ -22,7 +23,7 @@ class MarketNewsWidget extends StatelessWidget {
             children: [
               Text("Reuters - 12 minutes ago",
                   style: GoogleFonts.inter(
-                      fontSize: 12.sp,
+                      fontSize: ResponsiveHelper.fontSize(12),
                       fontWeight: FontWeight.w400,
                       color:AppColors.textBlack
                   )
@@ -32,7 +33,7 @@ class MarketNewsWidget extends StatelessWidget {
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: GoogleFonts.inter(
-                      fontSize: 18.sp,
+                      fontSize: ResponsiveHelper.height(18),
                       fontWeight: FontWeight.w600,
                       color:AppColors.textBlack
                   )
@@ -43,7 +44,7 @@ class MarketNewsWidget extends StatelessWidget {
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: GoogleFonts.inter(
-                      fontSize: 15.sp,
+                      fontSize: ResponsiveHelper.fontSize(15),
                       fontWeight: FontWeight.w400,
                       color:AppColors.textBlack
                   )
@@ -60,25 +61,25 @@ class MarketNewsWidget extends StatelessWidget {
                     status: "HIGH",
                     statusTextColor: AppColors.primary,
 
-                    fontSize: 10,
+                    fontSize: ResponsiveHelper.fontSize(10),
                   ),
-                  SizedBox(width: 8.w,),
+                  SizedBox(width: ResponsiveHelper.width(8)),
                   StatusOutlineContainer(
                     statusBgColor: AppColors.redAccent,
                     statusBorderColor: AppColors.red,
                     status: "BEARISH",
                     statusTextColor: AppColors.red,
 
-                    fontSize: 10,
+                    fontSize: ResponsiveHelper.fontSize(10),
                   ),
                 ],
               ),
 
             ],
           ),
-          SizedBox(height: 15.h),
+          SizedBox(height: ResponsiveHelper.height(15)),
 
-          SizedBox(height: 15.h),
+          SizedBox(height: ResponsiveHelper.height(15)),
           Row(
             children: [
               Expanded(
@@ -87,19 +88,19 @@ class MarketNewsWidget extends StatelessWidget {
                   statusBorderColor: AppColors.boarderColor,
                   status: "Save",
                   statusTextColor: AppColors.subPrimary,
-                  verticalPadding: 8,
-                  fontSize: 14,
+                  verticalPadding: ResponsiveHelper.height(8),
+                  fontSize: ResponsiveHelper.fontSize(14),
                 ),
               ),
-              SizedBox(width: 10.w),
+              SizedBox(width: ResponsiveHelper.width(10)),
               Expanded(
                 child: StatusOutlineContainer(
                   statusBgColor: AppColors.primary,
                   statusBorderColor: AppColors.primary,
                   status: "Read",
                   statusTextColor: AppColors.white,
-                  verticalPadding: 8,
-                  fontSize: 14,
+                  verticalPadding: ResponsiveHelper.height(8),
+                  fontSize: ResponsiveHelper.fontSize(14)
                 ),
               ),
             ],

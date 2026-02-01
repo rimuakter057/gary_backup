@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_container/custom_container.dart';
 import 'package:gary_goodger/share/widgets/custom_image/custom_image.dart';
 import 'package:gary_goodger/utils/app_assets/app_assets.dart';
@@ -19,8 +20,8 @@ class CustomUpgradeButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child:  CustomContainer(
-    horizontal: 6.w,
-        vertical: 4.h,
+    horizontal: ResponsiveHelper.width(6),
+        vertical: ResponsiveHelper.height(4),
         backgroundColor: AppColors.primary,
         child: Row(children: [
 

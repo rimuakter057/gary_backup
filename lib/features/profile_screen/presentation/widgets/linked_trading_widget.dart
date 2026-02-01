@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_container/custom_container.dart';
 import 'package:gary_goodger/share/widgets/custom_image/custom_image.dart';
 import 'package:gary_goodger/utils/app_assets/app_assets.dart';
@@ -36,10 +37,13 @@ class LinkTradingWidget extends StatelessWidget {
 
           Row(
             children: [
-              CustomImage(imageSrc: AppAssets.editExnessProfile,height: 24,width: 24,),
-              SizedBox(width: 12.w,),
+              CustomImage(imageSrc: AppAssets.editExnessProfile,
+                height: ResponsiveHelper.height(24),
+                width: ResponsiveHelper.width(24),
+              ),
+              SizedBox(width:ResponsiveHelper.width(12),),
               CustomImage(imageSrc: AppAssets.refreshExnessProfile),
-              SizedBox(width: 12.w,),
+              SizedBox(width: ResponsiveHelper.width(12),),
               CustomImage(imageSrc: AppAssets.linkExnessProfile),
 
 

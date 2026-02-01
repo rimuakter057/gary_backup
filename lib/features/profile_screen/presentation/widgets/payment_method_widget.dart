@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_image/custom_image.dart';
 import 'package:gary_goodger/share/widgets/custom_text_field_parent/custom_text_field_parent.dart';
 import 'package:gary_goodger/utils/app_assets/app_assets.dart';
@@ -14,8 +15,8 @@ class PaymentMethodeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomContainerBorderParent(
-      vertical: 15.h,
-      horizontal: 15.w,
+      vertical: ResponsiveHelper.height(15),
+      horizontal:  ResponsiveHelper.width(15),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -26,7 +27,7 @@ class PaymentMethodeWidget extends StatelessWidget {
               Text(
                   "Visa ending in 1234",
                   style: context.titleSmall.copyWith(
-                      fontSize: 15
+                      fontSize:  ResponsiveHelper.fontSize(15),
                   )
               ),
               Text("Expiry 06/2027", style: context.bodySmall),
@@ -35,8 +36,11 @@ class PaymentMethodeWidget extends StatelessWidget {
 
           Row(
             children: [
-              CustomImage(imageSrc: AppAssets.checkProfile,height: 24,width: 24,),
-              SizedBox(width: 12.w,),
+              CustomImage(imageSrc: AppAssets.checkProfile,
+                height:  ResponsiveHelper.height(24),
+                width:  ResponsiveHelper.width(24),
+              ),
+              SizedBox(width:  ResponsiveHelper.width(12),),
               CustomImage(imageSrc: AppAssets.deleteProfile),
 
 

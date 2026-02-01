@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
+
 
 class PerformanceBarChart extends StatelessWidget {
   final List<double> roiData; // Example: [0.5, -1.0, 0.9, 1.8, -1.3, ...]
@@ -8,20 +10,26 @@ class PerformanceBarChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ResponsiveHelper already main.dart e init thakle ekhane call lagbe na
+
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: ResponsiveHelper.all(20),
       decoration: BoxDecoration(
         color: const Color(0xFF11141D),
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(24)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             "Performance ROI",
-            style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w500),
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: ResponsiveHelper.fontSize(18),
+              fontWeight: FontWeight.w500,
+            ),
           ),
-          const SizedBox(height: 30),
+          SizedBox(height: ResponsiveHelper.height(30)),
           AspectRatio(
             aspectRatio: 1.5,
             child: BarChart(
@@ -33,7 +41,7 @@ class PerformanceBarChart extends StatelessWidget {
                   drawVerticalLine: false,
                   getDrawingHorizontalLine: (value) => FlLine(
                     color: Colors.white10,
-                    strokeWidth: 1,
+                    strokeWidth: ResponsiveHelper.width(1),
                     dashArray: [5, 5],
                   ),
                 ),
@@ -41,10 +49,13 @@ class PerformanceBarChart extends StatelessWidget {
                   leftTitles: AxisTitles(
                     sideTitles: SideTitles(
                       showTitles: true,
-                      reservedSize: 30,
+                      reservedSize: ResponsiveHelper.width(30),
                       getTitlesWidget: (value, meta) => Text(
                         "${value.toInt()}%",
-                        style: const TextStyle(color: Colors.grey, fontSize: 10),
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: ResponsiveHelper.fontSize(10),
+                        ),
                       ),
                     ),
                   ),
@@ -52,10 +63,19 @@ class PerformanceBarChart extends StatelessWidget {
                     sideTitles: SideTitles(
                       showTitles: true,
                       getTitlesWidget: (value, meta) {
-                        const months = ['Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'];
+                        const months = [
+                          'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb',
+                          'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'
+                        ];
                         return Padding(
-                          padding: const EdgeInsets.only(top: 8.0),
-                          child: Text(months[value.toInt() % 12], style: const TextStyle(color: Colors.grey, fontSize: 10)),
+                          padding: EdgeInsets.only(top: ResponsiveHelper.height(8)),
+                          child: Text(
+                            months[value.toInt() % 12],
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: ResponsiveHelper.fontSize(10),
+                            ),
+                          ),
                         );
                       },
                     ),
@@ -78,7 +98,7 @@ class PerformanceBarChart extends StatelessWidget {
       double val = roiData[index];
 
       Color barColor = val >= 0 ? const Color(0xFF2ECC71) : const Color(0xFFE74C3C);
-      if (index == 3) barColor = Colors.blue; // December highlight
+      if (index == 3) barColor = Colors.blue;   // December highlight
       if (index == 10) barColor = Colors.orange; // July highlight
 
       return BarChartGroupData(
@@ -87,8 +107,8 @@ class PerformanceBarChart extends StatelessWidget {
           BarChartRodData(
             toY: val,
             color: barColor,
-            width: 12,
-            borderRadius: BorderRadius.circular(2),
+            width: ResponsiveHelper.width(12), // responsive bar width
+            borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(2)),
           ),
         ],
       );

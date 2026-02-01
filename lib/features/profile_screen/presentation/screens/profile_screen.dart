@@ -8,10 +8,8 @@ import 'package:gary_goodger/features/profile_screen/presentation/widgets/linked
 import 'package:gary_goodger/features/profile_screen/presentation/widgets/notification_box_widget.dart';
 import 'package:gary_goodger/features/profile_screen/presentation/widgets/payment_method_widget.dart';
 import 'package:gary_goodger/features/profile_screen/presentation/widgets/profile_tile_widget.dart';
-import 'package:gary_goodger/share/widgets/custom_container/custom_container.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_divider/custom_divider.dart';
-import 'package:gary_goodger/share/widgets/custom_image/custom_image.dart';
-import 'package:gary_goodger/utils/app_assets/app_assets.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 import 'package:gary_goodger/utils/app_text/app_strings.dart';
 import 'package:gary_goodger/utils/extension/base_extension.dart';
@@ -29,12 +27,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final Widget gap = SizedBox(height: 8.h);
+    final Widget gap = SizedBox(height: ResponsiveHelper.height(8));
+    final Widget gap2 = SizedBox(height: ResponsiveHelper.height(16));
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding:  ResponsiveHelper.all(8.0),
           child: Column(
             children: [
               NotificationBoxWidget(gap: gap),
@@ -54,7 +53,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(AppText.slaveAccount, style: context.bodyMedium),
-                            SizedBox(height: 4.h),
+                            SizedBox(height: ResponsiveHelper.height(4)),
                             Text(
                               "RIsk Type: Lot Multiplier  Risk: 1%",
                               maxLines: 1,
@@ -90,7 +89,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(AppText.slaveAccount, style: context.bodyMedium),
-                            SizedBox(height: 4.h),
+                            SizedBox(height: ResponsiveHelper.height(4)),
                             Text(
                               "RIsk Type: Lot Multiplier  Risk: 1%",
                               maxLines: 1,
@@ -118,19 +117,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ],
               ),
               gap,
-              SizedBox(height: 16.h),
+             gap2,
               ///profile tile widget==============================================================
               ProfileTileWidget(),
-              SizedBox(height: 16.h),
+              gap2,
               ///invoice widget======================================
               InvoiceWidget(),
-        
-              SizedBox(height: 16.h),
+
+              gap2,
         
               ///payment methode======================================
               PaymentMethodeWidget(),
-        
-              SizedBox(height: 16.h),
+
+              gap2,
         
               ///Linked trading======================================
               LinkTradingWidget(),

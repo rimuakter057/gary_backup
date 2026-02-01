@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gary_goodger/features/analyzer/presentation/screens/analyzer_screen.dart';
 import 'package:gary_goodger/features/copier/presentation/screens/copier_screen.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/screens/account_screen.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 
 class MainNavigationScreen extends StatefulWidget {
@@ -45,11 +46,15 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 
   Widget _buildFloatingNavbar() {
     return Container(
-      margin: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 24.h),
-      padding: EdgeInsets.symmetric(vertical: 10.h),
+      margin: EdgeInsets.only(
+          left: ResponsiveHelper.width(20),
+          right: ResponsiveHelper.width(20),
+          bottom: ResponsiveHelper.height(24),
+      ),
+      padding: ResponsiveHelper.symmetric(vertical: 10.h),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(30.r),
+        borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(30),),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.05),
@@ -78,7 +83,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
       onTap: () => _onItemTapped(index),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
-        padding: EdgeInsets.all(8.w),
+        padding: ResponsiveHelper.all(8),
         decoration: BoxDecoration(
           color: isSelected ? AppColors.primary.withOpacity(0.1) : Colors.transparent,
           shape: BoxShape.circle,
@@ -86,7 +91,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         child: Icon(
           icon,
           color: isSelected ? AppColors.primary : AppColors.textGrey,
-          size: 24.sp,
+          size: ResponsiveHelper.fontSize(24),
         ),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 
 class CustomCircularProgress extends StatelessWidget {
   final double percentage; // Value between 0.0 and 1.0 (e.g., 0.68)
@@ -14,38 +15,42 @@ class CustomCircularProgress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double size = ResponsiveHelper.width(150); // Responsive size
+    final double stroke = ResponsiveHelper.width(12); // Responsive stroke
+    final double fontSize = ResponsiveHelper.fontSize(42); // Responsive text
+
     return Center(
       child: Stack(
         alignment: Alignment.center,
         children: [
           // Background track
           SizedBox(
-            width: 150,
-            height: 150,
+            width: size,
+            height: size,
             child: CircularProgressIndicator(
               value: 1.0,
-              strokeWidth: 12,
+              strokeWidth: stroke,
               color: backgroundColor,
             ),
           ),
           // Active progress
           SizedBox(
-            width: 150,
-            height: 150,
+            width: size,
+            height: size,
             child: CircularProgressIndicator(
               value: percentage,
-              strokeWidth: 12,
-              strokeCap: StrokeCap.round, // Rounded edges as per image
+              strokeWidth: stroke,
+              strokeCap: StrokeCap.round, // Rounded edges
               color: activeColor,
             ),
           ),
           // Percentage Text
           Text(
             "${(percentage * 100).toInt()}%",
-            style: const TextStyle(
-              fontSize: 42,
+            style: TextStyle(
+              fontSize: fontSize,
               fontWeight: FontWeight.bold,
-              color: Color(0xFF2D3E50), // Dark blue-grey text
+              color: const Color(0xFF2D3E50), // Dark blue-grey text
             ),
           ),
         ],

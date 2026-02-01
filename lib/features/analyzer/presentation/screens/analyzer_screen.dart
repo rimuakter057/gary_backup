@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gary_goodger/features/analyzer/presentation/widgets/portfolio_gauge.dart';
 import 'package:gary_goodger/features/analyzer/presentation/widgets/status_card.dart';
 import 'package:gary_goodger/features/common/presentation/widgets/high_insights_container.dart';
@@ -11,6 +10,7 @@ import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 import 'package:gary_goodger/utils/app_text/app_strings.dart';
 import 'package:gary_goodger/utils/extension/base_extension.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 
 class AnalyzerScreen extends StatelessWidget {
   const AnalyzerScreen({super.key});
@@ -25,27 +25,35 @@ class AnalyzerScreen extends StatelessWidget {
         leading: Icon(Icons.grid_view_rounded, color: AppColors.primary),
         title: Text(
           "Analyzer",
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            fontSize: ResponsiveHelper.fontSize(18),
+          ),
         ),
         actions: [
           Icon(Icons.notifications_none_outlined, color: Colors.black),
           Icon(Icons.filter_list, color: Colors.black),
-          SizedBox(width: 10.w),
+          SizedBox(width: ResponsiveHelper.width(10)),
         ],
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.w),
+        padding: EdgeInsets.all(ResponsiveHelper.width(16)),
         child: Column(
           children: [
             _buildDropdownHeader(),
-            SizedBox(height: 15.h),
+            SizedBox(height: ResponsiveHelper.height(15)),
             _buildTabSelector(context),
-            SizedBox(height: 20.h),
+            SizedBox(height: ResponsiveHelper.height(20)),
             PortfolioGauge(),
-            SizedBox(height: 20.h),
+            SizedBox(height: ResponsiveHelper.height(20)),
 
-            ///static card===================================================
-            Text("statics", textAlign: TextAlign.center),
+            ///static card
+            Text(
+              "statics",
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: ResponsiveHelper.fontSize(16)),
+            ),
             StatisticsAnalyzerCard(
               title: "Total PNL",
               mainValue: "\$12,437",
@@ -56,14 +64,21 @@ class AnalyzerScreen extends StatelessWidget {
               ],
             ),
 
-            ///high insights card===================================================
-            Text("high card", textAlign: TextAlign.center),
+            ///high insights card
+            Text(
+              "high card",
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: ResponsiveHelper.fontSize(16)),
+            ),
             HighInsightsContainerWidget(),
 
-            ///key matrics card===================================================
-            Text("key matrics", textAlign: TextAlign.center),
+            ///key metrics card
+            Text(
+              "key metrics",
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: ResponsiveHelper.fontSize(16)),
+            ),
             CustomContainer(
-              //backgroundColor: AppColors.backgroundColor,
               backgroundColor: AppColors.white,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,7 +86,11 @@ class AnalyzerScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("title", style: context.bodySmall),
+                      Text(
+                        "title",
+                        style: context.bodySmall.copyWith(
+                            fontSize: ResponsiveHelper.fontSize(14)),
+                      ),
                       StatusOutlineContainer(
                         statusBgColor: AppColors.primaryShade100,
                         statusBorderColor: AppColors.primary,
@@ -80,15 +99,19 @@ class AnalyzerScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Text("1.78", style: context.bodyMedium),
-                  SizedBox(height: 16.h),
+                  Text(
+                    "1.78",
+                    style: context.bodyMedium.copyWith(
+                        fontSize: ResponsiveHelper.fontSize(16)),
+                  ),
+                  SizedBox(height: ResponsiveHelper.height(16)),
 
                   Row(
                     children: [
                       _buildRow(context, title: "title", mainValue: "2363"),
-                      SizedBox(width: 8),
+                      SizedBox(width: ResponsiveHelper.width(8)),
                       Text("/", style: context.bodySmall),
-                      SizedBox(width: 8),
+                      SizedBox(width: ResponsiveHelper.width(8)),
                       _buildRow(context, title: "title", mainValue: "23"),
                     ],
                   ),
@@ -96,11 +119,13 @@ class AnalyzerScreen extends StatelessWidget {
               ),
             ),
 
-            ///heatmap traders card===================================================
-            Text("heta map", textAlign: TextAlign.center),
-
+            ///heatmap traders card
+            Text(
+              "heat map",
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: ResponsiveHelper.fontSize(16)),
+            ),
             CustomContainer(
-              //backgroundColor: AppColors.backgroundColor,
               backgroundColor: AppColors.white,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -112,60 +137,75 @@ class AnalyzerScreen extends StatelessWidget {
                         AppText.xauUsd,
                         style: context.bodySmall.copyWith(
                           fontWeight: FontWeight.w700,
+                          fontSize: ResponsiveHelper.fontSize(14),
                         ),
                       ),
                       Text(
                         "2025-10-11",
-                        style: context.bodySmall.copyWith(fontSize: 12.sp),
+                        style: context.bodySmall.copyWith(
+                          fontSize: ResponsiveHelper.fontSize(12),
+                        ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 16.h),
+                  SizedBox(height: ResponsiveHelper.height(16)),
                   Row(
                     children: [
                       Column(
                         children: [
-                          Text(AppText.side, style: context.bodySmall),
+                          Text(AppText.side,
+                              style: context.bodySmall.copyWith(
+                                  fontSize: ResponsiveHelper.fontSize(12))),
                           Text(
                             "buy",
                             style: context.bodySmall.copyWith(
                               fontWeight: FontWeight.w700,
+                              fontSize: ResponsiveHelper.fontSize(14),
                             ),
                           ),
                         ],
                       ),
-                      SizedBox(width: 24),
+                      SizedBox(width: ResponsiveHelper.width(24)),
                       Column(
                         children: [
-                          Text(AppText.entry, style: context.bodySmall),
+                          Text(AppText.entry,
+                              style: context.bodySmall.copyWith(
+                                  fontSize: ResponsiveHelper.fontSize(12))),
                           Text(
-                            "\$${1333}",
+                            "\$1333",
                             style: context.bodySmall.copyWith(
                               fontWeight: FontWeight.w700,
+                              fontSize: ResponsiveHelper.fontSize(14),
                             ),
                           ),
                         ],
                       ),
-                      SizedBox(width: 24),
+                      SizedBox(width: ResponsiveHelper.width(24)),
                       Column(
                         children: [
-                          Text(AppText.exit, style: context.bodySmall),
+                          Text(AppText.exit,
+                              style: context.bodySmall.copyWith(
+                                  fontSize: ResponsiveHelper.fontSize(12))),
                           Text(
-                            "\$${1333}",
+                            "\$1333",
                             style: context.bodySmall.copyWith(
                               fontWeight: FontWeight.w700,
+                              fontSize: ResponsiveHelper.fontSize(14),
                             ),
                           ),
                         ],
                       ),
-                      SizedBox(width: 24),
+                      SizedBox(width: ResponsiveHelper.width(24)),
                       Column(
                         children: [
-                          Text(AppText.pl, style: context.bodySmall),
+                          Text(AppText.pl,
+                              style: context.bodySmall.copyWith(
+                                  fontSize: ResponsiveHelper.fontSize(12))),
                           Text(
-                            "\$${1333}",
+                            "\$1333",
                             style: context.bodySmall.copyWith(
                               fontWeight: FontWeight.w700,
+                              fontSize: ResponsiveHelper.fontSize(14),
                             ),
                           ),
                         ],
@@ -176,21 +216,26 @@ class AnalyzerScreen extends StatelessWidget {
               ),
             ),
 
-            /// AI Insights Trail======================================================================
-            Text("AI Insights Trail", textAlign: TextAlign.center),
+            /// AI Insights Trail
+            Text(
+              "AI Insights Trail",
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: ResponsiveHelper.fontSize(16)),
+            ),
             CustomContainer(
               backgroundColor: AppColors.primaryShade100,
               child: Row(
                 children: [
                   Container(
-                    width: 4,
-                    height: 200,
+                    width: ResponsiveHelper.width(4),
+                    height: ResponsiveHelper.height(200),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                      borderRadius: BorderRadius.all(
+                          Radius.circular(ResponsiveHelper.width(5))),
                       color: AppColors.red,
                     ),
                   ),
-                  SizedBox(width: 12.w),
+                  SizedBox(width: ResponsiveHelper.width(12)),
 
                   Expanded(
                     child: Column(
@@ -200,9 +245,8 @@ class AnalyzerScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             CustomContainer(
-                              vertical: 4,
-                              horizontal: 4,
-
+                              vertical: ResponsiveHelper.height(4),
+                              horizontal: ResponsiveHelper.width(4),
                               backgroundColor: AppColors.primaryShade100,
                               borderColor: AppColors.primary,
                               child: Row(
@@ -215,6 +259,7 @@ class AnalyzerScreen extends StatelessWidget {
                                     style: context.bodySmall.copyWith(
                                       fontWeight: FontWeight.w700,
                                       color: AppColors.primary,
+                                      fontSize: ResponsiveHelper.fontSize(14),
                                     ),
                                   ),
                                 ],
@@ -224,27 +269,33 @@ class AnalyzerScreen extends StatelessWidget {
                             Row(
                               children: [
                                 CustomImage(imageSrc: AppAssets.clock),
-                                SizedBox(width: 4.w),
-                                Text("2 min ago", style: context.bodySmall),
+                                SizedBox(width: ResponsiveHelper.width(4)),
+                                Text(
+                                  "2 min ago",
+                                  style: context.bodySmall.copyWith(
+                                      fontSize: ResponsiveHelper.fontSize(12)),
+                                ),
                               ],
                             ),
                           ],
                         ),
-                        SizedBox(height: 16),
+                        SizedBox(height: ResponsiveHelper.height(16)),
                         Text(
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
                           "Risk — Wed 18-21 UTC Drawdown Cluster",
-                          style: context.bodyMedium,
-                        ),
-                        SizedBox(height: 8),
-                        Text(
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
-                          "DD risk +23% vs baseline; losing streaks originate here.",
-                          style: context.bodySmall,
+                          style: context.bodyMedium.copyWith(
+                              fontSize: ResponsiveHelper.fontSize(14)),
                         ),
-                        SizedBox(height: 8),
+                        SizedBox(height: ResponsiveHelper.height(8)),
+                        Text(
+                          "DD risk +23% vs baseline; losing streaks originate here.",
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: context.bodySmall.copyWith(
+                              fontSize: ResponsiveHelper.fontSize(12)),
+                        ),
+                        SizedBox(height: ResponsiveHelper.height(8)),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -252,15 +303,17 @@ class AnalyzerScreen extends StatelessWidget {
                               "Tip: ",
                               style: context.bodySmall.copyWith(
                                 fontWeight: FontWeight.w700,
+                                fontSize: ResponsiveHelper.fontSize(12),
                               ),
                             ),
 
                             Expanded(
                               child: Text(
+                                "Avoid entries after 18:00 UTC on Fridays for NAS100",
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
-                                "Avoid entries after 18:00 UTC on Fridays for NAS100",
-                                style: context.bodySmall,
+                                style: context.bodySmall.copyWith(
+                                    fontSize: ResponsiveHelper.fontSize(12)),
                               ),
                             ),
                           ],
@@ -272,14 +325,13 @@ class AnalyzerScreen extends StatelessWidget {
               ),
             ),
 
-            SizedBox(height: 38),
+            SizedBox(height: ResponsiveHelper.height(38)),
           ],
         ),
       ),
     );
   }
 
-  // Same dropdown logic as Dashboard
   Widget _buildDropdownHeader() {
     return Container();
   }
@@ -289,23 +341,23 @@ class AnalyzerScreen extends StatelessWidget {
     return CustomContainer(
       backgroundColor: AppColors.grey,
       borderColor: AppColors.tabBoarderColor,
-      horizontal: 4.w,
-      vertical: 4.h,
-      radius: 10.r,
+      horizontal: ResponsiveHelper.width(4),
+      vertical: ResponsiveHelper.height(4),
+      radius: ResponsiveHelper.width(10),
       child: Row(
         children: [
           Expanded(
             child: Container(
-              padding: EdgeInsets.all(8.h),
+              padding: EdgeInsets.all(ResponsiveHelper.height(8)),
               decoration: BoxDecoration(
                 color: AppColors.primary,
-                borderRadius: BorderRadius.circular(8.r),
+                borderRadius: BorderRadius.circular(ResponsiveHelper.width(8)),
               ),
               child: Center(
                 child: Text(
                   "Performance",
                   style: GoogleFonts.inter(
-                    fontSize: 14,
+                    fontSize: ResponsiveHelper.fontSize(14),
                     fontWeight: FontWeight.w500,
                     color: AppColors.white,
                   ),
@@ -315,16 +367,16 @@ class AnalyzerScreen extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              padding: EdgeInsets.all(8.h),
+              padding: EdgeInsets.all(ResponsiveHelper.height(8)),
               decoration: BoxDecoration(
                 color: AppColors.grey,
-                borderRadius: BorderRadius.circular(8.r),
+                borderRadius: BorderRadius.circular(ResponsiveHelper.width(8)),
               ),
               child: Center(
                 child: Text(
                   "Analysis Hub",
                   style: GoogleFonts.inter(
-                    fontSize: 14,
+                    fontSize: ResponsiveHelper.fontSize(14),
                     fontWeight: FontWeight.w500,
                     color: AppColors.textBlack,
                   ),
@@ -337,21 +389,22 @@ class AnalyzerScreen extends StatelessWidget {
     );
   }
 
-  Row _buildRow(
-    BuildContext context, {
-    required String title,
-    required mainValue,
-  }) {
+  Row _buildRow(BuildContext context,
+      {required String title, required mainValue}) {
     return Row(
       children: [
         Text(
           title,
-          style: context.bodySmall.copyWith(fontWeight: FontWeight.w700),
+          style: context.bodySmall.copyWith(
+              fontWeight: FontWeight.w700,
+              fontSize: ResponsiveHelper.fontSize(14)),
         ),
-        SizedBox(width: 4.w),
+        SizedBox(width: ResponsiveHelper.width(4)),
         Text(
           "\$$mainValue",
-          style: context.bodySmall.copyWith(color: AppColors.primary),
+          style: context.bodySmall.copyWith(
+              color: AppColors.primary,
+              fontSize: ResponsiveHelper.fontSize(14)),
         ),
       ],
     );

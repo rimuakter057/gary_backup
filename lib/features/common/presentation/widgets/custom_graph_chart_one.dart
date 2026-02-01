@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 
 class CustomGraphCard extends StatelessWidget {
   final String totalBalance;
@@ -19,11 +20,22 @@ class CustomGraphCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double padding = ResponsiveHelper.width(20);
+    final double borderRadius = ResponsiveHelper.width(24);
+    final double headerFont = ResponsiveHelper.fontSize(24);
+    final double percentageFont = ResponsiveHelper.fontSize(14);
+    final double openBalanceFont = ResponsiveHelper.fontSize(14);
+    final double tabHeight = ResponsiveHelper.height(40);
+    final double tabRadius = ResponsiveHelper.width(12);
+    final double chartHeight = ResponsiveHelper.height(200);
+    final double lineBarWidth = ResponsiveHelper.width(2);
+    final double tabTextFont = ResponsiveHelper.fontSize(14);
+
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
         color: const Color(0xFF0D1117), // Dark Background
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(borderRadius),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,42 +49,46 @@ class CustomGraphCard extends StatelessWidget {
                 children: [
                   Text(
                     totalBalance,
-                    style: const TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: headerFont,
+                        fontWeight: FontWeight.bold),
                   ),
                   Text(
                     percentage,
-                    style: const TextStyle(color: Color(0xFF2ECC71), fontSize: 14),
+                    style: TextStyle(
+                        color: const Color(0xFF2ECC71), fontSize: percentageFont),
                   ),
                 ],
               ),
               Text(
                 "\$$openBalance open",
-                style: const TextStyle(color: Colors.grey, fontSize: 14),
+                style: TextStyle(color: Colors.grey, fontSize: openBalanceFont),
               ),
             ],
           ),
-          const SizedBox(height: 20),
+          SizedBox(height: ResponsiveHelper.height(20)),
 
           // Custom Tab Selector (Simplified)
           Container(
-            height: 40,
+            height: tabHeight,
             decoration: BoxDecoration(
               color: Colors.white.withOpacity(0.05),
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(tabRadius),
             ),
             child: Row(
               children: [
-                _buildTab("Week", isActive: true),
-                _buildTab("Month"),
-                _buildTab("Year"),
+                _buildTab("Week", isActive: true, fontSize: tabTextFont),
+                _buildTab("Month", fontSize: tabTextFont),
+                _buildTab("Year", fontSize: tabTextFont),
               ],
             ),
           ),
-          const SizedBox(height: 30),
+          SizedBox(height: ResponsiveHelper.height(30)),
 
           // Line Chart
           SizedBox(
-            height: 200,
+            height: chartHeight,
             child: LineChart(
               LineChartData(
                 gridData: FlGridData(
@@ -93,15 +109,16 @@ class CustomGraphCard extends StatelessWidget {
                       showTitles: true,
                       getTitlesWidget: (value, meta) {
                         const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-                        return Text(days[value.toInt() % 7], style: const TextStyle(color: Colors.grey, fontSize: 12));
+                        return Text(days[value.toInt() % 7],
+                            style: TextStyle(color: Colors.grey, fontSize: ResponsiveHelper.fontSize(12)));
                       },
                     ),
                   ),
                 ),
                 borderData: FlBorderData(show: false),
                 lineBarsData: [
-                  _lineData(mainData, const Color(0xFF26A69A), true), // Teal Line
-                  _lineData(secondaryData, Colors.white24, false),   // Grey Line
+                  _lineData(mainData, const Color(0xFF26A69A), true, lineBarWidth), // Teal Line
+                  _lineData(secondaryData, Colors.white24, false, lineBarWidth),   // Grey Line
                 ],
               ),
             ),
@@ -111,7 +128,7 @@ class CustomGraphCard extends StatelessWidget {
     );
   }
 
-  Widget _buildTab(String label, {bool isActive = false}) {
+  Widget _buildTab(String label, {bool isActive = false, required double fontSize}) {
     return Expanded(
       child: Container(
         alignment: Alignment.center,
@@ -121,18 +138,18 @@ class CustomGraphCard extends StatelessWidget {
         ),
         child: Text(
           label,
-          style: TextStyle(color: isActive ? Colors.white : Colors.grey),
+          style: TextStyle(color: isActive ? Colors.white : Colors.grey, fontSize: fontSize),
         ),
       ),
     );
   }
 
-  LineChartBarData _lineData(List<FlSpot> spots, Color color, bool isMain) {
+  LineChartBarData _lineData(List<FlSpot> spots, Color color, bool isMain, double barWidth) {
     return LineChartBarData(
       spots: spots,
       isCurved: true,
       color: color,
-      barWidth: 2,
+      barWidth: barWidth,
       isStrokeCapRound: true,
       dotData: const FlDotData(show: false),
       belowBarData: isMain

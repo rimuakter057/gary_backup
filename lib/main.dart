@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'core/dependency/dependency_injection.dart';
 import 'core/routes/app_routes.dart';
 import 'core/theme/light_theme.dart' as AppTheme;
+import 'helper/responsive_helper/responsive_helper.dart';
 
 
 
@@ -21,13 +22,15 @@ class TradersConnect extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
+
+        ResponsiveHelper.init(context);
         return GetMaterialApp(
           initialBinding: DependencyInjection(),
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: AppTheme.lightTheme,
           // Set initial route
-          initialRoute: AppRoutes.profileScreen,
+          initialRoute: AppRoutes.copierScreen,
           // Connect routes
           getPages: AppRoutes.routes,
         );

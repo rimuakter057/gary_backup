@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
+
 
 class SlippageSymbolWidget extends StatelessWidget {
   final double avgSlippage; // e.g., -0.35
@@ -14,22 +16,26 @@ class SlippageSymbolWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: ResponsiveHelper.all(20),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: Colors.grey.shade200),
+        borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(24)),
+        border: Border.all(color: Colors.grey.shade200, width: ResponsiveHelper.width(1)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             "Slippage by Symbol",
-            style: TextStyle(color: Color(0xFF4A4A4A), fontSize: 18, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              color: const Color(0xFF4A4A4A),
+              fontSize: ResponsiveHelper.fontSize(18),
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          const SizedBox(height: 10),
+          SizedBox(height: ResponsiveHelper.height(10)),
           SizedBox(
-            height: 200,
+            height: ResponsiveHelper.height(200),
             child: Stack(
               alignment: Alignment.center,
               children: [
@@ -37,32 +43,31 @@ class SlippageSymbolWidget extends StatelessWidget {
                   PieChartData(
                     startDegreeOffset: 270,
                     sectionsSpace: 0,
-                    centerSpaceRadius: 70,
+                    centerSpaceRadius: ResponsiveHelper.width(70),
                     sections: [
                       PieChartSectionData(
-                        color: const Color(0xFF00897B), // Dark Teal
+                        color: const Color(0xFF00897B),
                         value: 75,
-                        radius: 20,
+                        radius: ResponsiveHelper.width(20),
                         showTitle: false,
                       ),
                       PieChartSectionData(
-                        color: const Color(0xFF2ECC71), // Light Green
+                        color: const Color(0xFF2ECC71),
                         value: 25,
-                        radius: 20,
+                        radius: ResponsiveHelper.width(20),
                         showTitle: false,
                       ),
                     ],
                   ),
                 ),
-                // Tooltip on the right side of the ring
                 Positioned(
-                  right: 20,
+                  right: ResponsiveHelper.width(20),
                   child: _buildChartTooltip(avgSlippage),
                 ),
               ],
             ),
           ),
-          const SizedBox(height: 30),
+          SizedBox(height: ResponsiveHelper.height(30)),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -77,16 +82,32 @@ class SlippageSymbolWidget extends StatelessWidget {
 
   Widget _buildChartTooltip(double value) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      padding: EdgeInsets.symmetric(
+        horizontal: ResponsiveHelper.width(12),
+        vertical: ResponsiveHelper.height(8),
+      ),
       decoration: BoxDecoration(
         color: const Color(0xFF1E1E1E),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(10)),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Text("AVG SLIPPAGE (PIPS)", style: TextStyle(color: Colors.grey, fontSize: 8)),
-          Text("$value", style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
+          Text(
+            "AVG SLIPPAGE (PIPS)",
+            style: TextStyle(
+              color: Colors.grey,
+              fontSize: ResponsiveHelper.fontSize(8),
+            ),
+          ),
+          Text(
+            "$value",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: ResponsiveHelper.fontSize(18),
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ],
       ),
     );
@@ -95,13 +116,30 @@ class SlippageSymbolWidget extends StatelessWidget {
   Widget _buildInfoTile(String title, double value, Color indicatorColor) {
     return Row(
       children: [
-        Container(width: 3, height: 40, color: indicatorColor),
-        const SizedBox(width: 10),
+        Container(
+          width: ResponsiveHelper.width(3),
+          height: ResponsiveHelper.height(40),
+          color: indicatorColor,
+        ),
+        SizedBox(width: ResponsiveHelper.width(10)),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(title, style: const TextStyle(color: Colors.grey, fontSize: 12)),
-            Text("$value", style: const TextStyle(color: Color(0xFF2D2D2D), fontSize: 20, fontWeight: FontWeight.bold)),
+            Text(
+              title,
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: ResponsiveHelper.fontSize(12),
+              ),
+            ),
+            Text(
+              "$value",
+              style: TextStyle(
+                color: const Color(0xFF2D2D2D),
+                fontSize: ResponsiveHelper.fontSize(20),
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ],
         ),
       ],

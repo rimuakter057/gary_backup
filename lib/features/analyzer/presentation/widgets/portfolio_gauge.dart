@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 import 'dart:math' as math;
-
 
 class PortfolioGauge extends StatelessWidget {
   const PortfolioGauge({super.key});
@@ -11,32 +10,50 @@ class PortfolioGauge extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.all(20.w),
+      padding: ResponsiveHelper.all(20),
       decoration: BoxDecoration(
         color: AppColors.cardDark,
-        borderRadius: BorderRadius.circular(24.r),
+        borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(24)),
       ),
       child: Column(
         children: [
           Align(
             alignment: Alignment.centerLeft,
-            child: Text("Portfolio ROI", style: TextStyle(color: Colors.white60, fontSize: 12.sp)),
+            child: Text(
+              "Portfolio ROI",
+              style: TextStyle(
+                color: Colors.white60,
+                fontSize: ResponsiveHelper.fontSize(12),
+              ),
+            ),
           ),
-          SizedBox(height: 10.h),
+          SizedBox(height: ResponsiveHelper.height(10)),
           Stack(
             alignment: Alignment.center,
             children: [
-              // Custom Gauge Painting logic goes here or use syncfusion_flutter_gauges
               SizedBox(
-                height: 180.h,
-                width: 180.h,
+                height: ResponsiveHelper.height(180),
+                width: ResponsiveHelper.height(180), // square gauge
                 child: CustomPaint(painter: GaugePainter()),
               ),
               Column(
                 children: [
-                  SizedBox(height: 40.h),
-                  Text("14.8%", style: TextStyle(color: Colors.white, fontSize: 28.sp, fontWeight: FontWeight.bold)),
-                  Text("▲ +2.1% from last month", style: TextStyle(color: AppColors.primary, fontSize: 10.sp)),
+                  SizedBox(height: ResponsiveHelper.height(40)),
+                  Text(
+                    "14.8%",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: ResponsiveHelper.fontSize(28),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    "▲ +2.1% from last month",
+                    style: TextStyle(
+                      color: AppColors.primary,
+                      fontSize: ResponsiveHelper.fontSize(10),
+                    ),
+                  ),
                 ],
               ),
             ],
@@ -55,10 +72,9 @@ class GaugePainter extends CustomPainter {
 
     final paint = Paint()
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 15.w
+      ..strokeWidth = ResponsiveHelper.width(15) // strokeWidth responsive
       ..strokeCap = StrokeCap.round;
 
-    // Drawing the gradient arc based on the image
     final rect = Rect.fromCircle(center: center, radius: radius / 2);
     final gradient = SweepGradient(
       startAngle: math.pi,
@@ -70,8 +86,16 @@ class GaugePainter extends CustomPainter {
     canvas.drawArc(rect, math.pi, math.pi, false, paint);
 
     // Needle Drawing
-    final needlePaint = Paint()..color = Colors.white54..strokeWidth = 3.w..strokeCap = StrokeCap.round;
-    canvas.drawLine(center, Offset(center.dx + 40.w, center.dy - 50.h), needlePaint);
+    final needlePaint = Paint()
+      ..color = Colors.white54
+      ..strokeWidth = ResponsiveHelper.width(3)
+      ..strokeCap = StrokeCap.round;
+
+    canvas.drawLine(
+      center,
+      Offset(center.dx + ResponsiveHelper.width(40), center.dy - ResponsiveHelper.height(50)),
+      needlePaint,
+    );
   }
 
   @override

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/widgets/account_appbar_row_widget.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/widgets/switch_trading_symbol.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_appbar/custom_appbar_container.dart';
 import 'package:gary_goodger/share/widgets/custom_divider/custom_divider.dart';
 import 'package:gary_goodger/share/widgets/custom_image/custom_image.dart';
@@ -9,6 +10,7 @@ import 'package:gary_goodger/utils/app_assets/app_assets.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 import 'package:gary_goodger/utils/app_text/app_strings.dart';
 import 'package:gary_goodger/utils/extension/base_extension.dart';
+
 
 class TradingSymbolScreen extends StatefulWidget {
   const TradingSymbolScreen({super.key});
@@ -22,6 +24,8 @@ class _TradingSymbolScreenState extends State<TradingSymbolScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       body: Column(
         children: [
@@ -29,50 +33,59 @@ class _TradingSymbolScreenState extends State<TradingSymbolScreen> {
             child: Column(
               children: [
                 CustomAppbarWidget(title: AppText.equityProtector),
-                SizedBox(height: 8.h),
+                SizedBox(height: ResponsiveHelper.height(8)),
                 AccountAppbarRowWidget(),
-                SizedBox(height: 12.h),
+                SizedBox(height: ResponsiveHelper.height(12)),
               ],
             ),
           ),
-          SizedBox(height: 12.h),
+          SizedBox(height: ResponsiveHelper.height(12)),
 
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(ResponsiveHelper.width(8)),
                 child: Column(
                   children: [
+                    // === First Card ===
                     Card(
                       color: AppColors.white,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8), // corner radius
+                        borderRadius:
+                        BorderRadius.circular(ResponsiveHelper.borderRadius(8)),
                         side: BorderSide(
                           color: AppColors.boarderColor,
-                          width: 1, // border width
+                          width: ResponsiveHelper.borderWidth(1),
                         ),
                       ),
-
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(ResponsiveHelper.width(8)),
                         child: Column(
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(AppText.forex, style: context.bodyMedium),
+                                Text(
+                                  AppText.forex,
+                                  style: context.bodyMedium.copyWith(
+                                    fontSize: ResponsiveHelper.fontSize(14),
+                                  ),
+                                ),
                                 Row(
                                   children: [
                                     Text(
                                       "3 ${AppText.enabled}",
-                                      style: context.bodySmall,
+                                      style: context.bodySmall.copyWith(
+                                        fontSize: ResponsiveHelper.fontSize(12),
+                                      ),
                                     ),
+                                    SizedBox(width: ResponsiveHelper.width(4)),
                                     CustomImage(imageSrc: AppAssets.dropUp),
                                   ],
                                 ),
                               ],
                             ),
-
+                            SizedBox(height: ResponsiveHelper.height(8)),
                             CustomDivider(),
 
                             TradingSymbolWidget(
@@ -80,7 +93,7 @@ class _TradingSymbolScreenState extends State<TradingSymbolScreen> {
                               value: true,
                               onChanged: (bool value) {},
                             ),
-                            SizedBox(height: 12.h),
+                            SizedBox(height: ResponsiveHelper.height(12)),
                             TradingSymbolWidget(
                               title: AppText.eurUsd,
                               value: true,
@@ -91,20 +104,21 @@ class _TradingSymbolScreenState extends State<TradingSymbolScreen> {
                       ),
                     ),
 
-                    SizedBox(height: 16.h),
+                    SizedBox(height: ResponsiveHelper.height(16)),
 
+                    // === Second Card ===
                     Card(
                       color: AppColors.white,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius:
+                        BorderRadius.circular(ResponsiveHelper.borderRadius(8)),
                         side: BorderSide(
                           color: AppColors.boarderColor,
-                          width: 1,
+                          width: ResponsiveHelper.borderWidth(1),
                         ),
                       ),
-
                       child: Padding(
-                        padding: const EdgeInsets.all(16.0),
+                        padding: EdgeInsets.all(ResponsiveHelper.width(16)),
                         child: Column(
                           children: [
                             Row(
@@ -112,14 +126,19 @@ class _TradingSymbolScreenState extends State<TradingSymbolScreen> {
                               children: [
                                 Text(
                                   "${AppText.group} 2",
-                                  style: context.bodyMedium,
+                                  style: context.bodyMedium.copyWith(
+                                    fontSize: ResponsiveHelper.fontSize(14),
+                                  ),
                                 ),
                                 Row(
                                   children: [
                                     Text(
                                       "3 ${AppText.enabled}",
-                                      style: context.bodySmall,
+                                      style: context.bodySmall.copyWith(
+                                        fontSize: ResponsiveHelper.fontSize(12),
+                                      ),
                                     ),
+                                    SizedBox(width: ResponsiveHelper.width(4)),
                                     CustomImage(imageSrc: AppAssets.dropUp),
                                   ],
                                 ),
@@ -140,6 +159,7 @@ class _TradingSymbolScreenState extends State<TradingSymbolScreen> {
   }
 }
 
+// === Custom Appbar ===
 class CustomAppbarWidget extends StatelessWidget {
   const CustomAppbarWidget({super.key, required this.title, this.action});
   final String title;
@@ -154,7 +174,12 @@ class CustomAppbarWidget extends StatelessWidget {
           onTap: () {},
           child: CustomImage(imageSrc: AppAssets.arrowBack),
         ),
-        Text(title, style: context.bodyLarge),
+        Text(
+          title,
+          style: context.bodyLarge.copyWith(
+            fontSize: ResponsiveHelper.fontSize(18),
+          ),
+        ),
         action ?? SizedBox(),
       ],
     );

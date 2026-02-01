@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gary_goodger/features/common/presentation/widgets/status_outline_container.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_container/custom_container.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 import 'package:gary_goodger/utils/extension/base_extension.dart';
@@ -32,8 +33,8 @@ class DeviceSessionWidget extends StatelessWidget {
           ),
           SizedBox(height: 16.h),
           StatusOutlineContainer(
-              verticalPadding: 8,
-              horizontalPadding: 8,
+              verticalPadding: ResponsiveHelper.height(8),
+              horizontalPadding: ResponsiveHelper.width(8),
               statusBgColor: AppColors.red,
               statusBorderColor: AppColors.red,
               status: "Terminate",

@@ -1,25 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
+
 
 class DayOfWeekROI extends StatelessWidget {
-  final Map<String, double> data; // Example: {'Mon': 0.8, 'Fri': -0.7}
+  final Map<String, double> data; // Example: {'Mon': 0.8, 'Fri': -0.7'}
 
   const DayOfWeekROI({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: EdgeInsets.all(ResponsiveHelper.padding(20)),
       decoration: BoxDecoration(
         color: const Color(0xFF11141D),
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(24)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text("Day of Week ROI", style: TextStyle(color: Colors.white, fontSize: 16)),
-          const SizedBox(height: 20),
+          Text(
+            "Day of Week ROI",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: ResponsiveHelper.fontSize(16),
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(height: ResponsiveHelper.height(20)),
           ...data.entries.map((e) => _buildRow(e.key, e.value)).toList(),
-          const SizedBox(height: 10),
+          SizedBox(height: ResponsiveHelper.height(10)),
           _buildBottomScale(),
         ],
       ),
@@ -28,32 +37,45 @@ class DayOfWeekROI extends StatelessWidget {
 
   Widget _buildRow(String day, double value) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: EdgeInsets.symmetric(vertical: ResponsiveHelper.height(8)),
       child: Row(
         children: [
-          SizedBox(width: 40, child: Text(day, style: const TextStyle(color: Colors.grey, fontSize: 12))),
+          SizedBox(
+            width: ResponsiveHelper.width(40),
+            child: Text(
+              day,
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: ResponsiveHelper.fontSize(12),
+              ),
+            ),
+          ),
           Expanded(
             child: Stack(
               alignment: Alignment.center,
               children: [
-                const Divider(color: Colors.white10), // Background line
+                Divider(color: Colors.white10, thickness: ResponsiveHelper.height(1)),
                 Align(
                   alignment: Alignment.center,
-                  child: Container(width: 1, height: 20, color: Colors.white30), // Zero line
+                  child: Container(
+                    width: ResponsiveHelper.width(1),
+                    height: ResponsiveHelper.height(20),
+                    color: Colors.white30,
+                  ),
                 ),
                 Align(
-                  alignment: Alignment(value, 0), // Maps value to alignment
+                  alignment: Alignment(value, 0),
                   child: Container(
-                    height: 2,
-                    width: (value.abs() * 100), // Width based on value
+                    height: ResponsiveHelper.height(2),
+                    width: ResponsiveHelper.width((value.abs() * 100)),
                     color: value >= 0 ? const Color(0xFF26A69A) : Colors.redAccent,
                   ),
                 ),
                 Align(
                   alignment: Alignment(value, 0),
                   child: Container(
-                    height: 10,
-                    width: 10,
+                    height: ResponsiveHelper.height(10),
+                    width: ResponsiveHelper.width(10),
                     decoration: BoxDecoration(
                       color: value >= 0 ? const Color(0xFF26A69A) : Colors.redAccent,
                       shape: BoxShape.circle,
@@ -69,13 +91,13 @@ class DayOfWeekROI extends StatelessWidget {
   }
 
   Widget _buildBottomScale() {
-    return const Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        SizedBox(width: 40),
-        Text("-1.0", style: TextStyle(color: Colors.grey, fontSize: 10)),
-        Text("0.0", style: TextStyle(color: Colors.grey, fontSize: 10)),
-        Text("1.0", style: TextStyle(color: Colors.grey, fontSize: 10)),
+        SizedBox(width: ResponsiveHelper.width(40)),
+        Text("-1.0", style: TextStyle(color: Colors.grey, fontSize: ResponsiveHelper.fontSize(10))),
+        Text("0.0", style: TextStyle(color: Colors.grey, fontSize: ResponsiveHelper.fontSize(10))),
+        Text("1.0", style: TextStyle(color: Colors.grey, fontSize: ResponsiveHelper.fontSize(10))),
       ],
     );
   }

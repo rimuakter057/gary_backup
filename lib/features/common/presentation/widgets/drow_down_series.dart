@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
+
 
 class DrawdownSeriesWidget extends StatelessWidget {
   final Map<String, double> drawdownData; // Example: {'1 Oct': -0.6, '2 Oct': -1.0}
@@ -9,22 +11,26 @@ class DrawdownSeriesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: EdgeInsets.all(ResponsiveHelper.padding(20)),
       decoration: BoxDecoration(
-        color: Colors.white, // Image background color
-        borderRadius: BorderRadius.circular(24),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(24)),
         border: Border.all(color: Colors.grey.shade200),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             "Drawdown Series",
-            style: TextStyle(color: Color(0xFF4A4A4A), fontSize: 18, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              color: const Color(0xFF4A4A4A),
+              fontSize: ResponsiveHelper.fontSize(18),
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          const SizedBox(height: 30),
+          SizedBox(height: ResponsiveHelper.height(30)),
           SizedBox(
-            height: 250,
+            height: ResponsiveHelper.height(250),
             child: BarChart(
               BarChartData(
                 minY: -1.0,
@@ -34,17 +40,20 @@ class DrawdownSeriesWidget extends StatelessWidget {
                   drawVerticalLine: false,
                   getDrawingHorizontalLine: (value) => FlLine(
                     color: Colors.grey.shade200,
-                    strokeWidth: 1,
+                    strokeWidth: ResponsiveHelper.width(1),
                   ),
                 ),
                 titlesData: FlTitlesData(
                   leftTitles: AxisTitles(
                     sideTitles: SideTitles(
                       showTitles: true,
-                      reservedSize: 35,
+                      reservedSize: ResponsiveHelper.width(35),
                       getTitlesWidget: (value, meta) => Text(
                         value.toStringAsFixed(1),
-                        style: const TextStyle(color: Colors.grey, fontSize: 12),
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: ResponsiveHelper.fontSize(12),
+                        ),
                       ),
                     ),
                   ),
@@ -55,10 +64,13 @@ class DrawdownSeriesWidget extends StatelessWidget {
                         int index = value.toInt();
                         if (index >= 0 && index < drawdownData.keys.length) {
                           return Padding(
-                            padding: const EdgeInsets.only(top: 10),
+                            padding: EdgeInsets.only(top: ResponsiveHelper.height(10)),
                             child: Text(
                               drawdownData.keys.elementAt(index),
-                              style: const TextStyle(color: Colors.grey, fontSize: 11),
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: ResponsiveHelper.fontSize(11),
+                              ),
                             ),
                           );
                         }
@@ -77,8 +89,8 @@ class DrawdownSeriesWidget extends StatelessWidget {
                     barRods: [
                       BarChartRodData(
                         toY: drawdownData.values.elementAt(index),
-                        color: const Color(0xFFFF4D4D), // Red bar color
-                        width: 25,
+                        color: const Color(0xFFFF4D4D),
+                        width: ResponsiveHelper.width(25),
                         borderRadius: BorderRadius.zero,
                         backDrawRodData: BackgroundBarChartRodData(
                           show: true,
@@ -91,16 +103,26 @@ class DrawdownSeriesWidget extends StatelessWidget {
                 ),
                 extraLinesData: ExtraLinesData(
                   horizontalLines: [
-                    HorizontalLine(y: 0, color: Colors.red, strokeWidth: 1),
+                    HorizontalLine(
+                      y: 0,
+                      color: Colors.red,
+                      strokeWidth: ResponsiveHelper.width(1),
+                    ),
                   ],
                 ),
               ),
             ),
           ),
-          const Center(
+          Center(
             child: Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Text("Dates", style: TextStyle(color: Colors.grey, fontSize: 12)),
+              padding: EdgeInsets.only(top: ResponsiveHelper.height(10)),
+              child: Text(
+                "Dates",
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: ResponsiveHelper.fontSize(12),
+                ),
+              ),
             ),
           ),
         ],

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/widgets/account_appbar_row_widget.dart';
-import 'package:gary_goodger/features/dashboard_account/presentation/widgets/custom_switch_button.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/widgets/notification_tile_widget.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_appbar/custom_appbar_container.dart';
 import 'package:gary_goodger/share/widgets/custom_divider/custom_divider.dart';
 import 'package:gary_goodger/share/widgets/custom_image/custom_image.dart';
@@ -11,6 +10,8 @@ import 'package:gary_goodger/utils/app_assets/app_assets.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 import 'package:gary_goodger/utils/app_text/app_strings.dart';
 import 'package:gary_goodger/utils/extension/base_extension.dart';
+import 'package:get/get.dart';
+
 
 class EquityProtectorScreen extends StatefulWidget {
   const EquityProtectorScreen({super.key});
@@ -24,6 +25,8 @@ class _EquityProtectorScreenState extends State<EquityProtectorScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       body: Column(
         children: [
@@ -33,183 +36,112 @@ class _EquityProtectorScreenState extends State<EquityProtectorScreen> {
                 CustomAppbarWidget(
                   title: AppText.equityProtector,
                 ),
-                SizedBox(height: 8.h),
+                SizedBox(height: ResponsiveHelper.height(8)),
                 AccountAppbarRowWidget(),
-                SizedBox(height: 12.h),
+                SizedBox(height: ResponsiveHelper.height(12)),
               ],
             ),
           ),
-          SizedBox(height: 12.h),
+          SizedBox(height: ResponsiveHelper.height(12)),
 
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 12.w),
+                padding: EdgeInsets.symmetric(horizontal: ResponsiveHelper.width(12)),
                 child: Column(
                   children: [
-                    CustomContainerBorderParent(
-                      borderColor: AppColors.boarderColor,
-                      child: Padding(
-                        padding: EdgeInsets.all(12.w),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              AppText.equityProtection,
-                              style: context.bodySmall.copyWith(
-                                fontWeight: FontWeight.w600,
-                                color: AppColors.greySwitch,
-                              ),
-                            ),
-
-                            SizedBox(height: 8.h),
-
-                            NotificationTileWidget(
-                              leadingIcon: AppAssets.notificationPrimary,
-                              title: AppText.accountManagement,
-                              subtitle: AppText.descriptionWillGoHere,
-                              showSwitch: true, // trailing switch
-                              switchValue: isSwitched,
-                              onChanged: (value) {
-                                setState(() {
-                                  isSwitched = value;
-                                });
-                              },
-                            ),
-                            CustomDivider(),
-                            NotificationTileWidget(
-                              leadingIcon: AppAssets.notificationPrimary,
-                              title: AppText.accountManagement,
-                              subtitle: AppText.descriptionWillGoHere,
-                              showSwitch: true, // trailing switch
-                              switchValue: isSwitched,
-                              onChanged: (value) {
-                                setState(() {
-                                  isSwitched = value;
-                                });
-                              },
-                            ),
-                            CustomDivider(),
-                            NotificationTileWidget(
-                              leadingIcon: AppAssets.notificationPrimary,
-                              title: AppText.accountManagement,
-                              subtitle: AppText.descriptionWillGoHere,
-                              showSwitch: true, // trailing switch
-                              switchValue: isSwitched,
-                              onChanged: (value) {
-                                setState(() {
-                                  isSwitched = value;
-                                });
-                              },
-                            ),
-                          ],
+                    // === Equity Protection Section ===
+                    _buildNotificationSection(
+                      title: AppText.equityProtection,
+                      tiles: [
+                        NotificationTileWidget(
+                          leadingIcon: AppAssets.notificationPrimary,
+                          title: AppText.accountManagement,
+                          subtitle: AppText.descriptionWillGoHere,
+                          showSwitch: true,
+                          switchValue: isSwitched,
+                          onChanged: (value) => setState(() => isSwitched = value),
                         ),
-                      ),
+                        NotificationTileWidget(
+                          leadingIcon: AppAssets.notificationPrimary,
+                          title: AppText.accountManagement,
+                          subtitle: AppText.descriptionWillGoHere,
+                          showSwitch: true,
+                          switchValue: isSwitched,
+                          onChanged: (value) => setState(() => isSwitched = value),
+                        ),
+                        NotificationTileWidget(
+                          leadingIcon: AppAssets.notificationPrimary,
+                          title: AppText.accountManagement,
+                          subtitle: AppText.descriptionWillGoHere,
+                          showSwitch: true,
+                          switchValue: isSwitched,
+                          onChanged: (value) => setState(() => isSwitched = value),
+                        ),
+                      ],
                     ),
-                    SizedBox(height: 16.h),
-                    CustomContainerBorderParent(
-                      borderColor: AppColors.boarderColor,
-                      child: Padding(
-                        padding: EdgeInsets.all(12.w),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              AppText.stopLoseProtection,
-                              style: context.bodySmall.copyWith(
-                                fontWeight: FontWeight.w600,
-                                color: AppColors.greySwitch,
-                              ),
-                            ),
 
-                            SizedBox(height: 8.h),
+                    SizedBox(height: ResponsiveHelper.height(16)),
 
-                            NotificationTileWidget(
-                              leadingIcon: AppAssets.notificationPrimary,
-                              title: AppText.accountManagement,
-                              subtitle: AppText.descriptionWillGoHere,
-                              showSwitch: true, // trailing switch
-                              switchValue: isSwitched,
-                              onChanged: (value) {
-                                setState(() {
-                                  isSwitched = value;
-                                });
-                              },
-                            ),
-                            CustomDivider(),
-                            NotificationTileWidget(
-                              leadingIcon: AppAssets.notificationPrimary,
-                              title: AppText.accountManagement,
-                              subtitle: AppText.descriptionWillGoHere,
-                              showSwitch: true, // trailing switch
-                              switchValue: isSwitched,
-                              onChanged: (value) {
-                                setState(() {
-                                  isSwitched = value;
-                                });
-                              },
-                            ),
-                            CustomDivider(),
-                            NotificationTileWidget(
-                              leadingIcon: AppAssets.notificationPrimary,
-                              title: AppText.accountManagement,
-                              subtitle: AppText.descriptionWillGoHere,
-                              showSwitch: true, // trailing switch
-                              switchValue: isSwitched,
-                              onChanged: (value) {
-                                setState(() {
-                                  isSwitched = value;
-                                });
-                              },
-                            ),
-                          ],
+                    // === Stop Loss Protection Section ===
+                    _buildNotificationSection(
+                      title: AppText.stopLoseProtection,
+                      tiles: [
+                        NotificationTileWidget(
+                          leadingIcon: AppAssets.notificationPrimary,
+                          title: AppText.accountManagement,
+                          subtitle: AppText.descriptionWillGoHere,
+                          showSwitch: true,
+                          switchValue: isSwitched,
+                          onChanged: (value) => setState(() => isSwitched = value),
                         ),
-                      ),
+                        NotificationTileWidget(
+                          leadingIcon: AppAssets.notificationPrimary,
+                          title: AppText.accountManagement,
+                          subtitle: AppText.descriptionWillGoHere,
+                          showSwitch: true,
+                          switchValue: isSwitched,
+                          onChanged: (value) => setState(() => isSwitched = value),
+                        ),
+                        NotificationTileWidget(
+                          leadingIcon: AppAssets.notificationPrimary,
+                          title: AppText.accountManagement,
+                          subtitle: AppText.descriptionWillGoHere,
+                          showSwitch: true,
+                          switchValue: isSwitched,
+                          onChanged: (value) => setState(() => isSwitched = value),
+                        ),
+                      ],
                     ),
-                    SizedBox(height: 16.h),
-                    CustomContainerBorderParent(
-                      borderColor: AppColors.boarderColor,
-                      child: Padding(
-                        padding: EdgeInsets.all(12.w),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              AppText.takeProfitProtection,
-                              style: context.bodySmall.copyWith(
-                                fontWeight: FontWeight.w600,
-                                color: AppColors.greySwitch,
-                              ),
-                            ),
 
-                            SizedBox(height: 8.h),
+                    SizedBox(height: ResponsiveHelper.height(16)),
 
-                            NotificationTileWidget(
-                              leadingIcon: AppAssets.notificationPrimary,
-                              title: "Another Tile",
-                              subtitle: "Trailing as text",
-                              showSwitch: false, // trailing text
-                              trailingText: "0.0%",
-                            ),
-                            CustomDivider(),
-                            NotificationTileWidget(
-                              leadingIcon: AppAssets.notificationPrimary,
-                              title: "Another Tile",
-                              subtitle: "Trailing as text",
-                              showSwitch: false, // trailing text
-                              trailingText: "0.0%",
-                            ),
-                            CustomDivider(),
-                            NotificationTileWidget(
-                              leadingIcon: AppAssets.notificationPrimary,
-                              title: "Another Tile",
-                              subtitle: "Trailing as text",
-                              showSwitch: false, // trailing text
-                              trailingText: "0.0%",
-                            ),
-                          ],
+                    // === Take Profit Protection Section ===
+                    _buildNotificationSection(
+                      title: AppText.takeProfitProtection,
+                      tiles: [
+                        NotificationTileWidget(
+                          leadingIcon: AppAssets.notificationPrimary,
+                          title: "Another Tile",
+                          subtitle: "Trailing as text",
+                          showSwitch: false,
+                          trailingText: "0.0%",
                         ),
-                      ),
+                        NotificationTileWidget(
+                          leadingIcon: AppAssets.notificationPrimary,
+                          title: "Another Tile",
+                          subtitle: "Trailing as text",
+                          showSwitch: false,
+                          trailingText: "0.0%",
+                        ),
+                        NotificationTileWidget(
+                          leadingIcon: AppAssets.notificationPrimary,
+                          title: "Another Tile",
+                          subtitle: "Trailing as text",
+                          showSwitch: false,
+                          trailingText: "0.0%",
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -220,14 +152,48 @@ class _EquityProtectorScreenState extends State<EquityProtectorScreen> {
       ),
     );
   }
+
+  // === Helper method for building sections ===
+  Widget _buildNotificationSection({
+    required String title,
+    required List<Widget> tiles,
+  }) {
+    return CustomContainerBorderParent(
+      borderColor: AppColors.boarderColor,
+      child: Padding(
+        padding: EdgeInsets.all(ResponsiveHelper.width(12)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: context.bodySmall.copyWith(
+                fontWeight: FontWeight.w600,
+                color: AppColors.greySwitch,
+                fontSize: ResponsiveHelper.fontSize(14),
+              ),
+            ),
+            SizedBox(height: ResponsiveHelper.height(8)),
+            ...tiles
+                .map((tile) => Column(
+              children: [
+                tile,
+                CustomDivider(),
+              ],
+            ))
+                .toList(),
+          ],
+        ),
+      ),
+    );
+  }
 }
 
 class CustomAppbarWidget extends StatelessWidget {
-  const CustomAppbarWidget({
-    super.key, required this.title, this.action,
-  });
-final String title;
-final  Widget?action;
+  const CustomAppbarWidget({super.key, required this.title, this.action});
+
+  final String title;
+  final Widget? action;
 
   @override
   Widget build(BuildContext context) {
@@ -235,11 +201,18 @@ final  Widget?action;
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         GestureDetector(
-
-  onTap: (){},
-  child: CustomImage(imageSrc: AppAssets.arrowBack)),
-        Text(title, style: context.bodyLarge),
-        action??SizedBox(),
+          onTap: () {
+            Get.back();
+          },
+          child: CustomImage(imageSrc: AppAssets.arrowBack),
+        ),
+        Text(
+          title,
+          style: context.bodyLarge.copyWith(
+            fontSize: ResponsiveHelper.fontSize(18),
+          ),
+        ),
+        action ?? SizedBox(),
       ],
     );
   }

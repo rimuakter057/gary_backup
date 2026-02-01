@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_container/custom_container.dart';
 import 'package:gary_goodger/share/widgets/custom_image/custom_image.dart';
 import 'package:gary_goodger/utils/app_assets/app_assets.dart';
@@ -29,7 +29,8 @@ class HighInsightsContainerWidget extends StatelessWidget {
                 style: context.titleSmall.copyWith(color: AppColors.white),
               ),
               CustomContainer(
-               horizontal: 8.w, vertical: 4.h,
+               horizontal:ResponsiveHelper.width(8),
+                vertical:ResponsiveHelper.height(4),
                 backgroundColor: AppColors.black,
                 child: Row(
                   children: [
@@ -46,7 +47,7 @@ class HighInsightsContainerWidget extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 12.h),
+          SizedBox(height: ResponsiveHelper.height(12)),
           Text(
             "Trade Between 03:00 - 11:00 UTC",
             style: context.bodySmall.copyWith(
@@ -54,20 +55,20 @@ class HighInsightsContainerWidget extends StatelessWidget {
               fontWeight: FontWeight.w700,
             ),
           ),
-          SizedBox(height: 6.h),
+          SizedBox(height: ResponsiveHelper.height(6)),
           Text(
             "Historical data shows +1.3% average ROI during this window. Favor high-liquidity instruments.",
             style: context.bodySmall.copyWith(color: AppColors.white),
           ),
-          SizedBox(height: 16.h),
+          SizedBox(height:ResponsiveHelper.height(16)),
           Row(
             children: List.generate(
               3,
                   (index) => Padding(
-                padding: const EdgeInsets.only(right: 4),
+                padding:  EdgeInsets.only(right:ResponsiveHelper.width(4)),
                 child: Container(
-                  height: 5,
-                  width: 5,
+                  height: ResponsiveHelper.height(5),
+                  width: ResponsiveHelper.width(5),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: AppColors.white,

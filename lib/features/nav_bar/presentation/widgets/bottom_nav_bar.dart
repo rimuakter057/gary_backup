@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   final int currentIndex;
@@ -13,7 +14,7 @@ class CustomBottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60,
+      height: ResponsiveHelper.height(60),
       color: Colors.white,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -35,7 +36,7 @@ class CustomBottomNavBar extends StatelessWidget {
       onTap: () => onTap(index),
       child: Icon(
         icon,
-        size: 28,
+        size:  ResponsiveHelper.fontSize(28),
         color: isSelected ? Colors.blue : Colors.grey,
       ),
     );

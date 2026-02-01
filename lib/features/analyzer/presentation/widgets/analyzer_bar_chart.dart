@@ -1,8 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
-
 
 class AnalyzerBarChart extends StatelessWidget {
   const AnalyzerBarChart({super.key});
@@ -10,27 +9,53 @@ class AnalyzerBarChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 220.h,
-      padding: EdgeInsets.all(16.w),
+      height: ResponsiveHelper.height(220),
+      padding: ResponsiveHelper.all(16),
       decoration: BoxDecoration(
         color: AppColors.cardDark,
-        borderRadius: BorderRadius.circular(20.r),
+        borderRadius:
+        BorderRadius.circular(ResponsiveHelper.width(20)),
       ),
       child: BarChart(
         BarChartData(
           alignment: BarChartAlignment.spaceAround,
           maxY: 20,
           minY: -20,
-          gridData: FlGridData(show: true, drawVerticalLine: false,
-              getDrawingHorizontalLine: (value) => FlLine(color: Colors.white10, strokeWidth: 1)),
+          gridData: FlGridData(
+            show: true,
+            drawVerticalLine: false,
+            getDrawingHorizontalLine: (value) =>
+            const FlLine(color: Colors.white10, strokeWidth: 1),
+          ),
           titlesData: FlTitlesData(
-            leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: true, reservedSize: 30,
-                getTitlesWidget: (val, meta) => Text("${val.toInt()}%", style: TextStyle(color: Colors.white38, fontSize: 8.sp)))),
-            bottomTitles: AxisTitles(sideTitles: SideTitles(showTitles: true,
+            leftTitles: AxisTitles(
+              sideTitles: SideTitles(
+                showTitles: true,
+                reservedSize: ResponsiveHelper.width(30),
+                getTitlesWidget: (val, meta) => Text(
+                  "${val.toInt()}%",
+                  style: TextStyle(
+                    color: Colors.white38,
+                    fontSize: ResponsiveHelper.fontSize(8),
+                  ),
+                ),
+              ),
+            ),
+            bottomTitles: AxisTitles(
+              sideTitles: SideTitles(
+                showTitles: true,
                 getTitlesWidget: (val, meta) {
                   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'];
-                  return Text(months[val.toInt() % 7], style: TextStyle(color: Colors.white38, fontSize: 10.sp));
-                })),
+                  return Text(
+                    months[val.toInt() % 7],
+                    style: TextStyle(
+                      color: Colors.white38,
+                      fontSize: ResponsiveHelper.fontSize(10),
+                    ),
+                  );
+                },
+              ),
+            ),
             rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
             topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
           ),
@@ -56,9 +81,14 @@ class AnalyzerBarChart extends StatelessWidget {
         BarChartRodData(
           toY: y,
           color: isPositive ? AppColors.primary : Colors.redAccent,
-          width: 12.w,
-          borderRadius: BorderRadius.circular(4.r),
-          backDrawRodData: BackgroundBarChartRodData(show: true, toY: 20, color: Colors.white),
+          width: ResponsiveHelper.width(12),
+          borderRadius:
+          BorderRadius.circular(ResponsiveHelper.width(4)),
+          backDrawRodData:  BackgroundBarChartRodData(
+            show: true,
+            toY: 20,
+            color: Colors.white,
+          ),
         ),
       ],
     );

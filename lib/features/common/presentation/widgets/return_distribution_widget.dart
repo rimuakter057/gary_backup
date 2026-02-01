@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
+
 
 class ReturnDistributionWidget extends StatelessWidget {
   final List<double> values;
@@ -13,22 +15,28 @@ class ReturnDistributionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ResponsiveHelper already main.dart e init thakle ekhane call lagbe na
+
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: ResponsiveHelper.all(20),
       decoration: BoxDecoration(
         color: const Color(0xFF2D2F33),
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(24)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             "Return Distribution",
-            style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: ResponsiveHelper.fontSize(18),
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          const SizedBox(height: 30),
+          SizedBox(height: ResponsiveHelper.height(30)),
           SizedBox(
-            height: 250,
+            height: ResponsiveHelper.height(250),
             child: BarChart(
               BarChartData(
                 maxY: 25,
@@ -36,26 +44,39 @@ class ReturnDistributionWidget extends StatelessWidget {
                 barTouchData: BarTouchData(
                   enabled: true,
                   touchTooltipData: BarTouchTooltipData(
-                    // 'tooltipBgColor' er poriborte ekhon 'getTooltipColor' use kora hoy
                     getTooltipColor: (group) => const Color(0xFF0D0D0D),
-                    tooltipPadding: const EdgeInsets.all(8),
-                    tooltipMargin: 8,
+                    tooltipPadding: ResponsiveHelper.all(8),
+                    tooltipMargin: ResponsiveHelper.height(8),
                     getTooltipItem: (group, groupIndex, rod, rodIndex) {
                       return BarTooltipItem(
                         'RBR          TRADES\n',
-                        const TextStyle(color: Colors.grey, fontSize: 10),
+                        TextStyle(
+                          color: Colors.grey,
+                          fontSize: ResponsiveHelper.fontSize(10),
+                        ),
                         children: [
-                          const TextSpan(
+                          TextSpan(
                             text: '0.0R          21\n\n',
-                            style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: ResponsiveHelper.fontSize(14),
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                          const TextSpan(
+                          TextSpan(
                             text: 'TOP 2 SYMBOLS\n',
-                            style: TextStyle(color: Colors.grey, fontSize: 10),
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: ResponsiveHelper.fontSize(10),
+                            ),
                           ),
-                          const TextSpan(
+                          TextSpan(
                             text: 'EURUSD\nNAS100',
-                            style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: ResponsiveHelper.fontSize(14),
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ],
                       );
@@ -66,10 +87,13 @@ class ReturnDistributionWidget extends StatelessWidget {
                   leftTitles: AxisTitles(
                     sideTitles: SideTitles(
                       showTitles: true,
-                      reservedSize: 30,
+                      reservedSize: ResponsiveHelper.width(30),
                       getTitlesWidget: (value, meta) => Text(
                         value.toInt().toString(),
-                        style: const TextStyle(color: Colors.grey, fontSize: 12),
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: ResponsiveHelper.fontSize(12),
+                        ),
                       ),
                     ),
                   ),
@@ -80,8 +104,14 @@ class ReturnDistributionWidget extends StatelessWidget {
                         int index = value.toInt();
                         if (index >= 0 && index < buckets.length) {
                           return Padding(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: Text(buckets[index], style: const TextStyle(color: Colors.grey, fontSize: 12)),
+                            padding: EdgeInsets.only(top: ResponsiveHelper.height(10)),
+                            child: Text(
+                              buckets[index],
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: ResponsiveHelper.fontSize(12),
+                              ),
+                            ),
                           );
                         }
                         return const SizedBox();
@@ -94,7 +124,10 @@ class ReturnDistributionWidget extends StatelessWidget {
                 gridData: FlGridData(
                   show: true,
                   drawVerticalLine: false,
-                  getDrawingHorizontalLine: (value) => FlLine(color: Colors.white10, strokeWidth: 1),
+                  getDrawingHorizontalLine: (value) => FlLine(
+                    color: Colors.white10,
+                    strokeWidth: ResponsiveHelper.width(1),
+                  ),
                 ),
                 borderData: FlBorderData(show: false),
                 barGroups: List.generate(values.length, (i) {
@@ -104,10 +137,10 @@ class ReturnDistributionWidget extends StatelessWidget {
                       BarChartRodData(
                         toY: values[i],
                         color: const Color(0xFF00A38D),
-                        width: 25,
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(4),
-                          topRight: Radius.circular(4),
+                        width: ResponsiveHelper.width(25),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(ResponsiveHelper.borderRadius(4)),
+                          topRight: Radius.circular(ResponsiveHelper.borderRadius(4)),
                         ),
                       ),
                     ],

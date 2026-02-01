@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
+
 
 class PortfolioROIWidget extends StatelessWidget {
   final double roiValue; // Example: 14.8
@@ -13,27 +15,33 @@ class PortfolioROIWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ResponsiveHelper already main.dart e init thakle ekhane call lagbe na
+
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: ResponsiveHelper.all(20),
       decoration: BoxDecoration(
         color: const Color(0xFF1A1C1E), // Card background
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(24)),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Align(
+          Align(
             alignment: Alignment.centerLeft,
             child: Text(
               "Portfolio ROI",
-              style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: ResponsiveHelper.fontSize(18),
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
-          const SizedBox(height: 10),
+          SizedBox(height: ResponsiveHelper.height(10)),
 
           // The Gauge Chart
           SizedBox(
-            height: 180,
+            height: ResponsiveHelper.height(180),
             child: SfRadialGauge(
               axes: <RadialAxis>[
                 RadialAxis(
@@ -43,11 +51,17 @@ class PortfolioROIWidget extends StatelessWidget {
                   endAngle: 0,
                   showLabels: false,
                   showTicks: true,
-                  axisLineStyle: const AxisLineStyle(
+                  axisLineStyle: AxisLineStyle(
                     thickness: 0.2,
                     thicknessUnit: GaugeSizeUnit.factor,
-                    gradient: SweepGradient(
-                      colors: <Color>[Colors.redAccent, Colors.orange, Colors.yellow, Colors.greenAccent, Colors.tealAccent],
+                    gradient: const SweepGradient(
+                      colors: <Color>[
+                        Colors.redAccent,
+                        Colors.orange,
+                        Colors.yellow,
+                        Colors.greenAccent,
+                        Colors.tealAccent
+                      ],
                       stops: <double>[0.0, 0.25, 0.5, 0.75, 1.0],
                     ),
                   ),
@@ -55,11 +69,14 @@ class PortfolioROIWidget extends StatelessWidget {
                     NeedlePointer(
                       value: roiValue,
                       needleColor: Colors.grey[700]!,
-                      knobStyle: KnobStyle(color: Colors.grey[800]!, knobRadius: 0.08),
-                      needleLength: 0.6,
+                      knobStyle: KnobStyle(
+                        color: Colors.grey[800]!,
+                        knobRadius: ResponsiveHelper.width(8), // responsive knob radius
+                      ),
+                      needleLength: ResponsiveHelper.height(0.6 * 180), // proportionally responsive
                     )
                   ],
-                )
+                ),
               ],
             ),
           ),
@@ -67,16 +84,28 @@ class PortfolioROIWidget extends StatelessWidget {
           // Value and Text
           Text(
             "$roiValue%",
-            style: const TextStyle(color: Colors.white, fontSize: 32, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: ResponsiveHelper.fontSize(32),
+              fontWeight: FontWeight.bold,
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 "$percentageChange from last month",
-                style: const TextStyle(color: Color(0xFF2ECC71), fontSize: 14),
+                style: TextStyle(
+                  color: const Color(0xFF2ECC71),
+                  fontSize: ResponsiveHelper.fontSize(14),
+                ),
               ),
-              const Icon(Icons.arrow_upward, color: Color(0xFF2ECC71), size: 16),
+              SizedBox(width: ResponsiveHelper.width(4)),
+              Icon(
+                Icons.arrow_upward,
+                color: const Color(0xFF2ECC71),
+                size: ResponsiveHelper.iconSize(16),
+              ),
             ],
           ),
         ],

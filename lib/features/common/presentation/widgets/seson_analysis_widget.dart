@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
+
 
 class SessionAnalysisWidget extends StatelessWidget {
   final List<double> sessionRoi; // e.g., [0.52, 1.69, 0.76]
@@ -14,22 +16,26 @@ class SessionAnalysisWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: ResponsiveHelper.all(20),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: Colors.grey.shade200),
+        borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(24)),
+        border: Border.all(color: Colors.grey.shade200, width: ResponsiveHelper.width(1)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             "Session Analysis",
-            style: TextStyle(color: Color(0xFF4A4A4A), fontSize: 18, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              color: const Color(0xFF4A4A4A),
+              fontSize: ResponsiveHelper.fontSize(18),
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          const SizedBox(height: 30),
+          SizedBox(height: ResponsiveHelper.height(30)),
           SizedBox(
-            height: 250,
+            height: ResponsiveHelper.height(250),
             child: BarChart(
               BarChartData(
                 maxY: 1.75,
@@ -40,15 +46,25 @@ class SessionAnalysisWidget extends StatelessWidget {
                     getTooltipItem: (group, groupIndex, rod, rodIndex) {
                       return BarTooltipItem(
                         '10/01/2026\n\n',
-                        const TextStyle(color: Colors.grey, fontSize: 10),
+                        TextStyle(
+                          color: Colors.grey,
+                          fontSize: ResponsiveHelper.fontSize(10),
+                        ),
                         children: [
-                          const TextSpan(
+                          TextSpan(
                             text: 'TRADES     ROI\n',
-                            style: TextStyle(color: Colors.grey, fontSize: 8),
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: ResponsiveHelper.fontSize(8),
+                            ),
                           ),
                           TextSpan(
                             text: '88         ${rod.toY}%',
-                            style: const TextStyle(color: Color(0xFF00A38D), fontSize: 14, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                              color: const Color(0xFF00A38D),
+                              fontSize: ResponsiveHelper.fontSize(14),
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ],
                       );
@@ -57,13 +73,22 @@ class SessionAnalysisWidget extends StatelessWidget {
                 ),
                 titlesData: FlTitlesData(
                   leftTitles: AxisTitles(
-                    axisNameWidget: const Text("ROI % (0 → 1.75%)", style: TextStyle(color: Colors.grey, fontSize: 10)),
+                    axisNameWidget: Text(
+                      "ROI % (0 → 1.75%)",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: ResponsiveHelper.fontSize(10),
+                      ),
+                    ),
                     sideTitles: SideTitles(
                       showTitles: true,
-                      reservedSize: 45,
+                      reservedSize: ResponsiveHelper.width(45),
                       getTitlesWidget: (value, meta) => Text(
                         "${value.toStringAsFixed(2)}%",
-                        style: const TextStyle(color: Colors.grey, fontSize: 10),
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: ResponsiveHelper.fontSize(10),
+                        ),
                       ),
                     ),
                   ),
@@ -74,8 +99,14 @@ class SessionAnalysisWidget extends StatelessWidget {
                         int index = value.toInt();
                         if (index >= 0 && index < sessions.length) {
                           return Padding(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: Text(sessions[index], style: const TextStyle(color: Colors.grey, fontSize: 12)),
+                            padding: EdgeInsets.only(top: ResponsiveHelper.height(10)),
+                            child: Text(
+                              sessions[index],
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: ResponsiveHelper.fontSize(12),
+                              ),
+                            ),
                           );
                         }
                         return const SizedBox();
@@ -88,7 +119,11 @@ class SessionAnalysisWidget extends StatelessWidget {
                 gridData: FlGridData(
                   show: true,
                   drawVerticalLine: false,
-                  getDrawingHorizontalLine: (value) => FlLine(color: Colors.grey.shade100, strokeWidth: 1, dashArray: [5, 5]),
+                  getDrawingHorizontalLine: (value) => FlLine(
+                    color: Colors.grey.shade100,
+                    strokeWidth: ResponsiveHelper.width(1),
+                    dashArray: [5, 5],
+                  ),
                 ),
                 borderData: FlBorderData(show: false),
                 barGroups: List.generate(sessionRoi.length, (i) {
@@ -98,8 +133,8 @@ class SessionAnalysisWidget extends StatelessWidget {
                       BarChartRodData(
                         toY: sessionRoi[i],
                         color: const Color(0xFF00A38D),
-                        width: 60,
-                        borderRadius: BorderRadius.zero,
+                        width: ResponsiveHelper.width(60),
+                        borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(4)),
                       ),
                     ],
                   );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/utils/app_assets/app_assets.dart';
 import 'package:get/get.dart'; // GetX
 import 'package:gary_goodger/share/widgets/custom_text/custom_text.dart';
@@ -23,16 +24,16 @@ class SplashScreen extends StatelessWidget {
       backgroundColor: AppColors.backgroundColor,
       body: Center(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          padding: EdgeInsets.symmetric(horizontal: ResponsiveHelper.width(16)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                height: 40.h,
+                height: ResponsiveHelper.height(140),
                 child: SvgPicture.asset(AppAssets.logoIcon, fit: BoxFit.contain),
               ),
-              SizedBox(height: 8.h),
+              SizedBox(height: ResponsiveHelper.height(8)),
               CustomText(
                 text: AppText.empowerAnalyzeConnect,
                 color: AppColors.subPrimary,

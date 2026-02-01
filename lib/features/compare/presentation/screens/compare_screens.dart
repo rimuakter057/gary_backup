@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_container/custom_container.dart';
 import 'package:gary_goodger/share/widgets/custom_divider/custom_divider.dart';
 import 'package:gary_goodger/share/widgets/custom_image/custom_image.dart';
@@ -23,31 +23,38 @@ class ComparePropScreen extends StatelessWidget {
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
-            fontSize: 18.sp,
+            fontSize: ResponsiveHelper.fontSize(18),
           ),
         ),
         centerTitle: true,
         actions: [
-          Icon(Icons.notifications_none_outlined, color: Colors.black),
-          Icon(Icons.menu, color: Colors.black),
-          SizedBox(width: 15.w),
+          Icon(
+            Icons.notifications_none_outlined,
+            color: Colors.black,
+            size: ResponsiveHelper.iconSize(24),
+          ),
+          Icon(
+            Icons.menu,
+            color: Colors.black,
+            size: ResponsiveHelper.iconSize(24),
+          ),
+          SizedBox(width: ResponsiveHelper.width(15)),
         ],
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.w),
+        padding: EdgeInsets.all(ResponsiveHelper.padding(16)),
         child: Column(
           children: [
-            _buildToggleTabs(), // Prop Firms vs Broker
-            SizedBox(height: 20.h),
-            _buildCompareInputCard(context), // Selection Box
-            SizedBox(height: 25.h),
+            _buildToggleTabs(),
+            SizedBox(height: ResponsiveHelper.height(20)),
+            _buildCompareInputCard(context),
+            SizedBox(height: ResponsiveHelper.height(25)),
             _buildLeaderboardHeader(context),
 
-            ///leverage===================================================
+            // Leverage Section
             Text("leverage", textAlign: TextAlign.center),
 
             CustomContainer(
-              //backgroundColor: AppColors.backgroundColor,
               backgroundColor: AppColors.white,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,193 +63,91 @@ class ComparePropScreen extends StatelessWidget {
                     AppText.fx,
                     style: context.bodySmall.copyWith(
                       fontWeight: FontWeight.w700,
+                      fontSize: ResponsiveHelper.fontSize(14),
                     ),
                   ),
-                  SizedBox(height: 16.h),
+                  SizedBox(height: ResponsiveHelper.height(16)),
                   Row(
                     children: [
-                      Column(
-                        children: [
-                          Text(
-                            AppText.instant,
-                            style: context.bodySmall.copyWith(
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          Text(
-                            "buy",
-                            style: context.bodySmall.copyWith(
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(width: 24),
-                      Column(
-                        children: [
-                          Text(
-                            "1-Step",
-                            style: context.bodySmall.copyWith(
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          Text(
-                            "\$${1333}",
-                            style: context.bodySmall.copyWith(
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(width: 24),
-                      Column(
-                        children: [
-                          Text(
-                            "2-Step",
-                            style: context.bodySmall.copyWith(
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          Text(
-                            "\$${1333}",
-                            style: context.bodySmall.copyWith(
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(width: 24),
-                      Column(
-                        children: [
-                          Text(
-                            "3-Step",
-                            style: context.bodySmall.copyWith(
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          Text(
-                            "\$${1333}",
-                            style: context.bodySmall.copyWith(
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ],
-                      ),
+                      _buildLeverageColumn("Instant", "Buy"),
+                      SizedBox(width: ResponsiveHelper.width(24)),
+                      _buildLeverageColumn("1-Step", "\$1333"),
+                      SizedBox(width: ResponsiveHelper.width(24)),
+                      _buildLeverageColumn("2-Step", "\$1333"),
+                      SizedBox(width: ResponsiveHelper.width(24)),
+                      _buildLeverageColumn("3-Step", "\$1333"),
                     ],
                   ),
                 ],
               ),
             ),
 
-            SizedBox(height: 25.h),
+            SizedBox(height: ResponsiveHelper.height(25)),
 
-            ///general===================================================
+            // General Section
             Text("general", textAlign: TextAlign.center),
 
             CustomContainer(
-              //backgroundColor: AppColors.backgroundColor,
               backgroundColor: AppColors.white,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      Container(
-                        width: 24, // Card width
-                        height: 24, // Card height
-
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(6),
-                          color: AppColors.white,
-                          border: Border.all(color: AppColors.boarderColor),
-                        ),
-                      ),
-
-                      SizedBox(width: 4.w),
-
-                      Text(
-                        AppText.country,
-                        style: context.bodySmall.copyWith(
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ],
+                  _buildGeneralRow(context, AppText.country),
+                  SizedBox(height: ResponsiveHelper.height(16)),
+                  _buildGeneralRowWithValue(
+                    context,
+                    "FoundingPips",
+                    AppText.instant,
                   ),
-                  SizedBox(height: 16.h),
-
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "FoundingPips",
-                        style: context.bodySmall.copyWith(
-                          color: AppColors.textBlack,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      Text(
-                        AppText.instant,
-                        style: context.bodySmall.copyWith(
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 16.h),
+                  SizedBox(height: ResponsiveHelper.height(16)),
                   CustomDivider(thickness: 1.2),
-                  SizedBox(height: 16.h),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Container(
-                            width: 24.w, // Card width
-                            height: 24.h, // Card height
-
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6),
-                              color: AppColors.white,
-                              border: Border.all(color: AppColors.boarderColor),
-                            ),
-                          ),
-                          SizedBox(width: 4.w),
-                          Text(
-                            "FoundingPips",
-                            style: context.bodySmall.copyWith(
-                              color: AppColors.textBlack,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Text(
-                        AppText.instant,
-                        style: context.bodySmall.copyWith(
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ],
+                  SizedBox(height: ResponsiveHelper.height(16)),
+                  _buildGeneralRowWithValue(
+                    context,
+                    "FoundingPips",
+                    AppText.instant,
+                    hasIcon: true,
                   ),
                 ],
               ),
             ),
 
-            SizedBox(height: 25.h),
+            SizedBox(height: ResponsiveHelper.height(25)),
 
-            _buildLeaderboardList(context), // List of firms
+            _buildLeaderboardList(context),
           ],
         ),
       ),
     );
   }
 
+  Widget _buildLeverageColumn(String title, String value) {
+    return Column(
+      children: [
+        Text(
+          title,
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: ResponsiveHelper.fontSize(12),
+          ),
+        ),
+        Text(
+          value,
+          style: TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: ResponsiveHelper.fontSize(12),
+          ),
+        ),
+      ],
+    );
+  }
+
   Widget _buildCompareInputCard(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16.w),
+      padding: EdgeInsets.all(ResponsiveHelper.padding(16)),
       decoration: BoxDecoration(
         color: const Color(0xFF0D1424),
-        borderRadius: BorderRadius.circular(20.r),
+        borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(20)),
       ),
       child: Column(
         children: [
@@ -255,14 +160,14 @@ class ComparePropScreen extends StatelessWidget {
                 Row(
                   children: [
                     CustomImage(imageSrc: AppAssets.addFirmCompare),
-                    SizedBox(width: 4.w),
+                    SizedBox(width: ResponsiveHelper.width(4)),
                     Text(AppText.addAnotherFirm, style: context.bodySmall),
                   ],
                 ),
               ],
             ),
           ),
-          SizedBox(height: 15.h),
+          SizedBox(height: ResponsiveHelper.height(15)),
           ElevatedButton(onPressed: () {}, child: const Text("Compare")),
         ],
       ),
@@ -271,10 +176,13 @@ class ComparePropScreen extends StatelessWidget {
 
   Widget _dropdownField(String hint, BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+      padding: EdgeInsets.symmetric(
+        horizontal: ResponsiveHelper.width(12),
+        vertical: ResponsiveHelper.height(8),
+      ),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(8.r),
+        borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(8)),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -283,7 +191,7 @@ class ComparePropScreen extends StatelessWidget {
             hint,
             style: context.bodySmall.copyWith(
               color: AppColors.black,
-              fontSize: 17,
+              fontSize: ResponsiveHelper.fontSize(14),
             ),
           ),
           CustomImage(imageSrc: AppAssets.dropdown),
@@ -310,24 +218,31 @@ class ComparePropScreen extends StatelessWidget {
           Row(
             children: [
               Container(
-                width: 30.w, // Card width
-                height: 30.h, // Card height
-
+                width: ResponsiveHelper.width(30),
+                height: ResponsiveHelper.height(30),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(6),
+                  borderRadius: BorderRadius.circular(
+                    ResponsiveHelper.borderRadius(6),
+                  ),
                   color: AppColors.white,
                   border: Border.all(color: AppColors.boarderColor),
                 ),
               ),
-              SizedBox(width: 12.w),
+              SizedBox(width: ResponsiveHelper.width(12)),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Prop Firm Name", style: context.bodyMedium),
+                  Text(
+                    "Prop Firm Name",
+                    style: context.bodyMedium.copyWith(
+                      fontSize: ResponsiveHelper.fontSize(14),
+                    ),
+                  ),
                   Text(
                     "AE • 2y • ★ 4.4",
                     style: context.bodySmall.copyWith(
                       fontWeight: FontWeight.w600,
+                      fontSize: ResponsiveHelper.fontSize(12),
                     ),
                   ),
                 ],
@@ -335,29 +250,32 @@ class ComparePropScreen extends StatelessWidget {
               const Spacer(),
               Text(
                 "#$rank",
-                style: context.titleSmall.copyWith(color: AppColors.subPrimary),
+                style: context.titleSmall.copyWith(
+                  color: AppColors.subPrimary,
+                  fontSize: ResponsiveHelper.fontSize(14),
+                ),
               ),
             ],
           ),
-          SizedBox(height: 10.h),
+          SizedBox(height: ResponsiveHelper.height(10)),
           Row(
             children: [
               _metric("Max Allocation", "\$300,000", context),
-              SizedBox(width: 36.w),
+              SizedBox(width: ResponsiveHelper.width(36)),
               Row(
                 children: [
                   SizedBox(
-                    height: 30.h,
+                    height: ResponsiveHelper.height(30),
                     child: VerticalDivider(color: AppColors.grey, thickness: 2),
                   ),
                   _metric("Leverage", "100x", context),
                 ],
               ),
-              SizedBox(width: 36.w),
+              SizedBox(width: ResponsiveHelper.width(36)),
               Row(
                 children: [
                   SizedBox(
-                    height: 30.h,
+                    height: ResponsiveHelper.height(30),
                     child: VerticalDivider(color: AppColors.grey, thickness: 2),
                   ),
                   _metric("Daily DD", "5%", context),
@@ -365,23 +283,22 @@ class ComparePropScreen extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 12.h),
+          SizedBox(height: ResponsiveHelper.height(12)),
           OutlinedButton(
             style: OutlinedButton.styleFrom(
-              minimumSize: Size(double.infinity, 35.h),
+              minimumSize: Size(double.infinity, ResponsiveHelper.height(35)),
               foregroundColor: AppColors.primary,
               side: BorderSide(
-                color: AppColors.primary, // <-- Outline color
-                width: 2, // Outline thickness
+                color: AppColors.primary,
+                width: ResponsiveHelper.width(2),
               ),
             ),
-
             onPressed: () {},
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CustomImage(imageSrc: AppAssets.pinnedCompare),
-                SizedBox(width: 8.w),
+                SizedBox(width: ResponsiveHelper.width(8)),
                 Text("Select to Compare"),
               ],
             ),
@@ -395,18 +312,28 @@ class ComparePropScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label, style: context.bodySmall.copyWith(fontSize: 12)),
-        Text(value, style: context.titleSmall.copyWith(fontSize: 14)),
+        Text(
+          label,
+          style: context.bodySmall.copyWith(
+            fontSize: ResponsiveHelper.fontSize(12),
+          ),
+        ),
+        Text(
+          value,
+          style: context.titleSmall.copyWith(
+            fontSize: ResponsiveHelper.fontSize(14),
+          ),
+        ),
       ],
     );
   }
 
   Widget _buildToggleTabs() {
     return Container(
-      padding: EdgeInsets.all(4.w),
+      padding: EdgeInsets.all(ResponsiveHelper.padding(4)),
       decoration: BoxDecoration(
         color: const Color(0xFFE0E4E7),
-        borderRadius: BorderRadius.circular(10.r),
+        borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(10)),
       ),
       child: Row(
         children: [_tabItem("Prop Firms", true), _tabItem("Broker", false)],
@@ -417,15 +344,18 @@ class ComparePropScreen extends StatelessWidget {
   Widget _tabItem(String title, bool active) {
     return Expanded(
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 8.h),
+        padding: EdgeInsets.symmetric(vertical: ResponsiveHelper.height(8)),
         decoration: BoxDecoration(
           color: active ? AppColors.primary : Colors.transparent,
-          borderRadius: BorderRadius.circular(8.r),
+          borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(8)),
         ),
         child: Center(
           child: Text(
             title,
-            style: TextStyle(color: active ? Colors.white : Colors.black54),
+            style: TextStyle(
+              color: active ? Colors.white : Colors.black54,
+              fontSize: ResponsiveHelper.fontSize(14),
+            ),
           ),
         ),
       ),
@@ -436,14 +366,89 @@ class ComparePropScreen extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text("Prop Firms Leaderboard", style: context.bodyMedium),
+        Text(
+          "Prop Firms Leaderboard",
+          style: context.bodyMedium.copyWith(
+            fontSize: ResponsiveHelper.fontSize(16),
+          ),
+        ),
         Container(
-          padding: EdgeInsets.all(8),
+          padding: EdgeInsets.all(ResponsiveHelper.padding(8)),
           decoration: BoxDecoration(
             color: AppColors.greyShade,
             shape: BoxShape.circle,
           ),
           child: CustomImage(imageSrc: AppAssets.filter),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildGeneralRow(BuildContext context, String title) {
+    return Row(
+      children: [
+        Container(
+          width: ResponsiveHelper.width(24),
+          height: ResponsiveHelper.height(24),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(
+              ResponsiveHelper.borderRadius(6),
+            ),
+            color: AppColors.white,
+            border: Border.all(color: AppColors.boarderColor),
+          ),
+        ),
+        SizedBox(width: ResponsiveHelper.width(4)),
+        Text(
+          title,
+          style: context.bodySmall.copyWith(
+            fontWeight: FontWeight.w700,
+            fontSize: ResponsiveHelper.fontSize(14),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildGeneralRowWithValue(
+    BuildContext context,
+    String title,
+    String value, {
+    bool hasIcon = false,
+  }) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Row(
+          children: [
+            if (hasIcon)
+              Container(
+                width: ResponsiveHelper.width(24),
+                height: ResponsiveHelper.height(24),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(
+                    ResponsiveHelper.borderRadius(6),
+                  ),
+                  color: AppColors.white,
+                  border: Border.all(color: AppColors.boarderColor),
+                ),
+              ),
+            if (hasIcon) SizedBox(width: ResponsiveHelper.width(4)),
+            Text(
+              title,
+              style: context.bodySmall.copyWith(
+                fontWeight: FontWeight.w600,
+                fontSize: ResponsiveHelper.fontSize(14),
+              ),
+            ),
+          ],
+        ),
+        Text(
+          value,
+          style: context.bodySmall.copyWith(
+            fontWeight: FontWeight.w500,
+            fontSize: ResponsiveHelper.fontSize(14),
+          ),
         ),
       ],
     );

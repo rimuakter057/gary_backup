@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gary_goodger/features/common/presentation/widgets/status_outline_container.dart';
 import 'package:gary_goodger/features/sentiments/presentation/widgets/market_news_widget.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_container/custom_container.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 import 'package:gary_goodger/utils/app_text/app_strings.dart';
@@ -21,16 +22,17 @@ class SentimentsScreen extends StatelessWidget {
           _buildToggleTabs(), // All Instruments / Watchlist
           Expanded(
             child: SingleChildScrollView(
-              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              padding: ResponsiveHelper.symmetric(horizontal: 16.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _buildSearchBar(),
-                  SizedBox(height: 15.h),
+                  SizedBox(height: ResponsiveHelper.height(15)),
                   _buildCategoryChips(), // All, Forex, Indices etc.
-                  SizedBox(height: 20.h),
+                  SizedBox(height: ResponsiveHelper.height(20)),
 
                   _sectionTitle("Extreme Watchlist"),
+
                   ///sentiment card=======================================
                   _sentimentCard(
                     pair: "XAUUSD",
@@ -42,12 +44,10 @@ class SentimentsScreen extends StatelessWidget {
                     context: context,
                   ),
 
-                SizedBox(height: 20.h),
-                ///market news card=========================================================================
-                MarketNewsWidget(),
+                  SizedBox(height: ResponsiveHelper.height(20)),
 
-
-
+                  ///market news card=========================================================================
+                  MarketNewsWidget(),
 
                   CustomContainer(
                     child: Column(
@@ -55,59 +55,58 @@ class SentimentsScreen extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Reuters - 12 minutes ago",
-                                style: GoogleFonts.inter(
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w400,
-                                    color:AppColors.textBlack
-                                )
+                            Text(
+                              "Reuters - 12 minutes ago",
+                              style: GoogleFonts.inter(
+                                fontSize: ResponsiveHelper.fontSize(15),
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.textBlack,
+                              ),
                             ),
                             SizedBox(height: 8.h),
-                            Text("Dollar eases as traders eye FOMC minutes; focus on inflation path",
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                                style: GoogleFonts.inter(
-                                    fontSize: 18.sp,
-                                    fontWeight: FontWeight.w600,
-                                    color:AppColors.textBlack
-                                )
+                            Text(
+                              "Dollar eases as traders eye FOMC minutes; focus on inflation path",
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.inter(
+                                fontSize: ResponsiveHelper.fontSize(18),
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.textBlack,
+                              ),
                             ),
 
-                            SizedBox(height: 8.h),
+                            SizedBox(height: ResponsiveHelper.height(8)),
                             Row(
                               children: [
                                 StatusOutlineContainer(
-
-
                                   statusBgColor: AppColors.orangeShadeBg,
                                   statusBorderColor: AppColors.orange,
                                   status: AppText.mediumCapital,
                                   statusTextColor: AppColors.orange,
 
-                                  fontSize: 10,
+                                  fontSize: ResponsiveHelper.fontSize(10),
                                 ),
                                 SizedBox(),
                               ],
                             ),
 
-                            SizedBox(height: 8.h),
+                            SizedBox(height: ResponsiveHelper.height(8)),
 
-                            Text("USD slips ahead of minutes; market expects softer tone on inflation risks.",
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                                style: GoogleFonts.inter(
-                                    fontSize: 15.sp,
-                                    fontWeight: FontWeight.w400,
-                                    color:AppColors.textBlack
-                                )
+                            Text(
+                              "USD slips ahead of minutes; market expects softer tone on inflation risks.",
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.inter(
+                                fontSize: ResponsiveHelper.fontSize(15),
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.textBlack,
+                              ),
                             ),
-
-
                           ],
                         ),
-                        SizedBox(height: 15.h),
+                        SizedBox(height: ResponsiveHelper.height(15)),
 
-                        SizedBox(height: 15.h),
+                        SizedBox(height: ResponsiveHelper.height(15)),
                         Row(
                           children: [
                             Expanded(
@@ -116,19 +115,19 @@ class SentimentsScreen extends StatelessWidget {
                                 statusBorderColor: AppColors.boarderColor,
                                 status: "Save",
                                 statusTextColor: AppColors.subPrimary,
-                                verticalPadding: 8,
-                                fontSize: 14,
+                                verticalPadding: ResponsiveHelper.height(8),
+                                fontSize: ResponsiveHelper.fontSize(14),
                               ),
                             ),
-                            SizedBox(width: 10.w),
+                            SizedBox(width: ResponsiveHelper.width(10)),
                             Expanded(
                               child: StatusOutlineContainer(
                                 statusBgColor: AppColors.primary,
                                 statusBorderColor: AppColors.primary,
                                 status: "Read",
                                 statusTextColor: AppColors.white,
-                                verticalPadding: 8,
-                                fontSize: 14,
+                                verticalPadding: ResponsiveHelper.height(8),
+                                fontSize: ResponsiveHelper.fontSize(14),
                               ),
                             ),
                           ],
@@ -137,8 +136,9 @@ class SentimentsScreen extends StatelessWidget {
                     ),
                   ),
 
-
-                  SizedBox(height: 100.h), // Bottom navigation space
+                  SizedBox(
+                    height: ResponsiveHelper.height(100),
+                  ), // Bottom navigation space
                 ],
               ),
             ),
@@ -169,31 +169,34 @@ class SentimentsScreen extends StatelessWidget {
                   Text(pair, style: context.bodyMedium),
                   Text(
                     "$cat • $change",
-                    style: TextStyle(fontSize: 10.sp, color: Colors.grey),
+                    style: TextStyle(
+                      fontSize: ResponsiveHelper.fontSize(10),
+                      color: Colors.grey,
+                    ),
                   ),
                 ],
               ),
               _riskBadge(risk),
             ],
           ),
-          SizedBox(height: 15.h),
+          SizedBox(height: ResponsiveHelper.height(15)),
           Row(
             children: [
               Text("34%", style: context.bodySmall),
-              SizedBox(width: 4.w),
+              SizedBox(width: ResponsiveHelper.width(4)),
               Expanded(
                 child: CustomContainer(
-                  horizontal: 2,
-                  vertical: 2,
+                  horizontal: ResponsiveHelper.width(2),
+                  vertical: ResponsiveHelper.height(2),
                   backgroundColor: AppColors.greyShade,
                   child: _sentimentBar(),
                 ),
               ),
-              SizedBox(width: 4.w),
+              SizedBox(width: ResponsiveHelper.width(4)),
               Text("32%", style: context.bodySmall),
             ],
           ),
-          SizedBox(height: 15.h),
+          SizedBox(height: ResponsiveHelper.height(15)),
           Row(
             children: [
               Expanded(
@@ -202,19 +205,19 @@ class SentimentsScreen extends StatelessWidget {
                   statusBorderColor: AppColors.boarderColor,
                   status: AppText.analyze,
                   statusTextColor: AppColors.subPrimary,
-                  verticalPadding: 8,
-                  fontSize: 14,
+                  verticalPadding: ResponsiveHelper.height(8),
+                  fontSize: ResponsiveHelper.fontSize(14),
                 ),
               ),
-              SizedBox(width: 10.w),
+              SizedBox(width: ResponsiveHelper.width(10)),
               Expanded(
                 child: StatusOutlineContainer(
                   statusBgColor: AppColors.primary,
                   statusBorderColor: AppColors.primary,
                   status: AppText.details,
                   statusTextColor: AppColors.white,
-                  verticalPadding: 8,
-                  fontSize: 14,
+                  verticalPadding: ResponsiveHelper.height(8),
+                  fontSize: ResponsiveHelper.fontSize(14),
                 ),
               ),
             ],
@@ -230,20 +233,26 @@ class SentimentsScreen extends StatelessWidget {
       children: [
         Expanded(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8.w),
+            padding: EdgeInsets.symmetric(
+              horizontal: ResponsiveHelper.width(8),
+            ),
             child: Row(
               children: List.generate(20, (index) {
                 // Splits the 20 segments based on buy percentage
                 //   bool isBuy = index < (buy / 5);
                 return Expanded(
                   child: Container(
-                    height: 4.h,
-                    margin: EdgeInsets.symmetric(horizontal: 1.w),
+                    height: ResponsiveHelper.height(4),
+                    margin: EdgeInsets.symmetric(
+                      horizontal: ResponsiveHelper.width(1),
+                    ),
 
                     decoration: BoxDecoration(
                       // color: isBuy ? Colors.redAccent : Colors.greenAccent,
                       color: Colors.redAccent,
-                      borderRadius: BorderRadius.circular(5.r),
+                      borderRadius: BorderRadius.circular(
+                        ResponsiveHelper.borderRadius(5),
+                      ),
                     ),
                   ),
                 );
@@ -260,16 +269,16 @@ class SentimentsScreen extends StatelessWidget {
 
     switch (label) {
       case "HIGH":
-        color =AppColors.primary;
+        color = AppColors.primary;
         break;
       case "LOW":
-        color =AppColors.red;
+        color = AppColors.red;
         break;
       case "MEDIUM":
-        color =AppColors.orange;
+        color = AppColors.orange;
         break;
       default:
-        color =AppColors.red;
+        color = AppColors.red;
     }
 
     return StatusOutlineContainer(
@@ -282,10 +291,10 @@ class SentimentsScreen extends StatelessWidget {
 
   Widget _actionButton(String label, {required bool isOutlined}) {
     return Container(
-      height: 35.h,
+      height: ResponsiveHelper.height(35),
       decoration: BoxDecoration(
         color: isOutlined ? Colors.transparent : const Color(0xFF00A693),
-        borderRadius: BorderRadius.circular(8.r),
+        borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(8)),
         border: isOutlined ? Border.all(color: Colors.grey.shade300) : null,
       ),
       child: Center(
@@ -293,7 +302,7 @@ class SentimentsScreen extends StatelessWidget {
           label,
           style: TextStyle(
             color: isOutlined ? Colors.black : Colors.white,
-            fontSize: 12.sp,
+            fontSize: ResponsiveHelper.fontSize(12),
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -311,7 +320,7 @@ class SentimentsScreen extends StatelessWidget {
         "Sentiments",
         style: TextStyle(
           color: Colors.black,
-          fontSize: 16.sp,
+          fontSize: ResponsiveHelper.fontSize(16),
           fontWeight: FontWeight.bold,
         ),
       ),
@@ -319,18 +328,18 @@ class SentimentsScreen extends StatelessWidget {
       actions: [
         Icon(Icons.notifications_none, color: Colors.black),
         Icon(Icons.tune, color: Colors.black),
-        SizedBox(width: 15.w),
+        SizedBox(width: ResponsiveHelper.width(15)),
       ],
     );
   }
 
   Widget _buildToggleTabs() {
     return Container(
-      margin: EdgeInsets.all(16.w),
-      padding: EdgeInsets.all(4.w),
+      margin: ResponsiveHelper.all(16),
+      padding: ResponsiveHelper.all(4),
       decoration: BoxDecoration(
         color: const Color(0xFFE0E4E7),
-        borderRadius: BorderRadius.circular(10.r),
+        borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(10)),
       ),
       child: Row(
         children: [_tab("All Instruments", true), _tab("Watchlist", false)],
@@ -341,17 +350,17 @@ class SentimentsScreen extends StatelessWidget {
   Widget _tab(String label, bool active) {
     return Expanded(
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 8.h),
+        padding: EdgeInsets.symmetric(vertical: ResponsiveHelper.height(8)),
         decoration: BoxDecoration(
           color: active ? const Color(0xFF00A693) : Colors.transparent,
-          borderRadius: BorderRadius.circular(8.r),
+          borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(8)),
         ),
         child: Center(
           child: Text(
             label,
             style: TextStyle(
               color: active ? Colors.white : Colors.black54,
-              fontSize: 12.sp,
+              fontSize: ResponsiveHelper.fontSize(12),
             ),
           ),
         ),
@@ -368,7 +377,9 @@ class SentimentsScreen extends StatelessWidget {
         filled: true,
         fillColor: Colors.white,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12.r),
+          borderRadius: BorderRadius.circular(
+            ResponsiveHelper.borderRadius(12),
+          ),
           borderSide: BorderSide.none,
         ),
       ),
@@ -383,13 +394,18 @@ class SentimentsScreen extends StatelessWidget {
         children: cats
             .map(
               (e) => Container(
-                margin: EdgeInsets.only(right: 8.w),
-                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.h),
+                margin: EdgeInsets.only(right: ResponsiveHelper.width(8)),
+                padding: ResponsiveHelper.symmetric(
+                  horizontal: 16,
+                  vertical: 6,
+                ),
                 decoration: BoxDecoration(
                   color: e == "All"
                       ? AppColors.primaryShade100
                       : AppColors.white,
-                  borderRadius: BorderRadius.circular(20.r),
+                  borderRadius: BorderRadius.circular(
+                    ResponsiveHelper.borderRadius(20),
+                  ),
                   border: Border.all(
                     color: e == "All" ? AppColors.primary : Colors.transparent,
                   ),
@@ -400,7 +416,7 @@ class SentimentsScreen extends StatelessWidget {
                     color: e == "All"
                         ? AppColors.primary
                         : AppColors.outlineBorder,
-                    fontSize: 16.sp,
+                    fontSize: ResponsiveHelper.fontSize(16),
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -413,13 +429,14 @@ class SentimentsScreen extends StatelessWidget {
 
   Widget _sectionTitle(String title) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 12.h),
+      padding: EdgeInsets.only(bottom: ResponsiveHelper.height(12)),
       child: Text(
         title,
-        style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold),
+        style: TextStyle(
+          fontSize: ResponsiveHelper.fontSize(14),
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }
 }
-
-

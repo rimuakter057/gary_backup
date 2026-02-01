@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
+
 
 class CustomRadioCard extends StatelessWidget {
   final String title;
@@ -19,48 +21,53 @@ class CustomRadioCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        padding: EdgeInsets.symmetric(
+          horizontal: ResponsiveHelper.width(16),
+          vertical: ResponsiveHelper.height(12),
+        ),
         decoration: BoxDecoration(
-          // Light mint/teal background
           color: const Color(0xFFE0F2F1).withOpacity(0.5),
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(12)),
           border: Border.all(
             color: const Color(0xFF00897B),
-            width: 1,
+            width: ResponsiveHelper.borderWidth(1),
           ),
         ),
         child: Row(
           children: [
             // Blue Square Avatar
             Container(
-              height: 40,
-              width: 40,
+              height: ResponsiveHelper.height(40),
+              width: ResponsiveHelper.width(40),
               decoration: BoxDecoration(
                 color: const Color(0xFF90CAF9),
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(8)),
               ),
               alignment: Alignment.center,
               child: Text(
                 leadingText,
-                style: const TextStyle(
+                style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
+                  fontSize: ResponsiveHelper.fontSize(14),
                 ),
               ),
             ),
-            const SizedBox(width: 12),
+            SizedBox(width: ResponsiveHelper.width(12)),
+
             // Title Text
             Expanded(
               child: Text(
                 title,
-                style: const TextStyle(
-                  fontSize: 18,
+                style: TextStyle(
+                  fontSize: ResponsiveHelper.fontSize(18),
                   fontWeight: FontWeight.w600,
-                  color: Color(0xFF00695C), // Darker teal
+                  color: const Color(0xFF00695C),
                 ),
               ),
             ),
-            // The Custom Radio Button
+
+            // Custom Radio Button
             _buildCustomRadio(),
           ],
         ),
@@ -70,14 +77,14 @@ class CustomRadioCard extends StatelessWidget {
 
   Widget _buildCustomRadio() {
     return Container(
-      height: 24,
-      width: 24,
-      padding: const EdgeInsets.all(3),
+      height: ResponsiveHelper.height(24),
+      width: ResponsiveHelper.width(24),
+      padding: EdgeInsets.all(ResponsiveHelper.width(3)),
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(
           color: const Color(0xFF00897B),
-          width: 2,
+          width: ResponsiveHelper.borderWidth(2),
         ),
       ),
       child: isSelected

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
-
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 
 class TradeLogTile extends StatelessWidget {
   const TradeLogTile({super.key});
@@ -9,11 +8,11 @@ class TradeLogTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 12.h),
-      padding: EdgeInsets.all(12.w),
+      margin: EdgeInsets.only(bottom: ResponsiveHelper.height(12)),
+      padding: ResponsiveHelper.all(12),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12.r),
+        borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(12)),
         border: Border.all(color: AppColors.black),
       ),
       child: Column(
@@ -21,11 +20,23 @@ class TradeLogTile extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("XAUUSD", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp)),
-              Text("2025-10-11", style: TextStyle(color: AppColors.textGrey, fontSize: 10.sp)),
+              Text(
+                "XAUUSD",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: ResponsiveHelper.fontSize(14),
+                ),
+              ),
+              Text(
+                "2025-10-11",
+                style: TextStyle(
+                  color: AppColors.textGrey,
+                  fontSize: ResponsiveHelper.fontSize(10),
+                ),
+              ),
             ],
           ),
-          SizedBox(height: 10.h),
+          SizedBox(height: ResponsiveHelper.height(10)),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -44,8 +55,21 @@ class TradeLogTile extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label, style: TextStyle(color: AppColors.textGrey, fontSize: 10.sp)),
-        Text(value, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12.sp, color: valueColor)),
+        Text(
+          label,
+          style: TextStyle(
+            color: AppColors.textGrey,
+            fontSize: ResponsiveHelper.fontSize(10),
+          ),
+        ),
+        Text(
+          value,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: ResponsiveHelper.fontSize(12),
+            color: valueColor,
+          ),
+        ),
       ],
     );
   }

@@ -1,67 +1,82 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 import 'package:gary_goodger/utils/extension/base_extension.dart';
-
 import 'dash_board_chart.dart';
+
 
 class PerformanceCard extends StatelessWidget {
   const PerformanceCard({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Make sure ResponsiveHelper is initialized in parent screen
+    // ResponsiveHelper.init(context);
+
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.all(20.w),
+      padding: EdgeInsets.all(ResponsiveHelper.width(20)),
       decoration: BoxDecoration(
         color: AppColors.cardDark, // Dark contrast card
-        borderRadius: BorderRadius.circular(24.r),
-
+        borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(24)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Balance & Open Profit Row
+          // === Balance & Open Profit Row ===
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('\$175,320.58',
-                      style: context.bodyLarge.copyWith(color: AppColors.white)
-
+                  Text(
+                    '\$175,320.58',
+                    style: context.bodyLarge.copyWith(
+                      color: AppColors.white,
+                      fontSize: ResponsiveHelper.fontSize(20),
+                    ),
                   ),
-                  SizedBox(height: 4.h),
-                  Text('+18%',
-                      style: context.titleMedium.copyWith(color: AppColors.primaryShade)
+                  SizedBox(height: ResponsiveHelper.height(4)),
+                  Text(
+                    '+18%',
+                    style: context.titleMedium.copyWith(
+                      color: AppColors.primaryShade,
+                      fontSize: ResponsiveHelper.fontSize(14),
+                    ),
                   ),
                 ],
               ),
               Row(
                 children: [
-                  Text('\$256.36',
-                      style: context.titleMedium.copyWith(color: AppColors.white)
+                  Text(
+                    '\$256.36',
+                    style: context.titleMedium.copyWith(
+                      color: AppColors.white,
+                      fontSize: ResponsiveHelper.fontSize(14),
+                    ),
                   ),
-                  Text('  open',
-                      style: context.titleMedium.copyWith(color: AppColors.subPrimary)
+                  Text(
+                    '  open',
+                    style: context.titleMedium.copyWith(
+                      color: AppColors.subPrimary,
+                      fontSize: ResponsiveHelper.fontSize(14),
+                    ),
                   ),
                 ],
               ),
             ],
           ),
-          SizedBox(height: 20.h),
 
+          SizedBox(height: ResponsiveHelper.height(20)),
 
-
-
-
+          // === Tabs Container ===
           Container(
-            height: 36.h,
-            padding: EdgeInsets.all(4.w),
+            height: ResponsiveHelper.height(36),
+            padding: EdgeInsets.all(ResponsiveHelper.width(4)),
             decoration: BoxDecoration(
               color: Colors.white.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(12.r),
+              borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(12)),
             ),
             child: Row(
               children: [
@@ -72,9 +87,9 @@ class PerformanceCard extends StatelessWidget {
             ),
           ),
 
-          SizedBox(height: 10.h),
+          SizedBox(height: ResponsiveHelper.height(10)),
 
-          // The Chart
+          // === Chart ===
           DashboardChart(),
         ],
       ),
@@ -87,13 +102,13 @@ class PerformanceCard extends StatelessWidget {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: isSelected ? AppColors.primary : Colors.transparent,
-          borderRadius: BorderRadius.circular(8.r),
+          borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(8)),
         ),
         child: Text(
           label,
           style: TextStyle(
             color: isSelected ? Colors.white : Colors.white54,
-            fontSize: 12.sp,
+            fontSize: ResponsiveHelper.fontSize(12),
             fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
           ),
         ),

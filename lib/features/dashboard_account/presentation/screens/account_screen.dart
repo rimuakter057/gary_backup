@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gary_goodger/core/routes/app_routes.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/widgets/account_appbar_row_widget.dart';
+import 'package:gary_goodger/features/dashboard_account/presentation/widgets/account_tab_widget.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/widgets/performance_card.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/widgets/state_card.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_appbar/custom_appbar_container.dart';
 import 'package:gary_goodger/share/widgets/custom_container/custom_container.dart';
 import 'package:gary_goodger/share/widgets/custom_image/custom_image.dart';
@@ -27,17 +28,23 @@ class _AccountScreenState extends State<AccountScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
-      bottomNavigationBar: _buildBottomNav(),
+      //bottomNavigationBar: _buildBottomNav(),
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [
           ///appbar=======================================================================
           const DashboardHeader(),
 
+          SliverToBoxAdapter(
+            child: SizedBox(height: ResponsiveHelper.height(22)),
+          ),
+
           ///account header section==================================================
           SliverToBoxAdapter(
             child: CustomContainer(
-              margin: EdgeInsets.symmetric(horizontal: 16),
+              margin: EdgeInsets.symmetric(
+                horizontal: ResponsiveHelper.width(16),
+              ),
               backgroundColor: AppColors.greyShade,
               child: Column(
                 children: [
@@ -59,7 +66,13 @@ class _AccountScreenState extends State<AccountScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 16.h),
+                  GestureDetector(
+                    onTap: () {
+                      Get.back();
+                    },
+                    child: CustomImage(imageSrc: AppAssets.arrowBack),
+                  ),
+                  SizedBox(height: ResponsiveHelper.height(16)),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -82,23 +95,28 @@ class _AccountScreenState extends State<AccountScreen> {
             ),
           ),
 
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: ResponsiveHelper.all(16),
+              child: AccountTabWidget(),
+            ),
+          ),
+
           /// 2. upgrade overview win p/l rate view===============================================
           SliverToBoxAdapter(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              padding: EdgeInsets.symmetric(
+                horizontal: ResponsiveHelper.width(16),
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 12.h),
-
-                  SizedBox(height: 24.h),
-
-                  SizedBox(height: 12.h),
+                  SizedBox(height: ResponsiveHelper.height(18)),
 
                   /// graph chart===================================================================
                   PerformanceCard(),
 
-                  SizedBox(height: 16.h),
+                  SizedBox(height: ResponsiveHelper.height(16)),
                 ],
               ),
             ),
@@ -107,8 +125,13 @@ class _AccountScreenState extends State<AccountScreen> {
           ///key matrics card gridview=======================================================================
           SliverToBoxAdapter(
             child: Card(
+              color: AppColors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+                side: BorderSide(color: AppColors.boarderColor, width: 1),
+              ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(
+                padding: ResponsiveHelper.symmetric(
                   horizontal: 16,
                   vertical: 16,
                 ),
@@ -150,7 +173,7 @@ class _AccountScreenState extends State<AccountScreen> {
     return Row(
       children: [
         CustomImage(imageSrc: imagePath),
-        SizedBox(width: 4.w),
+        SizedBox(width: ResponsiveHelper.width(4)),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -175,13 +198,13 @@ class _AccountScreenState extends State<AccountScreen> {
             style: context.bodySmall.copyWith(fontWeight: FontWeight.w600),
           ),
 
-          SizedBox(height: 24.h),
+          SizedBox(height: ResponsiveHelper.height(24)),
           Text(
             "\$32343", // ← fixed + %
             style: context.bodyLarge,
           ),
 
-          SizedBox(height: 4.h),
+          SizedBox(height: ResponsiveHelper.height(4)),
 
           Row(
             children: [
@@ -198,37 +221,22 @@ class _AccountScreenState extends State<AccountScreen> {
   }
 
   /// helper methode section===================================================================================
-
-  Widget _buildBottomNav() {
-    return BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      selectedItemColor: const Color(0xFF00796B),
-      unselectedItemColor: Colors.grey,
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: ""),
-        BottomNavigationBarItem(icon: Icon(Icons.add_box_outlined), label: ""),
-        BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: ""),
-        BottomNavigationBarItem(icon: Icon(Icons.copy_outlined), label: ""),
-        BottomNavigationBarItem(icon: Icon(Icons.show_chart), label: ""),
-      ],
-    );
-  }
 }
 
 /// appbar header===============================================================
 
 class DashboardHeader extends StatelessWidget {
-  const DashboardHeader({super.key});
+  const DashboardHeader({super.key, this.title});
+
+  final String? title;
 
   @override
   Widget build(BuildContext context) {
-    final double toolbarHeight = 100.h;
+    final double toolbarHeight = ResponsiveHelper.height(100);
     return SliverAppBar(
       automaticallyImplyLeading: false,
       pinned: true,
-      expandedHeight: 136.h,
+      expandedHeight: ResponsiveHelper.height(136),
       toolbarHeight: toolbarHeight,
       backgroundColor: Colors.white,
       elevation: 0,
@@ -247,7 +255,10 @@ class DashboardHeader extends StatelessWidget {
                 ? _buildSmallAppBar(context)
                 : const SizedBox.shrink(),
             background: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              padding: EdgeInsets.only(
+                left: ResponsiveHelper.width(16),
+                right: ResponsiveHelper.width(16),
+              ),
               child: isCollapsed
                   ? const SizedBox.shrink()
                   : _buildBigAppBar(context),
@@ -267,12 +278,12 @@ class DashboardHeader extends StatelessWidget {
               CustomImage(imageSrc: AppAssets.logo),
               Spacer(),
 
-              Text(AppText.account, style: context.bodyMedium),
+              Text(title ?? AppText.account, style: context.bodyMedium),
 
               Spacer(),
-              // Notification and Menu
+
               CustomImage(imageSrc: AppAssets.filter),
-              SizedBox(width: 16.w),
+              SizedBox(width: ResponsiveHelper.width(16)),
               GestureDetector(
                 onTap: () {
                   Get.toNamed(AppRoutes.addAccountScreen);
@@ -281,7 +292,7 @@ class DashboardHeader extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 8.h),
+          SizedBox(height: ResponsiveHelper.height(8)),
           AccountAppbarRowWidget(),
         ],
       ),
@@ -298,7 +309,7 @@ class DashboardHeader extends StatelessWidget {
                 children: [
                   CustomImage(imageSrc: AppAssets.logo),
 
-                  SizedBox(width: 4.w),
+                  SizedBox(width: ResponsiveHelper.width(4)),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -306,11 +317,12 @@ class DashboardHeader extends StatelessWidget {
                         AppText.account,
                         style: context.titleSmall.copyWith(
                           fontWeight: FontWeight.w400,
+                          color: AppColors.subPrimary,
                         ),
                       ),
 
                       SizedBox(
-                        width: 120.w,
+                        width: ResponsiveHelper.width(120),
                         child: Text(
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
@@ -322,15 +334,15 @@ class DashboardHeader extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(width: 4.w),
+                  SizedBox(width: ResponsiveHelper.width(4)),
                   CustomImage(imageSrc: AppAssets.dropdown),
                 ],
               ),
 
               Spacer(),
-              // Notification and Menu
+
               CustomImage(imageSrc: AppAssets.filter),
-              SizedBox(width: 16.w),
+              SizedBox(width: ResponsiveHelper.width(16)),
               GestureDetector(
                 onTap: () {
                   Get.toNamed(AppRoutes.addAccountScreen);
@@ -385,16 +397,19 @@ class ChartContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 220.h,
+      height: ResponsiveHelper.height(220),
       width: double.infinity,
       decoration: BoxDecoration(
         color: const Color(0xFF0B1019),
-        borderRadius: BorderRadius.circular(16.r),
+        borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(16)),
       ),
       child: Center(
         child: Text(
           "Line Graph Area",
-          style: TextStyle(color: Colors.white24, fontSize: 12.sp),
+          style: TextStyle(
+            color: Colors.white24,
+            fontSize: ResponsiveHelper.fontSize(12),
+          ),
         ),
       ),
     );
@@ -408,7 +423,7 @@ class HorizontalStatsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 140.h,
+      height: ResponsiveHelper.height(140),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: 4,

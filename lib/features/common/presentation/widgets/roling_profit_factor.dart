@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
+
+
 class RollingProfitFactorWidget extends StatelessWidget {
   final Map<String, double> pfData; // Example: {'1 Oct': 1.5, '2 Oct': 1.7, ...}
 
@@ -9,22 +12,26 @@ class RollingProfitFactorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: ResponsiveHelper.all(20),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: Colors.grey.shade200),
+        borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(24)),
+        border: Border.all(color: Colors.grey.shade200, width: ResponsiveHelper.width(1)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             "Rolling Profit Factor",
-            style: TextStyle(color: Color(0xFF4A4A4A), fontSize: 18, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              color: const Color(0xFF4A4A4A),
+              fontSize: ResponsiveHelper.fontSize(18),
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          const SizedBox(height: 30),
+          SizedBox(height: ResponsiveHelper.height(30)),
           SizedBox(
-            height: 250,
+            height: ResponsiveHelper.height(250),
             child: LineChart(
               LineChartData(
                 minY: 1.40,
@@ -36,17 +43,17 @@ class RollingProfitFactorWidget extends StatelessWidget {
                       return touchedSpots.map((spot) {
                         return LineTooltipItem(
                           '30/01/2026\n\n',
-                          const TextStyle(color: Colors.grey, fontSize: 10),
+                          TextStyle(color: Colors.grey, fontSize: ResponsiveHelper.fontSize(10)),
                           children: [
-                            const TextSpan(
+                            TextSpan(
                               text: 'TRADES     PF\n',
-                              style: TextStyle(color: Colors.grey, fontSize: 8),
+                              style: TextStyle(color: Colors.grey, fontSize: ResponsiveHelper.fontSize(8)),
                             ),
                             TextSpan(
                               text: '35         ${spot.y}',
-                              style: const TextStyle(
-                                color: Color(0xFF00A38D),
-                                fontSize: 14,
+                              style: TextStyle(
+                                color: const Color(0xFF00A38D),
+                                fontSize: ResponsiveHelper.fontSize(14),
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -58,13 +65,22 @@ class RollingProfitFactorWidget extends StatelessWidget {
                 ),
                 titlesData: FlTitlesData(
                   leftTitles: AxisTitles(
-                    axisNameWidget: const Text("Profit Factor", style: TextStyle(color: Colors.grey, fontSize: 10)),
+                    axisNameWidget: Text(
+                      "Profit Factor",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: ResponsiveHelper.fontSize(10),
+                      ),
+                    ),
                     sideTitles: SideTitles(
                       showTitles: true,
-                      reservedSize: 40,
+                      reservedSize: ResponsiveHelper.width(40),
                       getTitlesWidget: (value, meta) => Text(
                         value.toStringAsFixed(2),
-                        style: const TextStyle(color: Colors.grey, fontSize: 10),
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: ResponsiveHelper.fontSize(10),
+                        ),
                       ),
                     ),
                   ),
@@ -75,10 +91,13 @@ class RollingProfitFactorWidget extends StatelessWidget {
                         int index = value.toInt();
                         if (index >= 0 && index < pfData.keys.length) {
                           return Padding(
-                            padding: const EdgeInsets.only(top: 10),
+                            padding: EdgeInsets.only(top: ResponsiveHelper.height(10)),
                             child: Text(
                               pfData.keys.elementAt(index),
-                              style: const TextStyle(color: Colors.grey, fontSize: 10),
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: ResponsiveHelper.fontSize(10),
+                              ),
                             ),
                           );
                         }
@@ -94,7 +113,7 @@ class RollingProfitFactorWidget extends StatelessWidget {
                   drawVerticalLine: false,
                   getDrawingHorizontalLine: (value) => FlLine(
                     color: Colors.grey.shade100,
-                    strokeWidth: 1,
+                    strokeWidth: ResponsiveHelper.width(1),
                     dashArray: [5, 5],
                   ),
                 ),
@@ -106,19 +125,33 @@ class RollingProfitFactorWidget extends StatelessWidget {
                     }).toList(),
                     isCurved: false,
                     color: const Color(0xFF00897B),
-                    barWidth: 2,
+                    barWidth: ResponsiveHelper.width(2),
                     isStrokeCapRound: true,
-                    dotData: const FlDotData(show: true),
+                    dotData: FlDotData(
+                      show: true,
+                      getDotPainter: (spot, percent, barData, index) => FlDotCirclePainter(
+                        radius: ResponsiveHelper.width(3),
+                        color: const Color(0xFF00897B),
+                        strokeWidth: ResponsiveHelper.width(1),
+                        strokeColor: Colors.white,
+                      ),
+                    ),
                     belowBarData: BarAreaData(show: false),
                   ),
                 ],
               ),
             ),
           ),
-          const Center(
+          Center(
             child: Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Text("Dates", style: TextStyle(color: Colors.grey, fontSize: 12)),
+              padding: EdgeInsets.only(top: ResponsiveHelper.height(10)),
+              child: Text(
+                "Dates",
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: ResponsiveHelper.fontSize(12),
+                ),
+              ),
             ),
           ),
         ],

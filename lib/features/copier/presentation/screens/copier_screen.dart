@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gary_goodger/features/copier/presentation/widgets/radio_tile_widget.dart';
+import 'package:gary_goodger/core/routes/app_routes.dart';
 import 'package:gary_goodger/features/copier/presentation/widgets/master_account_card.dart';
+import 'package:gary_goodger/features/copier/presentation/widgets/radio_tile_widget.dart';
+import 'package:gary_goodger/features/copier/presentation/widgets/tab_widget.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/widgets/account_title.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/widgets/custom_switch_button.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_container/custom_container.dart';
 import 'package:gary_goodger/share/widgets/custom_image/custom_image.dart';
 import 'package:gary_goodger/utils/app_assets/app_assets.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 import 'package:gary_goodger/utils/app_text/app_strings.dart';
 import 'package:gary_goodger/utils/extension/base_extension.dart';
+import 'package:get/get.dart';
+
 
 class CopierScreen extends StatefulWidget {
   const CopierScreen({super.key});
@@ -23,6 +28,7 @@ class _CopierScreenState extends State<CopierScreen> {
   bool isSelected = true;
   @override
   Widget build(BuildContext context) {
+    final Widget gap = SizedBox(height: ResponsiveHelper.height(16));
     return Scaffold(
       backgroundColor: AppColors.background,
 
@@ -34,7 +40,7 @@ class _CopierScreenState extends State<CopierScreen> {
           "Copier",
           style: TextStyle(
             color: Colors.black,
-            fontSize: 18.sp,
+            fontSize: ResponsiveHelper.fontSize(18),
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -44,46 +50,91 @@ class _CopierScreenState extends State<CopierScreen> {
             onPressed: () {},
             icon: Icon(Icons.add, color: Colors.black),
           ),
-          SizedBox(width: 10.w),
+          SizedBox(width: ResponsiveHelper.width(10)),
         ],
       ),
       body: Column(
         children: [
-          // Top Tabs (Accounts, Templates, Logs)
-          _buildTopTabs(),
 
+          TabWidgetCopier(),
           Expanded(
             child: SingleChildScrollView(
-              padding: EdgeInsets.all(16.w),
+              padding: ResponsiveHelper.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Search Bar
                   _buildSearchBar(),
-                  SizedBox(height: 20.h),
+                  SizedBox(height: ResponsiveHelper.height(20)),
 
                   Text(
                     "Master Accounts",
                     style: TextStyle(
                       fontWeight: FontWeight.w400,
-                      fontSize: 16.sp,
+                      fontSize: ResponsiveHelper.fontSize(16),
                     ),
                   ),
-                  SizedBox(height: 16.h),
+                  gap,
 
                   /// master account tile===============================================================
-                  _buildSectionHeader("Enabled (03)"),
-                  const MasterAccountCardAnalyzer(
-                    title: "Master Account 1",
-                    enabled: 7,
-                    disabled: 3,
+                  CustomContainer(
+                    backgroundColor: AppColors.white,
+                    borderColor: AppColors.boarderColor,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _buildSectionHeader("Enabled (03)"),
+                        const MasterAccountCardAnalyzer(
+                          title: "Master Account 1",
+                          enabled: 7,
+                          disabled: 3,
+                        ),
+                        SizedBox(height: ResponsiveHelper.height(12),),
+                        const MasterAccountCardAnalyzer(
+                          title: "Master Account 2",
+                          enabled: 7,
+                          disabled: 3,
+                        ),
+                      ],
+                    ),
                   ),
-                  SizedBox(height: 16.h),
+                  SizedBox(height: ResponsiveHelper.height(18),),
+
+                  CustomContainer(
+                    backgroundColor: AppColors.white,
+                    borderColor: AppColors.boarderColor,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _buildSectionHeader("Disabled - Monitor Existing (03)"),
+                        GestureDetector(
+                          onTap: (){
+                            Get.toNamed(AppRoutes.masterAccountScreen);
+                          },
+                          child: const MasterAccountCardAnalyzer(
+                            title: "Master Account 3",
+                            enabled: 7,
+                            disabled: 3,
+                          ),
+                        ),
+                        SizedBox(height: ResponsiveHelper.height(12),),
+                        const MasterAccountCardAnalyzer(
+                          title: "Master Account 4",
+                          enabled: 7,
+                          disabled: 3,
+                        ),
+                      ],
+                    ),
+                  ),
+
+
+
+                  SizedBox(height: ResponsiveHelper.height(16)),
                   Text(
                     "slave account setting",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 16.sp,
+                      fontSize: ResponsiveHelper.fontSize(16),
                     ),
                   ),
 
@@ -103,7 +154,7 @@ class _CopierScreenState extends State<CopierScreen> {
                     "Master Accounts Slave",
                     style: TextStyle(
                       fontWeight: FontWeight.w400,
-                      fontSize: 16.sp,
+                      fontSize: ResponsiveHelper.fontSize(16),
                     ),
                   ),
                   CustomContainer(
@@ -123,7 +174,7 @@ class _CopierScreenState extends State<CopierScreen> {
                                 AppText.slaveAccount,
                                 style: context.bodyMedium,
                               ),
-                              SizedBox(height: 4.h),
+                              SizedBox(height: ResponsiveHelper.height(4)),
                               Text(
                                 "RIsk Type: Lot Multiplier  Risk: 1%",
                                 maxLines: 1,
@@ -150,16 +201,17 @@ class _CopierScreenState extends State<CopierScreen> {
                     ),
                   ),
 
-                  SizedBox(height: 16.h),
+                  gap,
+
                   /// advance setting===============================================================
                   Text(
                     "advance setting",
                     style: TextStyle(
                       fontWeight: FontWeight.w400,
-                      fontSize: 16.sp,
+                      fontSize: ResponsiveHelper.fontSize(16),
                     ),
                   ),
-                  SizedBox(height: 16.h),
+                  gap,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -174,13 +226,14 @@ class _CopierScreenState extends State<CopierScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 16.h),
-                 ///copy from account tile======================================================
+                  gap,
+
+                  ///copy from account tile======================================================
                   Text(
                     "copy from account title",
                     style: TextStyle(
                       fontWeight: FontWeight.w400,
-                      fontSize: 16.sp,
+                      fontSize: ResponsiveHelper.fontSize(16),
                     ),
                   ),
                   CustomContainer(
@@ -194,20 +247,20 @@ class _CopierScreenState extends State<CopierScreen> {
                       statusTextColor: AppColors.primary,
                       statusBgColor: AppColors.primaryShade100,
                       statusBorderColor:
-                      AppColors.primary, // statusColor: Colors.orange
+                          AppColors.primary, // statusColor: Colors.orange
                     ),
                   ),
-                  SizedBox(height: 16.h),
+                  gap,
+
                   ///map to symbols======================================================
                   Text(
                     "map symbol",
                     style: TextStyle(
                       fontWeight: FontWeight.w400,
-                      fontSize: 16.sp,
+                      fontSize: ResponsiveHelper.fontSize(16),
                     ),
                   ),
                   RadioTileWidget(isSelected: isSelected),
-
                 ],
               ),
             ),
@@ -216,21 +269,6 @@ class _CopierScreenState extends State<CopierScreen> {
       ),
     );
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   Widget _buildTopTabs() {
     return Container(
@@ -297,24 +335,3 @@ class _CopierScreenState extends State<CopierScreen> {
     );
   }
 }
-
-
-
-///switch Row
-
-///notification list tile=======================================
-
-// ListTile(
-// leading: CustomImage(
-// imageSrc: AppAssets.accountManagementDashboard,
-// ),
-// title: Text(AppText.accountManagement, style: context.bodyMedium),
-// subtitle: Text(
-// AppText.showingListOfAllAccounts,
-// style: context.bodySmall,
-// ),
-// trailing: CustomImage(imageSrc: AppAssets.arrowFront),
-// ),
-
-///copy from account title========================
-

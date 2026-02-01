@@ -3,6 +3,8 @@ import 'package:gary_goodger/features/analyzer/presentation/screens/analyzer_det
 import 'package:gary_goodger/features/analyzer/presentation/screens/analyzer_heat_map_screen.dart';
 import 'package:gary_goodger/features/analyzer/presentation/screens/analyzer_screen.dart';
 import 'package:gary_goodger/features/auth/presentation/screens/auth_flow_screen.dart';
+import 'package:gary_goodger/features/chat/presentation/screens/chat_inbox_screen.dart';
+import 'package:gary_goodger/features/chat/presentation/screens/chat_screen.dart';
 import 'package:gary_goodger/features/common/presentation/screens/graph_chart_screen.dart';
 import 'package:gary_goodger/features/compare/presentation/screens/compare_screens.dart';
 import 'package:gary_goodger/features/compare/presentation/screens/comparison_screen.dart';
@@ -20,7 +22,7 @@ import 'package:gary_goodger/features/copier/presentation/screens/trading_hour_s
 import 'package:gary_goodger/features/dashboard_account/presentation/screens/account_screen.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/screens/add_account_screen.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/screens/equity_protector_screen.dart';
-import 'package:gary_goodger/features/dashboard_account/presentation/screens/home.dart';
+import 'package:gary_goodger/features/dashboard_account/presentation/screens/dashboard_screen.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/screens/tranding_symbol_screen.dart';
 import 'package:gary_goodger/features/profile_screen/presentation/screens/profile_screen.dart';
 import 'package:gary_goodger/features/sentiments/presentation/screens/sentiments_screen.dart';
@@ -40,7 +42,7 @@ class AppRoutes {
 
   static const String sentimentsScreen="/sentimentsScreen";
   static const String graphChartScreen="/graphChartScreen";
-  static const String homeScreen="/homeScreen";
+  static const String dashboardScreen="/dashboardScreen";
   static const String equityProtectorScreen='/equityProtectorScreen';
   static const String tradingSymbolScreen='/tradingSymbolScreen';
   static const String addAccountScreen='/addAccountScreen';
@@ -60,6 +62,10 @@ class AppRoutes {
   static const String masterAccountScreen = "/masterAccountScreen";
   static const String slaveAccountScreen = "/slaveAccountScreen";
   static const String tradingHourScreen = "/tradingHourScreen";
+///chat===========================================================
+  static const String chatScreen = "/chatScreen";
+  static const String chatInboxScreen = "/chatInboxScreen";
+
 
   ///profile section ========================================================
   static const String profileScreen = "/profileScreen";
@@ -73,14 +79,14 @@ class AppRoutes {
     ///===========================Authentication==========================
 
     GetPage(name: splashScreen, page: ()=>SplashScreen()),
-    GetPage(name: splashScreen, page: ()=>AuthFlowScreen()),
+    GetPage(name: authFlowScreen, page: ()=>AuthFlowScreen()),
     GetPage(name: accountScreen, page: ()=>AccountScreen()),
     GetPage(name: analyzerScreen, page: ()=>AnalyzerScreen()),
     GetPage(name: analyzerDetailsScreen, page: ()=>AnalyzerDetailsScreen()),
     GetPage(name: analyzerHeatMapScreen, page: ()=>AnalyzerHeatmapScreen()),
     GetPage(name: sentimentsScreen, page: ()=>SentimentsScreen()),
     GetPage(name: graphChartScreen, page: ()=>GraphChartScreen()),
-    GetPage(name: homeScreen, page: ()=>HomeDashboard()),
+    GetPage(name: dashboardScreen, page: ()=>DashboardScreen()),
     GetPage(name: equityProtectorScreen, page: ()=>EquityProtectorScreen()),
     GetPage(name: tradingSymbolScreen, page: ()=>TradingSymbolScreen()),
     GetPage(name: addAccountScreen, page: ()=>AddAccountScreen()),
@@ -100,6 +106,9 @@ class AppRoutes {
     GetPage(name: comparisonScreen, page: ()=>ComparisonScreen()),
     GetPage(name: filterPropScreen, page: ()=>FilterPropScreen()),
     GetPage(name: firmDetailsScreen, page: ()=>FirmDetailsScreen()),
+///chat===============================================
+    GetPage(name: chatScreen, page: ()=>ChatScreen()),
+    GetPage(name: chatInboxScreen,page: ()=>ChatInboxScreen()),
 
     ///profile section===================
     GetPage(name: profileScreen, page: ()=>ProfileScreen()),

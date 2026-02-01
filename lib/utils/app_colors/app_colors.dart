@@ -69,16 +69,17 @@ class AppColors {
  static const Color outlineBorder=Color(0xFF7E8A93);
   static const Color background = Color(0xFFF5F7F8);
   static const Color cardDark = Color(0xFF0D1424);
-
+  static const Color greyCancel=Color(0xFF929292);
   static const Color textDark = Color(0xFF1A1A1A);
   static const Color textGrey = Color(0xFF7A7A7A);
   static const Color blueGrey = Color(0xFF97BFE1);
   static const Color orange = Color(0xFFE67E22);
   static const Color orangeShadeBg = Color(0x1AE67E22);
-
+  static const Color deletePopBgColor=Color(0xCCFFFFFF);
   static const Color accentOrange = Color(0xFFF2994A);
   static const Color accentGreen = Color(0xFF27AE60);
   static const Color red = Color(0xFFF53F3F);
+  static const Color redDelete = Color(0xFFFF9092);
   static const Color redAccent = Color(0x0DF53F3F);
   static const Color labelText = Color(0xFF7E8A93);
   static const Color boarderColor = Color(0xFFE1E1E1);

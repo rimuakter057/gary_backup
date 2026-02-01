@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_image/custom_image.dart' show CustomImage;
 import 'package:gary_goodger/utils/app_assets/app_assets.dart';
 import 'package:gary_goodger/utils/extension/base_extension.dart';
@@ -18,7 +19,7 @@ class ProfileTileWidget extends StatelessWidget {
         Row(
           children: [
             CustomImage(imageSrc: AppAssets.securityProfile),
-            SizedBox(width: 12.w,),
+            SizedBox(width:  ResponsiveHelper.width(12),),
             Text("Security",style: context.bodyMedium.copyWith(fontWeight: FontWeight.w500),),
           ],
         ),

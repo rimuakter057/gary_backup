@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_container/custom_container.dart';
 import 'package:gary_goodger/share/widgets/custom_image/custom_image.dart';
 import 'package:gary_goodger/utils/app_assets/app_assets.dart';
@@ -21,8 +22,9 @@ class MasterAccountCardAnalyzer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomContainer(
+      vertical: ResponsiveHelper.height(12),
         borderColor: AppColors.boarderColor,
-
+        
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -36,7 +38,7 @@ class MasterAccountCardAnalyzer extends StatelessWidget {
                   title,
                   style: context.bodyMedium,
                 ),
-                SizedBox(height: 4.h),
+                SizedBox(height:ResponsiveHelper.height(4)),
                 Text(
                   "Slaves Enabled: $enabled  Disabled: $disabled",
                   maxLines: 1,
@@ -49,16 +51,17 @@ class MasterAccountCardAnalyzer extends StatelessWidget {
 
 
           CustomContainer(
-            width: 64.w,
-     horizontal: 2.w, vertical: 2.h,
-            radius: 50.r,
+            width:ResponsiveHelper.width(64),
+            horizontal:ResponsiveHelper.width(2) ,
+            vertical: ResponsiveHelper.height(2),
+            radius: ResponsiveHelper.borderRadius(50),
             backgroundColor: AppColors.orange,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CustomImage(imageSrc: AppAssets.masterAccountShare),
-                SizedBox(width: 4.w),
+                SizedBox(width: ResponsiveHelper.width(4)),
                 Text(
                   "10",
                   style: context.titleSmall.copyWith(color: AppColors.white),

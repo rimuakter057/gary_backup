@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
+
 
 class ROIHeatmap extends StatelessWidget {
   final List<String> days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -27,18 +29,28 @@ class ROIHeatmap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: ResponsiveHelper.all(16),
       decoration: BoxDecoration(
         color: const Color(0xFF11141D),
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(24)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text("ROI Heatmap", style: TextStyle(color: Colors.white, fontSize: 18)),
-          const SizedBox(height: 20),
+          Text(
+            "ROI Heatmap",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: ResponsiveHelper.fontSize(18),
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(height: ResponsiveHelper.height(20)),
           Table(
-            border: TableBorder.all(color: Colors.white10, width: 0.5),
+            border: TableBorder.all(
+              color: Colors.white10,
+              width: ResponsiveHelper.width(0.5),
+            ),
             children: [
               // Rows based on time slots
               for (int i = 0; i < timeSlots.length; i++)
@@ -46,20 +58,31 @@ class ROIHeatmap extends StatelessWidget {
                   children: [
                     // Time Label Column
                     Container(
-                      padding: const EdgeInsets.all(4),
-                      height: 50,
+                      padding: ResponsiveHelper.all(4),
+                      height: ResponsiveHelper.height(50),
                       alignment: Alignment.center,
-                      child: Text(timeSlots[i], style: const TextStyle(color: Colors.grey, fontSize: 8)),
+                      child: Text(
+                        timeSlots[i],
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: ResponsiveHelper.fontSize(8),
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                     // Data Columns (Days)
                     for (int j = 0; j < 7; j++)
                       Container(
-                        height: 50,
+                        height: ResponsiveHelper.height(50),
                         alignment: Alignment.center,
                         color: _getColor(heatmapData[i][j]),
                         child: Text(
                           heatmapData[i][j].toString(),
-                          style: const TextStyle(color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 10),
+                          style: TextStyle(
+                            color: Colors.black87,
+                            fontWeight: FontWeight.bold,
+                            fontSize: ResponsiveHelper.fontSize(10),
+                          ),
                         ),
                       ),
                   ],
@@ -70,31 +93,55 @@ class ROIHeatmap extends StatelessWidget {
                   const SizedBox(), // Empty corner cell
                   for (var day in days)
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
-                      child: Center(child: Text(day, style: const TextStyle(color: Colors.grey, fontSize: 10))),
+                      padding: EdgeInsets.symmetric(vertical: ResponsiveHelper.height(8)),
+                      child: Center(
+                        child: Text(
+                          day,
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: ResponsiveHelper.fontSize(10),
+                          ),
+                        ),
+                      ),
                     ),
                 ],
               ),
             ],
           ),
-          const SizedBox(height: 15),
+          SizedBox(height: ResponsiveHelper.height(15)),
           // Gradient Legend at bottom
           Row(
             children: [
-              const Text("-1.0%", style: TextStyle(color: Colors.grey, fontSize: 10)),
+              Text(
+                "-1.0%",
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: ResponsiveHelper.fontSize(10),
+                ),
+              ),
               Expanded(
                 child: Container(
-                  height: 6,
-                  margin: const EdgeInsets.symmetric(horizontal: 8),
+                  height: ResponsiveHelper.height(6),
+                  margin: EdgeInsets.symmetric(horizontal: ResponsiveHelper.width(8)),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(3),
+                    borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(3)),
                     gradient: const LinearGradient(
-                      colors: [Color(0xFFF25C54), Color(0xFFF6BD60), Color(0xFF2ECC71)],
+                      colors: [
+                        Color(0xFFF25C54),
+                        Color(0xFFF6BD60),
+                        Color(0xFF2ECC71)
+                      ],
                     ),
                   ),
                 ),
               ),
-              const Text("+2.0%", style: TextStyle(color: Colors.grey, fontSize: 10)),
+              Text(
+                "+2.0%",
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: ResponsiveHelper.fontSize(10),
+                ),
+              ),
             ],
           ),
         ],

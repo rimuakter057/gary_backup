@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/widgets/setting_bottom_sheet_widget.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_image/custom_image.dart';
 import 'package:gary_goodger/utils/app_assets/app_assets.dart';
 import 'package:gary_goodger/utils/app_text/app_strings.dart';
 import 'package:gary_goodger/utils/extension/base_extension.dart';
 import 'package:get/get.dart';
+
 class AccountAppbarRowWidget extends StatelessWidget {
-  const AccountAppbarRowWidget({
-    super.key,
-  });
+  const AccountAppbarRowWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +21,7 @@ class AccountAppbarRowWidget extends StatelessWidget {
           children: [
             Text(
               AppText.account,
-              style: context.titleSmall.copyWith(
-                fontWeight: FontWeight.w400,
-              ),
+              style: context.titleSmall.copyWith(fontWeight: FontWeight.w400),
             ),
 
             Text(
@@ -37,13 +35,11 @@ class AccountAppbarRowWidget extends StatelessWidget {
         Row(
           children: [
             CustomImage(imageSrc: AppAssets.dropdown),
-            SizedBox(width: 12.w),
+            SizedBox(width: ResponsiveHelper.width(12)),
             GestureDetector(
               onTap: () {
                 Get.bottomSheet(
-
                   SettingBottomSheetWidget(),
-
 
                   isScrollControlled: true,
                 );

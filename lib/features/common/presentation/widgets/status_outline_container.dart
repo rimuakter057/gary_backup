@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_container/custom_container.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -28,12 +29,13 @@ class StatusOutlineContainer extends StatelessWidget {
     return CustomContainer(
         backgroundColor:statusBgColor,
         borderColor: statusBorderColor,
-        radius: 6.r,
-    horizontal:horizontalPadding?? 3.w, vertical:verticalPadding?? 1.h,
+        radius:ResponsiveHelper.borderRadius(6),
+    horizontal:horizontalPadding?? ResponsiveHelper.width(3),
+        vertical:verticalPadding?? ResponsiveHelper.height(1),
         child: Center(
           child: Text(status,style: GoogleFonts.instrumentSans(
               fontWeight: FontWeight.w600,
-              fontSize:fontSize?? 12.sp,
+              fontSize:fontSize?? ResponsiveHelper.fontSize(12),
               color: statusTextColor
           ),
           ),

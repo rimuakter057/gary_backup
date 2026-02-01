@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
+
 
 class RiskOutcomeChart extends StatelessWidget {
   final List<double> values; // [0.14, -0.20, 0.30, 0.05]
@@ -14,21 +16,25 @@ class RiskOutcomeChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: ResponsiveHelper.all(20),
       decoration: BoxDecoration(
-        color: const Color(0xFF11141D), // Dark background
-        borderRadius: BorderRadius.circular(24),
+        color: const Color(0xFF11141D),
+        borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(24)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             "Risk per Trade vs Outcome",
-            style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: ResponsiveHelper.fontSize(16),
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          const SizedBox(height: 30),
+          SizedBox(height: ResponsiveHelper.height(30)),
           SizedBox(
-            height: 250,
+            height: ResponsiveHelper.height(250),
             child: BarChart(
               BarChartData(
                 alignment: BarChartAlignment.spaceAround,
@@ -39,7 +45,7 @@ class RiskOutcomeChart extends StatelessWidget {
                   drawVerticalLine: false,
                   getDrawingHorizontalLine: (value) => FlLine(
                     color: Colors.white10,
-                    strokeWidth: 1,
+                    strokeWidth: ResponsiveHelper.width(1),
                     dashArray: [5, 5],
                   ),
                 ),
@@ -47,10 +53,13 @@ class RiskOutcomeChart extends StatelessWidget {
                   leftTitles: AxisTitles(
                     sideTitles: SideTitles(
                       showTitles: true,
-                      reservedSize: 30,
+                      reservedSize: ResponsiveHelper.width(30),
                       getTitlesWidget: (value, meta) => Text(
                         value.toStringAsFixed(1),
-                        style: const TextStyle(color: Colors.grey, fontSize: 10),
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: ResponsiveHelper.fontSize(10),
+                        ),
                       ),
                     ),
                   ),
@@ -60,8 +69,14 @@ class RiskOutcomeChart extends StatelessWidget {
                       getTitlesWidget: (value, meta) {
                         if (value.toInt() < labels.length) {
                           return Padding(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: Text(labels[value.toInt()], style: const TextStyle(color: Colors.grey, fontSize: 10)),
+                            padding: EdgeInsets.only(top: ResponsiveHelper.height(10)),
+                            child: Text(
+                              labels[value.toInt()],
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: ResponsiveHelper.fontSize(10),
+                              ),
+                            ),
                           );
                         }
                         return const Text('');
@@ -76,8 +91,14 @@ class RiskOutcomeChart extends StatelessWidget {
               ),
             ),
           ),
-          const Center(
-            child: Text("Risk buckets", style: TextStyle(color: Colors.grey, fontSize: 12)),
+          Center(
+            child: Text(
+              "Risk buckets",
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: ResponsiveHelper.fontSize(12),
+              ),
+            ),
           )
         ],
       ),
@@ -91,8 +112,8 @@ class RiskOutcomeChart extends StatelessWidget {
         BarChartRodData(
           toY: y,
           color: y >= 0 ? const Color(0xFF2ECC71) : const Color(0xFFF25C54),
-          width: 45,
-          borderRadius: BorderRadius.circular(4),
+          width: ResponsiveHelper.width(45),
+          borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(4)),
         ),
       ],
     );

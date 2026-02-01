@@ -14,6 +14,7 @@ import 'package:gary_goodger/features/common/presentation/widgets/roling_profit_
 import 'package:gary_goodger/features/common/presentation/widgets/seson_analysis_widget.dart';
 import 'package:gary_goodger/features/common/presentation/widgets/slip_page_symbol.dart';
 import 'package:gary_goodger/features/common/presentation/widgets/spread_analysis.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 
 import '../widgets/rio_heat_map.dart' show ROIHeatmap;
@@ -29,6 +30,8 @@ class GraphChartScreen extends StatefulWidget {
 class _GraphChartScreenState extends State<GraphChartScreen> {
   @override
   Widget build(BuildContext context) {
+    final Widget gap=SizedBox(height:ResponsiveHelper.height(8));
+
     return Scaffold(
       backgroundColor: Colors.white70,
       appBar: AppBar(),
@@ -49,14 +52,14 @@ class _GraphChartScreenState extends State<GraphChartScreen> {
                 FlSpot(3, 60), FlSpot(4, 120), FlSpot(5, 80), FlSpot(6, 80),
               ],
             ),
-               SizedBox(height: 8,),
+            gap,
             PortfolioROIWidget(
               roiValue: 14.8,
               percentageChange: "+2.1%",
             ),
-            SizedBox(height: 8,),
+            gap,
             PerformanceBarChart(roiData: [0.6, -1.1, 0.9, 1.9, -1.4, 1.6, 1.3, -1.2, 0.9, 1.2, -1.8, 0.8]),
-            SizedBox(height: 8,),
+            gap,
             ROIHeatmap(
               heatmapData: [
 
@@ -70,7 +73,7 @@ class _GraphChartScreenState extends State<GraphChartScreen> {
 
               ],
             ),
-            SizedBox(height: 8,),
+            gap,
             DayOfWeekROI(
               data: {
                 'Mon': 0.9,   // Positive ROI (Green line/dot)
@@ -81,12 +84,12 @@ class _GraphChartScreenState extends State<GraphChartScreen> {
                 'Sat': 0.15,  // Slight positive
               },
             ),
-            SizedBox(height: 8,),
+            gap,
             RiskOutcomeChart(
               values: [0.14, -0.20, 0.30, 0.05],
               labels: ["-0.3% Risk", "-0.8% Risk", "1.1% Risk", "0.5% Risk"],
             ),
-            SizedBox(height: 8,),
+            gap,
             EntryExitCountsWidget(
               data: [
                 TradeEntryData(label: "Market", count: 42, isPositive: true, showTooltip: true),
@@ -96,12 +99,12 @@ class _GraphChartScreenState extends State<GraphChartScreen> {
                 TradeEntryData(label: "Manual", count: 15, isPositive: false),
               ],
             ),
-            SizedBox(height: 8,),
+            gap,
             ReturnDistributionWidget(
               values: [5.5, 10.2, 15.8, 22.0, 13.5, 9.5, 3.0],
               buckets: ['-1.0', '-0.5', '-0.2', '0', '0.2', '0.5', '1.0'],
             ),
-            SizedBox(height: 8,),
+            gap,
             DrawdownSeriesWidget(
               drawdownData: {
                 '1 Oct': -0.58,
@@ -113,24 +116,24 @@ class _GraphChartScreenState extends State<GraphChartScreen> {
                 '7 Oct': 0.0,
               },
             ),
-            SizedBox(height: 8,),
+            gap,
             SessionAnalysisWidget(
               sessionRoi: [0.52, 1.69, 0.76],
               sessions: ['Asia', 'London', 'New York'],
             ),
-            SizedBox(height: 8,),
+            gap,
             SlippageSymbolWidget(
               avgSlippage: -0.35,
               p95Slippage: -0.12,
             ),
-            SizedBox(height: 8,),
+            gap,
             SpreadAnalysisWidget(
               symbol: "XAUUSD",
               avgSpread: 1.6,
               maxSpread: 3.4,
             ),
 
-            SizedBox(height: 8,),
+            gap,
 
             RollingProfitFactorWidget(
               pfData: {
@@ -142,13 +145,18 @@ class _GraphChartScreenState extends State<GraphChartScreen> {
                 '7 Oct': 1.83,
               },
             ),
-            SizedBox(height: 16,),
+            gap,
+            gap,
             CustomCircularProgress(percentage: 0.68),
-            SizedBox(height: 16,),
+            gap,
+            gap,
             OverviewAreaChart(
               dataPoints: [10.0, 14.5, 12.0, 18.2, 22.8, 25.0, 26.5],
             ),
-            SizedBox(height: 28,),
+            gap,
+            gap,
+            gap,
+
 
             
           ],),

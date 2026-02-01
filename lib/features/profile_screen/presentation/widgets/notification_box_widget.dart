@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gary_goodger/features/common/presentation/widgets/status_outline_container.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_container/custom_container.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,7 +27,7 @@ class NotificationBoxWidget extends StatelessWidget {
               Text(
                 "Reuters - 12 minutes ago",
                 style: GoogleFonts.inter(
-                  fontSize: 12.sp,
+                  fontSize: ResponsiveHelper.fontSize(12),
                   fontWeight: FontWeight.w400,
                   color: AppColors.textBlack,
                 ),
@@ -37,7 +38,7 @@ class NotificationBoxWidget extends StatelessWidget {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: GoogleFonts.inter(
-                  fontSize: 18.sp,
+                  fontSize: ResponsiveHelper.fontSize(18),
                   fontWeight: FontWeight.w600,
                   color: AppColors.textBlack,
                 ),
@@ -53,16 +54,16 @@ class NotificationBoxWidget extends StatelessWidget {
                     status: "RISK",
                     statusTextColor: AppColors.primary,
 
-                    fontSize: 10,
+                    fontSize: ResponsiveHelper.fontSize(10),
                   ),
-                  SizedBox(width: 8.w),
+                  SizedBox(width: ResponsiveHelper.width(8),),
                   StatusOutlineContainer(
                     statusBgColor: AppColors.redAccent,
                     statusBorderColor: AppColors.red,
                     status: "HIGH",
                     statusTextColor: AppColors.red,
 
-                    fontSize: 10,
+                    fontSize: ResponsiveHelper.fontSize(10),
                   ),
                 ],
               ),
@@ -74,7 +75,7 @@ class NotificationBoxWidget extends StatelessWidget {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: GoogleFonts.inter(
-                  fontSize: 15.sp,
+                  fontSize:ResponsiveHelper.fontSize(15),
                   fontWeight: FontWeight.w400,
                   color: AppColors.textBlack,
                 ),

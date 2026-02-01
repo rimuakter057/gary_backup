@@ -1,42 +1,87 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
-
 
 class TraderTile extends StatelessWidget {
   final int rank;
   final String name, followers, profit;
   final Color badgeColor;
 
-  const TraderTile({super.key, required this.rank, required this.name, required this.followers, required this.profit, required this.badgeColor});
+  const TraderTile({
+    super.key,
+    required this.rank,
+    required this.name,
+    required this.followers,
+    required this.profit,
+    required this.badgeColor,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8.h),
+      padding: EdgeInsets.symmetric(vertical: ResponsiveHelper.height(8)),
       child: Row(
         children: [
-          // Rank Badge (Custom Shape)
+          // Rank Badge (Circle)
           Container(
-            width: 35.w, height: 35.w,
-            decoration: BoxDecoration(color: badgeColor, shape: BoxShape.circle),
+            width: ResponsiveHelper.width(35),
+            height: ResponsiveHelper.width(35),
+            decoration: BoxDecoration(
+              color: badgeColor,
+              shape: BoxShape.circle,
+            ),
             alignment: Alignment.center,
-            child: Text("$rank", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+            child: Text(
+              "$rank",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: ResponsiveHelper.fontSize(14),
+              ),
+            ),
           ),
-          SizedBox(width: 12.w),
+          SizedBox(width: ResponsiveHelper.width(12)),
+
+          // Name & Followers
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(name, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp)),
-                Text("$followers Followers", style: TextStyle(color: AppColors.textGrey, fontSize: 11.sp)),
+                Text(
+                  name,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: ResponsiveHelper.fontSize(14),
+                  ),
+                ),
+                Text(
+                  "$followers Followers",
+                  style: TextStyle(
+                    color: AppColors.textGrey,
+                    fontSize: ResponsiveHelper.fontSize(11),
+                  ),
+                ),
               ],
             ),
           ),
+
+          // Profit & Icon
           Row(
             children: [
-              Text(profit, style: TextStyle(fontWeight: FontWeight.bold, color: AppColors.textDark)),
-              Icon(Icons.north_east, color: AppColors.primary, size: 14.sp),
+              Text(
+                profit,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.textDark,
+                  fontSize: ResponsiveHelper.fontSize(14),
+                ),
+              ),
+              SizedBox(width: ResponsiveHelper.width(4)), // optional spacing
+              Icon(
+                Icons.north_east,
+                color: AppColors.primary,
+                size: ResponsiveHelper.fontSize(14),
+              ),
             ],
           ),
         ],

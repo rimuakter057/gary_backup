@@ -1,6 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 
 
@@ -10,8 +11,8 @@ class DashboardChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 180.h,
-      padding: EdgeInsets.only(top: 20.h, right: 10.w),
+      height: ResponsiveHelper.height(180),
+      padding: EdgeInsets.only(top: ResponsiveHelper.height(20),right: ResponsiveHelper.width(10),),
       child: LineChart(
         LineChartData(
           gridData: FlGridData(
@@ -33,7 +34,7 @@ class DashboardChart extends StatelessWidget {
                   const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
                   if (value.toInt() < days.length) {
                     return Text(days[value.toInt()],
-                        style: TextStyle(color: Colors.white54, fontSize: 10.sp));
+                        style: TextStyle(color: Colors.white54, fontSize: ResponsiveHelper.fontSize(10),));
                   }
                   return const Text('');
                 },
@@ -50,7 +51,7 @@ class DashboardChart extends StatelessWidget {
               ],
               isCurved: true,
               color: AppColors.primary,
-              barWidth: 3,
+              barWidth: ResponsiveHelper.width(3),
               dotData: FlDotData(show: false),
               belowBarData: BarAreaData(
                 show: true,
@@ -64,7 +65,7 @@ class DashboardChart extends StatelessWidget {
               ],
               isCurved: true,
               color: Colors.white24,
-              barWidth: 2,
+              barWidth: ResponsiveHelper.width(2),
               dashArray: [5, 5],
               dotData: FlDotData(show: false),
             ),
