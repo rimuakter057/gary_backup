@@ -84,6 +84,8 @@ class AppAssets {
   static const String editCopier = "$copierIconPath/edit.svg";
   static const String exportCopier = "$copierIconPath/export_link.svg";
   static const String threeDotCopier = "$copierIconPath/three_dot_menu.svg";
+  static const String clockCopier = "$copierIconPath/clock_trading.svg";
+  static const String percentage = "$copierIconPath/percentage.svg";
 
   ///=============================analyzer===========================================
   static const String analyzerIconPath = "$basePath/analyzer";

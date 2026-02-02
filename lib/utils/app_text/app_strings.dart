@@ -418,6 +418,7 @@ class AppText {
   static const templateName = "Template Name";
 
   static const saveTemplate = "Save Template";
+  static const forceMinimum ="Force Minimum Lot Size";
 
 ///======================================================Analyzer====================================================================
 

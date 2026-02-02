@@ -8,24 +8,26 @@ import 'package:gary_goodger/utils/extension/base_extension.dart';
 class RadioTileWidget extends StatelessWidget {
   const RadioTileWidget({
     super.key,
-    required this.isSelected,
+    required this.isSelected, required this.title, this.vertical, this.horizontal,
   });
-
+final double?vertical;
+final double?horizontal;
+  final String title;
   final bool isSelected;
 
   @override
   Widget build(BuildContext context) {
     return CustomContainer(
 
-     horizontal: ResponsiveHelper.width(8),
-      vertical: ResponsiveHelper.height(8),
+     horizontal: ResponsiveHelper.width(horizontal??8),
+      vertical: ResponsiveHelper.height(vertical??8),
       borderColor: AppColors.primaryShade,
       backgroundColor: AppColors.primaryShade100,
       child:       Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
 
-          Text("360 Degrees Markets",
+          Text(title,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: context.titleSmall

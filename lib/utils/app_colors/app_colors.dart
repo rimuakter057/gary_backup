@@ -35,6 +35,7 @@ class AppColors {
   static const Color dotedGrey=Color(0x33FFFFFF);
   static const Color yellowOnBoardingText=Color(0xFFFFC009);
   static const Color yellowShade=Color(0xFFFFECB3);
+  static const Color yellowShadeCalculate=Color(0xFFFFF4D2);
   static const Color brown=Color(0xFF9B7300);
  static const Color textBlack=Color(0xFF0B0F20);
   static const Color boarderTextField=Color(0xffC8C8C8);
@@ -73,12 +74,14 @@ class AppColors {
   static const Color textDark = Color(0xFF1A1A1A);
   static const Color textGrey = Color(0xFF7A7A7A);
   static const Color blueGrey = Color(0xFF97BFE1);
+  static const Color blue = Color(0xFF0088FF);
+  static const Color blueShade = Color(0xFFE3F2FD);
   static const Color orange = Color(0xFFE67E22);
   static const Color orangeShadeBg = Color(0x1AE67E22);
   static const Color deletePopBgColor=Color(0xCCFFFFFF);
   static const Color accentOrange = Color(0xFFF2994A);
-  static const Color accentGreen = Color(0xFF27AE60);
-  static const Color red = Color(0xFFF53F3F);
+  static const Color greenShade = Color(0xFFE8F5E9);
+  static const Color red = Color(0xffD10000);
   static const Color redDelete = Color(0xFFFF9092);
   static const Color redAccent = Color(0x0DF53F3F);
   static const Color labelText = Color(0xFF7E8A93);

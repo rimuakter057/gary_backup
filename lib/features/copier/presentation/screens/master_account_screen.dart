@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:gary_goodger/features/dashboard_account/presentation/widgets/custom_switch_button.dart';
+import 'package:gary_goodger/core/routes/app_routes.dart';
+import 'package:gary_goodger/features/common/presentation/widgets/title_text_widget.dart';
+import 'package:gary_goodger/features/copier/presentation/widgets/card_title_text_widget.dart';
+import 'package:gary_goodger/features/copier/presentation/widgets/custom_appbar_copier.dart';
+import 'package:gary_goodger/features/copier/presentation/widgets/setting_sheet_copier_widget.dart';
+import 'package:gary_goodger/features/copier/presentation/widgets/slave_account_card_widget.dart';
 import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_container/custom_container.dart';
+import 'package:gary_goodger/share/widgets/custom_image/custom_image.dart';
+import 'package:gary_goodger/utils/app_assets/app_assets.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 import 'package:gary_goodger/utils/app_text/app_strings.dart';
-import 'package:gary_goodger/utils/extension/base_extension.dart';
+import 'package:get/get.dart';
 
 class MasterAccountScreen extends StatefulWidget {
   const MasterAccountScreen({super.key});
@@ -18,154 +25,90 @@ class _MasterAccountScreenState extends State<MasterAccountScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final Widget gap = SizedBox(height: ResponsiveHelper.height(12));
     return Scaffold(
-      appBar: AppBar(title: Text("Master Account 1", style: context.bodyLarge)),
+      appBar: CustomAppBarCopier(
+        title: AppText.masterAccount,
+        actionIcon: CustomImage(imageSrc: AppAssets.threeDotCopier),
+        onAction: () {
+          Get.bottomSheet(SettingSheetCopierWidget(), isScrollControlled: true);
+        },
+      ),
+
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: ResponsiveHelper.width(8)),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomContainer(
-              vertical: ResponsiveHelper.height(16),
-              horizontal: ResponsiveHelper.width(16),
-              backgroundColor: AppColors.white,
-              borderColor: AppColors.boarderColor,
-              child: CustomContainer(
-                borderColor: AppColors.boarderColor,
-                backgroundColor: AppColors.white,
-                vertical: ResponsiveHelper.height(8),
-                horizontal: ResponsiveHelper.width(8),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    // Left Side: Text Info
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(AppText.slaveAccount, style: context.bodyMedium),
-                          SizedBox(height: ResponsiveHelper.height(4)),
-                          Text(
-                            "RIsk Type: Lot Multiplier  Risk: 1%",
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: context.bodySmall.copyWith(
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.textBlack,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-
-                    CustomTealSwitch(
-                      activeColor: AppColors.primary,
-                      value: isSwitched,
-                      onChanged: (value) {
-                        setState(() {
-                          isSwitched = value;
-                        });
-                      },
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(height: ResponsiveHelper.height(12),),
+            ///master account=======================================================
             CustomContainer(
               backgroundColor: AppColors.white,
               borderColor: AppColors.boarderColor,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Enabled Slaves (07)",style: context.bodySmall,),
-                 
-                  SizedBox(height: ResponsiveHelper.height(12),),
-                   CustomContainer(
-                    borderColor: AppColors.orange,
-                    backgroundColor: AppColors.orangeShadeBg,
-                    vertical: ResponsiveHelper.height(8),
-                    horizontal: ResponsiveHelper.width(8),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        // Left Side: Text Info
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(AppText.slaveAccount, style: context.bodyMedium),
-                              SizedBox(height: ResponsiveHelper.height(4)),
-                              Text(
-                                "RIsk Type: Lot Multiplier  Risk: 1%",
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: context.bodySmall.copyWith(
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColors.textBlack,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                  CardTitleTextWidget(title: AppText.masterAccount),
+                  SizedBox(height: ResponsiveHelper.height(8)),
+                  SlaveAccountCard(
+                    isSwitched: isSwitched,
+                    title: AppText.masterAccount,
+                    borderColor: AppColors.primary,
+                    bgColor: AppColors.white,
+                    switchColor: AppColors.primary,
 
-                        CustomTealSwitch(
-                          activeColor: AppColors.orange,
-                          value: isSwitched,
-                          onChanged: (value) {
-                            setState(() {
-                              isSwitched = value;
-                            });
-                          },
-                        ),
-                      ],
+                    subTitle: "Risk Type: Lot Multiplier  Risk: 1%",
+                    onChanged: (value) {
+                      setState(() {
+                        isSwitched = value;
+                      });
+                    },
+                  ),
+                ],
+              ),
+            ),
+            gap,
+
+            TitleTextWidget(title: AppText.slaves),
+            gap,
+
+            ///slave list=======================================================
+            CustomContainer(
+              backgroundColor: AppColors.white,
+              borderColor: AppColors.boarderColor,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CardTitleTextWidget(title: "Enabled Slaves (07)"),
+
+                  SizedBox(height: ResponsiveHelper.height(8)),
+                  GestureDetector(
+                    onTap: () {
+                      Get.toNamed(AppRoutes.slaveAccountScreen);
+                    },
+                    child: SlaveAccountCard(
+                      isSwitched: isSwitched,
+                      title: AppText.slaveAccount,
+                      subTitle: "Risk Type: Lot Multiplier  Risk: 1%",
+                      onChanged: (value) {
+                        setState(() {
+                          isSwitched = value;
+                        });
+                      },
                     ),
                   ),
 
-                  SizedBox(height: ResponsiveHelper.height(8),),
-                  CustomContainer(
-                    borderColor: AppColors.orange,
-                    backgroundColor: AppColors.orangeShadeBg,
-                    vertical: ResponsiveHelper.height(8),
-                    horizontal: ResponsiveHelper.width(8),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        // Left Side: Text Info
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(AppText.slaveAccount, style: context.bodyMedium),
-                              SizedBox(height: ResponsiveHelper.height(4)),
-                              Text(
-                                "RIsk Type: Lot Multiplier  Risk: 1%",
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: context.bodySmall.copyWith(
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColors.textBlack,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                  SizedBox(height: ResponsiveHelper.height(8)),
 
-                        CustomTealSwitch(
-                          activeColor: AppColors.orange,
-                          value: isSwitched,
-                          onChanged: (value) {
-                            setState(() {
-                              isSwitched = value;
-                            });
-                          },
-                        ),
-                      ],
-                    ),
+                  SlaveAccountCard(
+                    isSwitched: isSwitched,
+                    title: AppText.slaveAccount,
+                    subTitle: "Risk Type: Lot Multiplier  Risk: 1%",
+                    onChanged: (value) {
+                      setState(() {
+                        isSwitched = value;
+                      });
+                    },
                   ),
-
                 ],
               ),
             ),

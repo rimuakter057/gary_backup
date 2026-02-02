@@ -6,7 +6,7 @@ import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 import 'package:gary_goodger/utils/app_text/app_strings.dart';
 import 'package:gary_goodger/utils/extension/base_extension.dart';
 
-void showDeleteAccountDialog(BuildContext context) {
+void showDeleteAccountDialog(BuildContext context,{required bool isDelete}) {
   showDialog(
     context: context,
     barrierDismissible: true,
@@ -25,10 +25,15 @@ void showDeleteAccountDialog(BuildContext context) {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text('Delete this account?', style: context.bodyMedium),
+                Text(
+
+                    isDelete?'Delete this account?':AppText.riskSettings,
+
+                    style: context.bodyMedium),
                 SizedBox(height: ResponsiveHelper.height(8)),
                 Text(
-                  'A message should be a short,\ncomplete sentence.',
+                isDelete?  'A message should be a short,complete sentence.'
+                    :"Based on the options you have selected, we recommend that you trade with Balance Multiplier with a risk setting of 100%. Simply click below to apply these settings.",
                   textAlign: TextAlign.center,
                   style: context.bodySmall.copyWith(
                     fontWeight: FontWeight.w400,
@@ -41,7 +46,7 @@ void showDeleteAccountDialog(BuildContext context) {
                   height: ResponsiveHelper.height(55),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.red,
+                      backgroundColor:isDelete? AppColors.red:AppColors.blue,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(
                           ResponsiveHelper.borderRadius(30),
@@ -53,7 +58,7 @@ void showDeleteAccountDialog(BuildContext context) {
                       Navigator.pop(context);
                     },
                     child: Text(
-                      AppText.deleteAccount,
+                      isDelete?AppText.deleteAccount:AppText.apply,
                       style: context.bodyMedium.copyWith(
                         color: AppColors.white,
                       ),
