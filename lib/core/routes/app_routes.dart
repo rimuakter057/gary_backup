@@ -2,6 +2,7 @@
 import 'package:gary_goodger/features/analyzer/presentation/screens/analyzer_details_screen.dart';
 import 'package:gary_goodger/features/analyzer/presentation/screens/analyzer_heat_map_screen.dart';
 import 'package:gary_goodger/features/analyzer/presentation/screens/analyzer_screen.dart';
+import 'package:gary_goodger/features/analyzer/presentation/screens/nested_tab_screen.dart';
 import 'package:gary_goodger/features/auth/presentation/screens/auth_flow_screen.dart';
 import 'package:gary_goodger/features/chat/presentation/screens/chat_inbox_screen.dart';
 import 'package:gary_goodger/features/chat/presentation/screens/chat_screen.dart';
@@ -70,8 +71,8 @@ class AppRoutes {
   ///profile section ========================================================
   static const String profileScreen = "/profileScreen";
 
-
-
+///test==========================================
+  static const String nestedTabScreen = "/nestedTabScreen";
 
 
 
@@ -112,6 +113,10 @@ class AppRoutes {
 
     ///profile section===================
     GetPage(name: profileScreen, page: ()=>ProfileScreen()),
+
+    ///test===============================================
+
+    GetPage(name: nestedTabScreen, page: ()=>NestedTabScreen()),
 
   ];
 }

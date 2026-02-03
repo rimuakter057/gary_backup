@@ -6,8 +6,8 @@ import 'package:gary_goodger/features/common/presentation/widgets/day_of_week_ro
 import 'package:gary_goodger/features/common/presentation/widgets/drow_down_series.dart';
 import 'package:gary_goodger/features/common/presentation/widgets/entry_count_widget.dart';
 import 'package:gary_goodger/features/common/presentation/widgets/over_view_area_chart.dart';
-import 'package:gary_goodger/features/common/presentation/widgets/performance_bar_chart.dart';
-import 'package:gary_goodger/features/common/presentation/widgets/portfolio_roi_widget.dart';
+import 'package:gary_goodger/features/analyzer/presentation/widgets/performance_bar_chart.dart';
+import 'package:gary_goodger/features/analyzer/presentation/widgets/portfolio_roi_widget.dart';
 import 'package:gary_goodger/features/common/presentation/widgets/return_distribution_widget.dart';
 import 'package:gary_goodger/features/common/presentation/widgets/rist_out_chart.dart';
 import 'package:gary_goodger/features/common/presentation/widgets/roling_profit_factor.dart';
@@ -17,7 +17,7 @@ import 'package:gary_goodger/features/common/presentation/widgets/spread_analysi
 import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 
-import '../widgets/rio_heat_map.dart' show ROIHeatmap;
+import '../../../analyzer/presentation/widgets/rio_heat_map.dart' show ROIHeatmap;
 
 
 class GraphChartScreen extends StatefulWidget {

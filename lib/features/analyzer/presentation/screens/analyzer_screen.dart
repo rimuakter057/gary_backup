@@ -45,6 +45,7 @@ class AnalyzerScreen extends StatelessWidget {
             SizedBox(height: ResponsiveHelper.height(15)),
             _buildTabSelector(context),
             SizedBox(height: ResponsiveHelper.height(20)),
+
             PortfolioGauge(),
             SizedBox(height: ResponsiveHelper.height(20)),
 
@@ -55,13 +56,14 @@ class AnalyzerScreen extends StatelessWidget {
               style: TextStyle(fontSize: ResponsiveHelper.fontSize(16)),
             ),
             StatisticsAnalyzerCard(
-              title: "Total PNL",
-              mainValue: "\$12,437",
-              details: [
-                {"Fees/Swaps": "-\$312"},
-                {"Commissions": "-\$198"},
-                {"Best day": "+\$1,700"},
-              ],
+              mainTitle: "Total PNL",
+              mainValueNumber: "\$12,437",
+              title1: 'Fee/Swap',
+              title2: 'Commission',
+              title3: 'Best Day',
+              value1: '123',
+              value2: '5344',
+              value3: '454353',
             ),
 
             ///high insights card
@@ -89,7 +91,8 @@ class AnalyzerScreen extends StatelessWidget {
                       Text(
                         "title",
                         style: context.bodySmall.copyWith(
-                            fontSize: ResponsiveHelper.fontSize(14)),
+                          fontSize: ResponsiveHelper.fontSize(14),
+                        ),
                       ),
                       StatusOutlineContainer(
                         statusBgColor: AppColors.primaryShade100,
@@ -102,7 +105,8 @@ class AnalyzerScreen extends StatelessWidget {
                   Text(
                     "1.78",
                     style: context.bodyMedium.copyWith(
-                        fontSize: ResponsiveHelper.fontSize(16)),
+                      fontSize: ResponsiveHelper.fontSize(16),
+                    ),
                   ),
                   SizedBox(height: ResponsiveHelper.height(16)),
 
@@ -153,9 +157,12 @@ class AnalyzerScreen extends StatelessWidget {
                     children: [
                       Column(
                         children: [
-                          Text(AppText.side,
-                              style: context.bodySmall.copyWith(
-                                  fontSize: ResponsiveHelper.fontSize(12))),
+                          Text(
+                            AppText.side,
+                            style: context.bodySmall.copyWith(
+                              fontSize: ResponsiveHelper.fontSize(12),
+                            ),
+                          ),
                           Text(
                             "buy",
                             style: context.bodySmall.copyWith(
@@ -168,9 +175,12 @@ class AnalyzerScreen extends StatelessWidget {
                       SizedBox(width: ResponsiveHelper.width(24)),
                       Column(
                         children: [
-                          Text(AppText.entry,
-                              style: context.bodySmall.copyWith(
-                                  fontSize: ResponsiveHelper.fontSize(12))),
+                          Text(
+                            AppText.entry,
+                            style: context.bodySmall.copyWith(
+                              fontSize: ResponsiveHelper.fontSize(12),
+                            ),
+                          ),
                           Text(
                             "\$1333",
                             style: context.bodySmall.copyWith(
@@ -183,9 +193,12 @@ class AnalyzerScreen extends StatelessWidget {
                       SizedBox(width: ResponsiveHelper.width(24)),
                       Column(
                         children: [
-                          Text(AppText.exit,
-                              style: context.bodySmall.copyWith(
-                                  fontSize: ResponsiveHelper.fontSize(12))),
+                          Text(
+                            AppText.exit,
+                            style: context.bodySmall.copyWith(
+                              fontSize: ResponsiveHelper.fontSize(12),
+                            ),
+                          ),
                           Text(
                             "\$1333",
                             style: context.bodySmall.copyWith(
@@ -198,9 +211,12 @@ class AnalyzerScreen extends StatelessWidget {
                       SizedBox(width: ResponsiveHelper.width(24)),
                       Column(
                         children: [
-                          Text(AppText.pl,
-                              style: context.bodySmall.copyWith(
-                                  fontSize: ResponsiveHelper.fontSize(12))),
+                          Text(
+                            AppText.pl,
+                            style: context.bodySmall.copyWith(
+                              fontSize: ResponsiveHelper.fontSize(12),
+                            ),
+                          ),
                           Text(
                             "\$1333",
                             style: context.bodySmall.copyWith(
@@ -231,7 +247,8 @@ class AnalyzerScreen extends StatelessWidget {
                     height: ResponsiveHelper.height(200),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(
-                          Radius.circular(ResponsiveHelper.width(5))),
+                        Radius.circular(ResponsiveHelper.width(5)),
+                      ),
                       color: AppColors.red,
                     ),
                   ),
@@ -273,7 +290,8 @@ class AnalyzerScreen extends StatelessWidget {
                                 Text(
                                   "2 min ago",
                                   style: context.bodySmall.copyWith(
-                                      fontSize: ResponsiveHelper.fontSize(12)),
+                                    fontSize: ResponsiveHelper.fontSize(12),
+                                  ),
                                 ),
                               ],
                             ),
@@ -285,7 +303,8 @@ class AnalyzerScreen extends StatelessWidget {
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: context.bodyMedium.copyWith(
-                              fontSize: ResponsiveHelper.fontSize(14)),
+                            fontSize: ResponsiveHelper.fontSize(14),
+                          ),
                         ),
                         SizedBox(height: ResponsiveHelper.height(8)),
                         Text(
@@ -293,7 +312,8 @@ class AnalyzerScreen extends StatelessWidget {
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: context.bodySmall.copyWith(
-                              fontSize: ResponsiveHelper.fontSize(12)),
+                            fontSize: ResponsiveHelper.fontSize(12),
+                          ),
                         ),
                         SizedBox(height: ResponsiveHelper.height(8)),
                         Row(
@@ -313,7 +333,8 @@ class AnalyzerScreen extends StatelessWidget {
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                                 style: context.bodySmall.copyWith(
-                                    fontSize: ResponsiveHelper.fontSize(12)),
+                                  fontSize: ResponsiveHelper.fontSize(12),
+                                ),
                               ),
                             ),
                           ],
@@ -389,22 +410,27 @@ class AnalyzerScreen extends StatelessWidget {
     );
   }
 
-  Row _buildRow(BuildContext context,
-      {required String title, required mainValue}) {
+  Row _buildRow(
+    BuildContext context, {
+    required String title,
+    required mainValue,
+  }) {
     return Row(
       children: [
         Text(
           title,
           style: context.bodySmall.copyWith(
-              fontWeight: FontWeight.w700,
-              fontSize: ResponsiveHelper.fontSize(14)),
+            fontWeight: FontWeight.w700,
+            fontSize: ResponsiveHelper.fontSize(14),
+          ),
         ),
         SizedBox(width: ResponsiveHelper.width(4)),
         Text(
           "\$$mainValue",
           style: context.bodySmall.copyWith(
-              color: AppColors.primary,
-              fontSize: ResponsiveHelper.fontSize(14)),
+            color: AppColors.primary,
+            fontSize: ResponsiveHelper.fontSize(14),
+          ),
         ),
       ],
     );

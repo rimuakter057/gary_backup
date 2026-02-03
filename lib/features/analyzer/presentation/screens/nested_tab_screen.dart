@@ -1,0 +1,194 @@
+import 'package:flutter/material.dart';
+import 'package:gary_goodger/features/analyzer/presentation/widgets/portfolio_gauge.dart';
+import 'package:gary_goodger/features/analyzer/presentation/widgets/status_card.dart';
+import 'package:gary_goodger/features/analyzer/presentation/widgets/tab_widgets/heatmap_tab_widget.dart';
+import 'package:gary_goodger/features/analyzer/presentation/widgets/tab_widgets/instrument_roi_tab_widget.dart';
+import 'package:gary_goodger/features/analyzer/presentation/widgets/tab_widgets/performance_roi_tab_widget.dart';
+import 'package:gary_goodger/features/analyzer/presentation/widgets/tab_widgets/portfolio_roi_tab_widget.dart';
+import 'package:gary_goodger/features/common/presentation/widgets/high_insights_container.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
+import 'package:gary_goodger/share/widgets/custom_container/custom_container.dart';
+import 'package:gary_goodger/utils/app_colors/app_colors.dart';
+import 'package:gary_goodger/utils/app_text/app_strings.dart';
+import 'package:gary_goodger/utils/extension/base_extension.dart';
+
+class NestedTabScreen extends StatefulWidget {
+  const NestedTabScreen({super.key});
+
+  @override
+  State<NestedTabScreen> createState() => _NestedTabScreenState();
+}
+
+class _NestedTabScreenState extends State<NestedTabScreen> {
+  int selectedParentTabIndex = 0;
+  int selectedSubTabIndex = 0;
+
+  // Parent tab labels
+  final List<String> parentTabLabels = [
+    AppText.performance,
+    AppText.analysisHub,
+  ];
+
+  // Sub tab labels
+  final List<List<String>> subTabLabels = [
+    [AppText.performanceROI, "performanceCost","performanceProfit","performanceProfit"],
+    ["accountROI","accountCost", "accountProfit","accountProfit",],
+  ];
+
+  // Scrollable Column content (3 texts each)
+  final List<List<Widget>> tabContents = [
+    ///performance tab=========================================
+    [
+      PortfolioRoiTabWidget(),
+      PerformanceRoiTabWidget(),
+      InstrumentRoiTabWidget(),
+      HeatMapTabWidget(),
+    ],
+    ///analyzer tab=============================
+    [
+
+      InstrumentRoiTabWidget(),
+      PortfolioRoiTabWidget(),
+      HeatMapTabWidget(),
+      PerformanceRoiTabWidget(),
+
+    ],
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    final Widget gap = SizedBox(height: ResponsiveHelper.height(24));
+
+    return Scaffold(
+      body: Column(
+        children: [
+          /// Header + Parent Tabs
+          Container(
+            height:ResponsiveHelper.height(180),
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.only(
+                bottomRight: Radius.circular(50),
+                bottomLeft: Radius.circular(50),
+              ),
+              border: Border(
+                bottom: BorderSide(width: 2, color: AppColors.boarderColor),
+              ),
+              color: AppColors.white,
+            ),
+            child: Column(
+              children: [
+                SizedBox(height: 36),
+                Text(
+                  "Analyzer",
+                  style: context.bodyLarge.copyWith(fontWeight: FontWeight.bold),
+                ),
+                Padding(
+                  padding: ResponsiveHelper.symmetric(
+                    horizontal: 24,
+                    vertical: 24,
+                  ),
+                  /// Parent Tabs
+                  child: CustomContainer(
+                    backgroundColor: AppColors.grey,
+                    borderColor: AppColors.tabBoarderColor,
+                    horizontal: ResponsiveHelper.width(4),
+                    vertical: ResponsiveHelper.height(4),
+                    radius: ResponsiveHelper.width(10),
+                    child: Row(
+                      children: List.generate(2, (index) {
+                        bool isSelected = selectedParentTabIndex == index;
+                        return Expanded(
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                selectedParentTabIndex = index;
+                                selectedSubTabIndex = 0; // reset sub tab
+                              });
+                            },
+                            child: CustomContainer(
+                              horizontal: ResponsiveHelper.width(4),
+                              vertical: ResponsiveHelper.height(4),
+                              backgroundColor:
+                              isSelected ? AppColors.primary : AppColors.grey,
+                              child: Text(
+                                parentTabLabels[index],
+                                textAlign: TextAlign.center,
+                                style: context.bodySmall.copyWith(
+                                  fontWeight: FontWeight.w600,
+                                  color:
+                                  isSelected ? AppColors.white : AppColors.black,
+                                ),
+                              ),
+                            ),
+                          ),
+                        );
+                      }),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          gap,
+
+          /// Sub Tabs
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: List.generate(4, (index) {
+                  bool isSelected = selectedSubTabIndex == index;
+                  return Padding(
+                    padding:  EdgeInsets.only(left: ResponsiveHelper.width(8)),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedSubTabIndex = index;
+                        });
+                      },
+                      child: CustomContainer(
+                        horizontal: ResponsiveHelper.width(8),
+                        vertical: ResponsiveHelper.height(6),
+                        radius: ResponsiveHelper.borderRadius(50),
+                        borderColor:
+                        isSelected ? AppColors.primaryShade100 : AppColors.boarderColor,
+                        backgroundColor:
+                        isSelected ? AppColors.primaryShade100 : AppColors.white,
+                        child: Text(
+                          AppText.portfolioROI,
+                          style: context.titleSmall.copyWith(
+                            color: isSelected ? AppColors.primary : AppColors.subTitle,
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                }),
+              ),
+            ),
+          ),
+
+          gap,
+
+          /// Expanded Scrollable Column for Selected Tabs
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24),
+              child: SingleChildScrollView(
+                child: tabContents[selectedParentTabIndex][selectedSubTabIndex],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+
+
+
