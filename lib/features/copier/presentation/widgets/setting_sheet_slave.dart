@@ -72,6 +72,10 @@ class SettingSheetSlaveWidget extends StatelessWidget {
                   }
               )
             ),
+
+            SizedBox(height: ResponsiveHelper.height(24)),
+            ElevatedButton(onPressed: (){},
+                child: Text(AppText.addAccount)),
           ],
         ),
       ),

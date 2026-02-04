@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gary_goodger/features/dashboard_account/presentation/widgets/setting_sheet_dashboard_widget.dart';
+import 'package:gary_goodger/features/dashboard_account/presentation/Widgets/setting_sheet_dashboard_widget.dart';
+
 import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_image/custom_image.dart';
 import 'package:gary_goodger/utils/app_assets/app_assets.dart';

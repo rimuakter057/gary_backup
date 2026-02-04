@@ -50,9 +50,14 @@ class SettingSheetDashboardWidget extends StatelessWidget {
 
             Column(
               children: [
-                SelectAccountTitleWidget(
-                  icon: AppAssets.accountManagementDashboard,
-                  title: AppText.accountManagement,
+                GestureDetector(
+                  onTap: (){
+                    Get.toNamed(AppRoutes.accountManagementScreen);
+                  },
+                  child: SelectAccountTitleWidget(
+                    icon: AppAssets.accountManagementDashboard,
+                    title: AppText.accountManagement,
+                  ),
                 ),
                 GestureDetector(
                   onTap: () {

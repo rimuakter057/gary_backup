@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gary_goodger/features/dashboard_account/presentation/widgets/account_appbar_row_widget.dart';
-import 'package:gary_goodger/features/dashboard_account/presentation/widgets/notification_tile_widget.dart';
+import 'package:gary_goodger/features/dashboard_account/presentation/Widgets/notification_tile_widget.dart';
 import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
+
 import 'package:gary_goodger/share/widgets/custom_appbar/custom_appbar_container.dart';
 import 'package:gary_goodger/share/widgets/custom_divider/custom_divider.dart';
 import 'package:gary_goodger/share/widgets/custom_image/custom_image.dart';
@@ -11,6 +11,8 @@ import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 import 'package:gary_goodger/utils/app_text/app_strings.dart';
 import 'package:gary_goodger/utils/extension/base_extension.dart';
 import 'package:get/get.dart';
+
+import '../widgets/account_appbar_row_widget.dart' show AccountAppbarRowWidget;
 
 
 class EquityProtectorScreen extends StatefulWidget {

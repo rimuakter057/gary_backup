@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gary_goodger/features/analyzer/presentation/widgets/performance_bar_chart.dart';
+import 'package:gary_goodger/features/analyzer/presentation/widgets/chart/performance_bar_chart.dart';
 import 'package:gary_goodger/features/analyzer/presentation/widgets/portfolio_gauge.dart' show PortfolioGauge;
 import 'package:gary_goodger/features/analyzer/presentation/widgets/status_card.dart';
 import 'package:gary_goodger/features/common/presentation/widgets/status_outline_container.dart';

@@ -1,17 +1,18 @@
 import 'package:fl_chart/fl_chart.dart' show FlSpot;
 import 'package:flutter/material.dart';
+import 'package:gary_goodger/features/analyzer/presentation/widgets/roi_heat_map.dart';
 import 'package:gary_goodger/features/common/presentation/widgets/custom_circular_profile_progress.dart';
 import 'package:gary_goodger/features/common/presentation/widgets/custom_graph_chart_one.dart';
-import 'package:gary_goodger/features/common/presentation/widgets/day_of_week_roi.dart';
-import 'package:gary_goodger/features/common/presentation/widgets/drow_down_series.dart';
-import 'package:gary_goodger/features/common/presentation/widgets/entry_count_widget.dart';
+import 'package:gary_goodger/features/analyzer/presentation/widgets/chart/day_of_week_roi_chart.dart';
+import 'package:gary_goodger/features/analyzer/presentation/widgets/chart/drow_down_series_chart.dart';
+import 'package:gary_goodger/features/analyzer/presentation/widgets/chart/entry_count_chart.dart';
 import 'package:gary_goodger/features/common/presentation/widgets/over_view_area_chart.dart';
-import 'package:gary_goodger/features/analyzer/presentation/widgets/performance_bar_chart.dart';
+import 'package:gary_goodger/features/analyzer/presentation/widgets/chart/performance_bar_chart.dart';
 import 'package:gary_goodger/features/analyzer/presentation/widgets/portfolio_roi_widget.dart';
-import 'package:gary_goodger/features/common/presentation/widgets/return_distribution_widget.dart';
-import 'package:gary_goodger/features/common/presentation/widgets/rist_out_chart.dart';
-import 'package:gary_goodger/features/common/presentation/widgets/roling_profit_factor.dart';
-import 'package:gary_goodger/features/common/presentation/widgets/seson_analysis_widget.dart';
+import 'package:gary_goodger/features/analyzer/presentation/widgets/return_distribution_chart.dart';
+import 'package:gary_goodger/features/analyzer/presentation/widgets/rist_out_chart.dart';
+import 'package:gary_goodger/features/analyzer/presentation/widgets/chart/roling_profit_factor_chart.dart';
+import 'package:gary_goodger/features/analyzer/presentation/widgets/chart/seson_analysis_chart.dart';
 import 'package:gary_goodger/features/common/presentation/widgets/slip_page_symbol.dart';
 import 'package:gary_goodger/features/common/presentation/widgets/spread_analysis.dart';
 import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
@@ -61,17 +62,17 @@ class _GraphChartScreenState extends State<GraphChartScreen> {
             PerformanceBarChart(roiData: [0.6, -1.1, 0.9, 1.9, -1.4, 1.6, 1.3, -1.2, 0.9, 1.2, -1.8, 0.8]),
             gap,
             ROIHeatmap(
-              heatmapData: [
-
-                [-0.08, -0.08, -0.09, -0.09, -0.07, -0.07, -0.07], // 00:00AM-03:00AM
-                [0.19, 0.20, 0.18, 0.17, 0.18, 0.17, 0.16],       // 04:00AM-07:00AM
-                [0.52, 0.58, 0.51, 0.50, 0.49, 0.47, 0.45],       // 08:00AM-11:00AM
-                [1.00, 1.05, 0.97, 0.95, 0.87, 0.80, 0.85],       // 12:00PM-03:00PM
-                [0.12, 0.14, 0.13, 0.12, 0.12, 0.12, 0.12],       // 04:00PM-07:00PM
-                [-0.53, -0.59, -0.51, -0.50, -0.48, -0.47, -0.45],
-
-
-              ],
+              // heatmapData: [
+              //
+              //   [-0.08, -0.08, -0.09, -0.09, -0.07, -0.07, -0.07], // 00:00AM-03:00AM
+              //   [0.19, 0.20, 0.18, 0.17, 0.18, 0.17, 0.16],       // 04:00AM-07:00AM
+              //   [0.52, 0.58, 0.51, 0.50, 0.49, 0.47, 0.45],       // 08:00AM-11:00AM
+              //   [1.00, 1.05, 0.97, 0.95, 0.87, 0.80, 0.85],       // 12:00PM-03:00PM
+              //   [0.12, 0.14, 0.13, 0.12, 0.12, 0.12, 0.12],       // 04:00PM-07:00PM
+              //   [-0.53, -0.59, -0.51, -0.50, -0.48, -0.47, -0.45],
+              //
+              //
+              // ],
             ),
             gap,
             DayOfWeekROI(

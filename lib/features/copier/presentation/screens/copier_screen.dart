@@ -66,10 +66,16 @@ class _CopierScreenState extends State<CopierScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         _buildSectionHeader("Enabled (03)"),
-                        const MasterAccountCardAnalyzer(
-                          title: "Master Account 1",
-                          enabled: 7,
-                          disabled: 3,
+                        GestureDetector(
+                          onTap: (){
+
+                            Get.toNamed(AppRoutes.masterAccountScreen);
+                          },
+                          child: const MasterAccountCardAnalyzer(
+                            title: "Master Account 1",
+                            enabled: 7,
+                            disabled: 3,
+                          ),
                         ),
                         SizedBox(height: ResponsiveHelper.height(12)),
                         const MasterAccountCardAnalyzer(

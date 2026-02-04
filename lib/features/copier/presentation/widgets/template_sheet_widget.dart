@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gary_goodger/core/routes/app_routes.dart';
-import 'package:gary_goodger/features/copier/presentation/widgets/templateSheetWidget.dart';
+import 'package:gary_goodger/features/copier/presentation/widgets/template_sheet_row_widget.dart';
 import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_divider/custom_divider.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';

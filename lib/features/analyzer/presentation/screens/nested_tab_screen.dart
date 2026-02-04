@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:gary_goodger/features/analyzer/presentation/widgets/portfolio_gauge.dart';
 import 'package:gary_goodger/features/analyzer/presentation/widgets/status_card.dart';
+import 'package:gary_goodger/features/analyzer/presentation/widgets/tab_widgets/all_insights_tab_widget.dart';
+import 'package:gary_goodger/features/analyzer/presentation/widgets/tab_widgets/broker_execution_tab_widget.dart';
 import 'package:gary_goodger/features/analyzer/presentation/widgets/tab_widgets/heatmap_tab_widget.dart';
 import 'package:gary_goodger/features/analyzer/presentation/widgets/tab_widgets/instrument_roi_tab_widget.dart';
+import 'package:gary_goodger/features/analyzer/presentation/widgets/tab_widgets/overview_tab_widget.dart';
 import 'package:gary_goodger/features/analyzer/presentation/widgets/tab_widgets/performance_roi_tab_widget.dart';
 import 'package:gary_goodger/features/analyzer/presentation/widgets/tab_widgets/portfolio_roi_tab_widget.dart';
+import 'package:gary_goodger/features/analyzer/presentation/widgets/tab_widgets/risk_consistency_tab_widget.dart';
+import 'package:gary_goodger/features/analyzer/presentation/widgets/tab_widgets/risk_tab_widget.dart';
+import 'package:gary_goodger/features/analyzer/presentation/widgets/tab_widgets/roi_breakdown_tab_widget.dart';
+import 'package:gary_goodger/features/analyzer/presentation/widgets/tab_widgets/staging_tab_widget.dart';
+import 'package:gary_goodger/features/analyzer/presentation/widgets/tab_widgets/trades_explorer_tab_widget.dart';
 import 'package:gary_goodger/features/common/presentation/widgets/high_insights_container.dart';
+import 'package:gary_goodger/features/dashboard_account/presentation/widgets/performance_card.dart';
+import 'package:gary_goodger/features/dashboard_account/presentation/widgets/state_card.dart';
 import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_container/custom_container.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
@@ -31,11 +41,17 @@ class _NestedTabScreenState extends State<NestedTabScreen> {
 
   // Sub tab labels
   final List<List<String>> subTabLabels = [
-    [AppText.performanceROI, "performanceCost","performanceProfit","performanceProfit"],
-    ["accountROI","accountCost", "accountProfit","accountProfit",],
+    [
+      AppText.performanceROI,
+      "performanceCost",
+      "performanceProfit",
+      "performanceProfit",
+      "Risk",
+    ],
+    ["accountROI", "accountCost", "accountProfit", "accountProfit"],
   ];
 
-  // Scrollable Column content (3 texts each)
+
   final List<List<Widget>> tabContents = [
     ///performance tab=========================================
     [
@@ -43,17 +59,24 @@ class _NestedTabScreenState extends State<NestedTabScreen> {
       PerformanceRoiTabWidget(),
       InstrumentRoiTabWidget(),
       HeatMapTabWidget(),
+      RiskTabWidget(),
     ],
+
     ///analyzer tab=============================
     [
-
-      InstrumentRoiTabWidget(),
-      PortfolioRoiTabWidget(),
-      HeatMapTabWidget(),
+      OverviewTabWidget(),
+      RoiBreakdownTabWidget(),
+      RiskConsistencyTabWidget(),
+      StagingTabWidget(),
       PerformanceRoiTabWidget(),
+      BrokerExecutionTabWidget(),
+      TradesExplorerTabWidget(),
+      AllInsightsTabWidget(),
 
     ],
   ];
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +87,7 @@ class _NestedTabScreenState extends State<NestedTabScreen> {
         children: [
           /// Header + Parent Tabs
           Container(
-            height:ResponsiveHelper.height(180),
+            height: ResponsiveHelper.height(180),
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.only(
                 bottomRight: Radius.circular(50),
@@ -80,13 +103,16 @@ class _NestedTabScreenState extends State<NestedTabScreen> {
                 SizedBox(height: 36),
                 Text(
                   "Analyzer",
-                  style: context.bodyLarge.copyWith(fontWeight: FontWeight.bold),
+                  style: context.bodyLarge.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 Padding(
                   padding: ResponsiveHelper.symmetric(
                     horizontal: 24,
                     vertical: 24,
                   ),
+
                   /// Parent Tabs
                   child: CustomContainer(
                     backgroundColor: AppColors.grey,
@@ -108,15 +134,17 @@ class _NestedTabScreenState extends State<NestedTabScreen> {
                             child: CustomContainer(
                               horizontal: ResponsiveHelper.width(4),
                               vertical: ResponsiveHelper.height(4),
-                              backgroundColor:
-                              isSelected ? AppColors.primary : AppColors.grey,
+                              backgroundColor: isSelected
+                                  ? AppColors.primary
+                                  : AppColors.grey,
                               child: Text(
                                 parentTabLabels[index],
                                 textAlign: TextAlign.center,
                                 style: context.bodySmall.copyWith(
                                   fontWeight: FontWeight.w600,
-                                  color:
-                                  isSelected ? AppColors.white : AppColors.black,
+                                  color: isSelected
+                                      ? AppColors.white
+                                      : AppColors.black,
                                 ),
                               ),
                             ),
@@ -138,10 +166,10 @@ class _NestedTabScreenState extends State<NestedTabScreen> {
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
-                children: List.generate(4, (index) {
+                children: List.generate(selectedParentTabIndex==0?05:08, (index) {
                   bool isSelected = selectedSubTabIndex == index;
                   return Padding(
-                    padding:  EdgeInsets.only(left: ResponsiveHelper.width(8)),
+                    padding: EdgeInsets.only(left: ResponsiveHelper.width(8)),
                     child: GestureDetector(
                       onTap: () {
                         setState(() {
@@ -152,14 +180,18 @@ class _NestedTabScreenState extends State<NestedTabScreen> {
                         horizontal: ResponsiveHelper.width(8),
                         vertical: ResponsiveHelper.height(6),
                         radius: ResponsiveHelper.borderRadius(50),
-                        borderColor:
-                        isSelected ? AppColors.primaryShade100 : AppColors.boarderColor,
-                        backgroundColor:
-                        isSelected ? AppColors.primaryShade100 : AppColors.white,
+                        borderColor: isSelected
+                            ? AppColors.primaryShade100
+                            : AppColors.boarderColor,
+                        backgroundColor: isSelected
+                            ? AppColors.primaryShade100
+                            : AppColors.white,
                         child: Text(
                           AppText.portfolioROI,
                           style: context.titleSmall.copyWith(
-                            color: isSelected ? AppColors.primary : AppColors.subTitle,
+                            color: isSelected
+                                ? AppColors.primary
+                                : AppColors.subTitle,
                           ),
                         ),
                       ),
@@ -186,9 +218,3 @@ class _NestedTabScreenState extends State<NestedTabScreen> {
     );
   }
 }
-
-
-
-
-
-

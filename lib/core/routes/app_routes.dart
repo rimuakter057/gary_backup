@@ -2,6 +2,7 @@
 import 'package:gary_goodger/features/analyzer/presentation/screens/analyzer_details_screen.dart';
 import 'package:gary_goodger/features/analyzer/presentation/screens/analyzer_heat_map_screen.dart';
 import 'package:gary_goodger/features/analyzer/presentation/screens/analyzer_screen.dart';
+import 'package:gary_goodger/features/analyzer/presentation/screens/filter_screen.dart';
 import 'package:gary_goodger/features/analyzer/presentation/screens/nested_tab_screen.dart';
 import 'package:gary_goodger/features/auth/presentation/screens/auth_flow_screen.dart';
 import 'package:gary_goodger/features/chat/presentation/screens/chat_inbox_screen.dart';
@@ -20,6 +21,7 @@ import 'package:gary_goodger/features/copier/presentation/screens/map_symbol_scr
 import 'package:gary_goodger/features/copier/presentation/screens/master_account_screen.dart';
 import 'package:gary_goodger/features/copier/presentation/screens/slave_account_screen.dart';
 import 'package:gary_goodger/features/copier/presentation/screens/trading_hour_screen.dart';
+import 'package:gary_goodger/features/dashboard_account/presentation/screens/account_management_screen.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/screens/account_screen.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/screens/add_account_screen.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/screens/equity_protector_screen.dart';
@@ -40,6 +42,8 @@ class AppRoutes {
   static const String analyzerScreen = "/analyzerScreen";
   static const String analyzerDetailsScreen = "/analyzerDetailsScreen";
   static const String analyzerHeatMapScreen = "/analyzerHeatMapScreen";
+  static const String filterScreen = "/filterScreen";
+
 
   static const String sentimentsScreen="/sentimentsScreen";
   static const String graphChartScreen="/graphChartScreen";
@@ -47,6 +51,7 @@ class AppRoutes {
   static const String equityProtectorScreen='/equityProtectorScreen';
   static const String tradingSymbolScreen='/tradingSymbolScreen';
   static const String addAccountScreen='/addAccountScreen';
+  static const String accountManagementScreen="/accountManagementScreen";
   ///compare section ========================================================
   static const String compareScreen = "/compareScreen";
   static const String comparisonScreen = "/comparisonScreen";
@@ -91,6 +96,9 @@ class AppRoutes {
     GetPage(name: equityProtectorScreen, page: ()=>EquityProtectorScreen()),
     GetPage(name: tradingSymbolScreen, page: ()=>TradingSymbolScreen()),
     GetPage(name: addAccountScreen, page: ()=>AddAccountScreen()),
+    GetPage(name: filterScreen, page: ()=>FilterScreen()),
+    GetPage(name: accountManagementScreen, page: ()=>AccountManagementScreen()),
+
     ///copier section===================
     GetPage(name: copierScreen, page: ()=>CopierScreen()),
     GetPage(name: advanceSettingScreen, page: ()=>AdvanceSettingScreen()),

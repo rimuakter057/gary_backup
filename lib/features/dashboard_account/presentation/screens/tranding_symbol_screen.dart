@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gary_goodger/features/dashboard_account/presentation/widgets/account_appbar_row_widget.dart';
-import 'package:gary_goodger/features/dashboard_account/presentation/widgets/switch_trading_symbol.dart';
+import 'package:gary_goodger/features/dashboard_account/presentation/Widgets/account_appbar_row_widget.dart';
+import 'package:gary_goodger/features/dashboard_account/presentation/Widgets/switch_trading_symbol.dart';
 import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_appbar/custom_appbar_container.dart';
 import 'package:gary_goodger/share/widgets/custom_divider/custom_divider.dart';

@@ -47,7 +47,7 @@ class CreateAccountWidget extends StatelessWidget {
             ///heading sections==================================
             OnboardingHeadingWidget(title: AppText.createAccount,
               subTitle: AppText.startTracking,),
-             /// text field sections==========================
+             /// sign up field sections==========================
             CustomContainerBorderParent(
         
         

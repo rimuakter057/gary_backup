@@ -50,7 +50,9 @@ class ComparePropScreen extends StatelessWidget {
             _buildCompareInputCard(context),
             SizedBox(height: ResponsiveHelper.height(25)),
             _buildLeaderboardHeader(context),
+            SizedBox(height: ResponsiveHelper.height(25)),
 
+            _buildLeaderboardList(context),
             // Leverage Section
             Text("leverage", textAlign: TextAlign.center),
 
@@ -114,7 +116,6 @@ class ComparePropScreen extends StatelessWidget {
 
             SizedBox(height: ResponsiveHelper.height(25)),
 
-            _buildLeaderboardList(context),
           ],
         ),
       ),
@@ -204,7 +205,7 @@ class ComparePropScreen extends StatelessWidget {
     return ListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: 5,
+      itemCount: 2,
       itemBuilder: (context, index) => _firmTile(index + 1, context),
     );
   }

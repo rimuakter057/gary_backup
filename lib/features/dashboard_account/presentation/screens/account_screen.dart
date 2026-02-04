@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gary_goodger/core/routes/app_routes.dart';
-import 'package:gary_goodger/features/dashboard_account/presentation/widgets/account_appbar_row_widget.dart';
-import 'package:gary_goodger/features/dashboard_account/presentation/widgets/account_tab_widget.dart';
-import 'package:gary_goodger/features/dashboard_account/presentation/widgets/performance_card.dart';
-import 'package:gary_goodger/features/dashboard_account/presentation/widgets/state_card.dart';
+import 'package:gary_goodger/features/dashboard_account/presentation/Widgets/account_appbar_row_widget.dart';
+import 'package:gary_goodger/features/dashboard_account/presentation/Widgets/account_tab_widget.dart';
+import 'package:gary_goodger/features/dashboard_account/presentation/Widgets/performance_card.dart';
+import 'package:gary_goodger/features/dashboard_account/presentation/Widgets/state_card.dart';
+
 import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_appbar/custom_appbar_container.dart';
 import 'package:gary_goodger/share/widgets/custom_container/custom_container.dart';

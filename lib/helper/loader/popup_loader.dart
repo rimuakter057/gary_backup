@@ -1,4 +1,4 @@
-// import 'package:crave_crusher/view/widgets/custom_loader/custom_loader.dart';
+// import 'package:crave_crusher/view/Widgets/custom_loader/custom_loader.dart';
 //
 // import 'package:flutter/material.dart';
 //
