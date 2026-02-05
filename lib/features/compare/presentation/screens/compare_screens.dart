@@ -8,8 +8,8 @@ import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 import 'package:gary_goodger/utils/app_text/app_strings.dart';
 import 'package:gary_goodger/utils/extension/base_extension.dart';
 
-class ComparePropScreen extends StatelessWidget {
-  const ComparePropScreen({super.key});
+class CompareScreen extends StatelessWidget {
+  const CompareScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

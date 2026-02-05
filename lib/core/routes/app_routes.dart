@@ -1,9 +1,9 @@
 
 import 'package:gary_goodger/features/analyzer/presentation/screens/analyzer_details_screen.dart';
 import 'package:gary_goodger/features/analyzer/presentation/screens/analyzer_heat_map_screen.dart';
-import 'package:gary_goodger/features/analyzer/presentation/screens/analyzer_screen.dart';
+import 'package:gary_goodger/features/analyzer/presentation/screens/analyzer_test_screen.dart';
 import 'package:gary_goodger/features/analyzer/presentation/screens/filter_screen.dart';
-import 'package:gary_goodger/features/analyzer/presentation/screens/nested_tab_screen.dart';
+import 'package:gary_goodger/features/analyzer/presentation/screens/analyzer_screen.dart';
 import 'package:gary_goodger/features/auth/presentation/screens/auth_flow_screen.dart';
 import 'package:gary_goodger/features/chat/presentation/screens/chat_inbox_screen.dart';
 import 'package:gary_goodger/features/chat/presentation/screens/chat_screen.dart';
@@ -27,6 +27,7 @@ import 'package:gary_goodger/features/dashboard_account/presentation/screens/add
 import 'package:gary_goodger/features/dashboard_account/presentation/screens/equity_protector_screen.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/screens/dashboard_screen.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/screens/tranding_symbol_screen.dart';
+import 'package:gary_goodger/features/nav_bar/presentation/screens/main_nab_bar_screen.dart';
 import 'package:gary_goodger/features/profile_screen/presentation/screens/profile_screen.dart';
 import 'package:gary_goodger/features/sentiments/presentation/screens/sentiments_screen.dart';
 
@@ -40,10 +41,12 @@ class AppRoutes {
    static const String authFlowScreen = "/authFlow";
   static const String accountScreen = "/accountScreen";
   static const String analyzerScreen = "/analyzerScreen";
+  static const String analyzerTestScreen = "/analyzerTestScreen";
   static const String analyzerDetailsScreen = "/analyzerDetailsScreen";
   static const String analyzerHeatMapScreen = "/analyzerHeatMapScreen";
   static const String filterScreen = "/filterScreen";
 
+  static const String mainNavScreen="/mainNavScreen";
 
   static const String sentimentsScreen="/sentimentsScreen";
   static const String graphChartScreen="/graphChartScreen";
@@ -76,8 +79,7 @@ class AppRoutes {
   ///profile section ========================================================
   static const String profileScreen = "/profileScreen";
 
-///test==========================================
-  static const String nestedTabScreen = "/nestedTabScreen";
+
 
 
 
@@ -86,8 +88,11 @@ class AppRoutes {
 
     GetPage(name: splashScreen, page: ()=>SplashScreen()),
     GetPage(name: authFlowScreen, page: ()=>AuthFlowScreen()),
+    GetPage(name: mainNavScreen, page: ()=>MainNavScreen()),
+
+
     GetPage(name: accountScreen, page: ()=>AccountScreen()),
-    GetPage(name: analyzerScreen, page: ()=>AnalyzerScreen()),
+    GetPage(name: analyzerTestScreen, page: ()=>AnalyzerTestScreen()),
     GetPage(name: analyzerDetailsScreen, page: ()=>AnalyzerDetailsScreen()),
     GetPage(name: analyzerHeatMapScreen, page: ()=>AnalyzerHeatmapScreen()),
     GetPage(name: sentimentsScreen, page: ()=>SentimentsScreen()),
@@ -111,7 +116,7 @@ class AppRoutes {
     GetPage(name: tradingHourScreen, page: ()=>TradingHourScreen()),
 
     ///compare section===================
-    GetPage(name: compareScreen, page: ()=>ComparePropScreen()),
+    GetPage(name: compareScreen, page: ()=>CompareScreen()),
     GetPage(name: comparisonScreen, page: ()=>ComparisonScreen()),
     GetPage(name: filterPropScreen, page: ()=>FilterPropScreen()),
     GetPage(name: firmDetailsScreen, page: ()=>FirmDetailsScreen()),
@@ -124,7 +129,7 @@ class AppRoutes {
 
     ///test===============================================
 
-    GetPage(name: nestedTabScreen, page: ()=>NestedTabScreen()),
+    GetPage(name: analyzerScreen, page: ()=>AnalyzerScreen()),
 
   ];
 }
