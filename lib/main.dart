@@ -30,7 +30,7 @@ class TradersConnect extends StatelessWidget {
           title: 'Flutter Demo',
           theme: AppTheme.lightTheme,
           // Set initial route
-          initialRoute: AppRoutes.mainNavScreen,
+          initialRoute: AppRoutes.splashScreen,
           // Connect routes
           getPages: AppRoutes.routes,
         );

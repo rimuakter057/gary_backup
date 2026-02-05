@@ -37,7 +37,7 @@ import 'package:get/get.dart';
 ///=========================App Routes=========================
 
 class AppRoutes {
-  static const String splashScreen = "/onBoarding";
+  static const String splashScreen = "/splashScreen";
    static const String authFlowScreen = "/authFlow";
   static const String accountScreen = "/accountScreen";
   static const String analyzerScreen = "/analyzerScreen";

@@ -33,7 +33,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
-      bottomNavigationBar: _buildBottomNav(),
+
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [

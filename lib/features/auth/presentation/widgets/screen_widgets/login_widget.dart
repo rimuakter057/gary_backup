@@ -150,7 +150,7 @@ class LoginWidget extends StatelessWidget {
             /// custom button================================================================
             CustomButton(onTap: () {
 
-              Get.toNamed(AppRoutes.accountScreen);
+              Get.toNamed(AppRoutes.mainNavScreen);
 
 
 
