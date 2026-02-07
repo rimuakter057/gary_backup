@@ -33,7 +33,9 @@ class _TradingSymbolScreenState extends State<TradingSymbolScreen> {
               children: [
                 CustomAppbarWidget(title: AppText.equityProtector),
                 SizedBox(height: ResponsiveHelper.height(8)),
-                AccountAppbarRowWidget(),
+                AccountAppbarRowWidget(
+
+                ),
                 SizedBox(height: ResponsiveHelper.height(12)),
               ],
             ),

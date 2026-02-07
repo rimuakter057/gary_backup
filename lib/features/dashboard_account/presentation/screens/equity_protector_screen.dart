@@ -39,7 +39,8 @@ class _EquityProtectorScreenState extends State<EquityProtectorScreen> {
                   title: AppText.equityProtector,
                 ),
                 SizedBox(height: ResponsiveHelper.height(8)),
-                AccountAppbarRowWidget(),
+                AccountAppbarRowWidget(
+                ),
                 SizedBox(height: ResponsiveHelper.height(12)),
               ],
             ),

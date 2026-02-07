@@ -3,18 +3,21 @@ import 'package:gary_goodger/core/routes/app_routes.dart';
 import 'package:gary_goodger/features/common/presentation/widgets/custom_upgrade_button.dart';
 import 'package:gary_goodger/features/common/presentation/widgets/high_insights_container.dart';
 import 'package:gary_goodger/features/common/presentation/widgets/status_outline_container.dart';
+import 'package:gary_goodger/features/dashboard_account/presentation/Widgets/account_appbar_row_widget.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/Widgets/account_title.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/Widgets/performance_card.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/Widgets/top_trader_widget.dart';
 
 
 import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
+import 'package:gary_goodger/share/widgets/custom_appbar/custom_appbar_container.dart';
 import 'package:gary_goodger/share/widgets/custom_container/custom_container.dart';
 import 'package:gary_goodger/share/widgets/custom_divider/custom_divider.dart';
 import 'package:gary_goodger/share/widgets/custom_image/custom_image.dart';
 import 'package:gary_goodger/utils/app_assets/app_assets.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 import 'package:gary_goodger/utils/app_text/app_strings.dart';
+import 'package:gary_goodger/utils/extension/base_extension.dart';
 import 'package:get/get.dart';
 
 import 'account_screen.dart';
@@ -38,7 +41,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
         physics: const BouncingScrollPhysics(),
         slivers: [
           /// AppBar
-          const DashboardHeader(title: AppText.dashboard,),
+          const AccountHeader(
+            isDashboard: true,
+          ),
 
           /// Upgrade Overview & P/L Rate
           SliverToBoxAdapter(
@@ -389,3 +394,5 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 }
+
+

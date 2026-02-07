@@ -34,7 +34,9 @@ class _AccountScreenState extends State<AccountScreen> {
         physics: const BouncingScrollPhysics(),
         slivers: [
           ///appbar=======================================================================
-          const DashboardHeader(),
+          const AccountHeader(
+            isDashboard: false,
+          ),
 
           SliverToBoxAdapter(
             child: SizedBox(height: ResponsiveHelper.height(22)),
@@ -226,11 +228,12 @@ class _AccountScreenState extends State<AccountScreen> {
 
 /// appbar header===============================================================
 
-class DashboardHeader extends StatelessWidget {
-  const DashboardHeader({super.key, this.title});
+class AccountHeader extends StatelessWidget {
+  const AccountHeader({super.key, required this.isDashboard});
 
-  final String? title;
 
+
+  final bool isDashboard;
   @override
   Widget build(BuildContext context) {
     final double toolbarHeight = ResponsiveHelper.height(100);
@@ -279,22 +282,24 @@ class DashboardHeader extends StatelessWidget {
               CustomImage(imageSrc: AppAssets.logo),
               Spacer(),
 
-              Text(title ?? AppText.account, style: context.bodyMedium),
+              Text(isDashboard?AppText.dashboard:AppText.account, style: context.bodyMedium),
 
               Spacer(),
 
-              CustomImage(imageSrc: AppAssets.filter),
+              CustomImage(imageSrc:isDashboard?AppAssets.notification:AppAssets.filter),
               SizedBox(width: ResponsiveHelper.width(16)),
               GestureDetector(
                 onTap: () {
                   Get.toNamed(AppRoutes.addAccountScreen);
                 },
-                child: CustomImage(imageSrc: AppAssets.add),
+                child: CustomImage(imageSrc:isDashboard? AppAssets.menu:AppAssets.add),
               ),
             ],
           ),
           SizedBox(height: ResponsiveHelper.height(8)),
-          AccountAppbarRowWidget(),
+         AccountAppbarRowWidget(
+           isDashboard:isDashboard
+         ),
         ],
       ),
     );
@@ -342,13 +347,13 @@ class DashboardHeader extends StatelessWidget {
 
               Spacer(),
 
-              CustomImage(imageSrc: AppAssets.filter),
+              CustomImage(imageSrc:isDashboard?AppAssets.notification:AppAssets.filter),
               SizedBox(width: ResponsiveHelper.width(16)),
               GestureDetector(
                 onTap: () {
                   Get.toNamed(AppRoutes.addAccountScreen);
                 },
-                child: CustomImage(imageSrc: AppAssets.add),
+                child: CustomImage(imageSrc:isDashboard? AppAssets.menu:AppAssets.add),
               ),
             ],
           ),

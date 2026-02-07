@@ -9,8 +9,10 @@ import 'package:gary_goodger/utils/extension/base_extension.dart';
 import 'package:get/get.dart';
 
 class AccountAppbarRowWidget extends StatelessWidget {
-  const AccountAppbarRowWidget({super.key});
-
+  const AccountAppbarRowWidget({super.key,
+    this.isDashboard = false,
+  });
+final bool isDashboard;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -32,7 +34,7 @@ class AccountAppbarRowWidget extends StatelessWidget {
             ),
           ],
         ),
-        Row(
+     isDashboard?CustomImage(imageSrc: AppAssets.dropdown):   Row(
           children: [
             CustomImage(imageSrc: AppAssets.dropdown),
             SizedBox(width: ResponsiveHelper.width(12)),
