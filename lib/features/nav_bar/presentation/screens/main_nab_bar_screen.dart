@@ -21,11 +21,11 @@ class MainNavScreen extends StatefulWidget {
 class _MainNavScreenState extends State<MainNavScreen> {
   int _currentIndex = 0;
 
-  final List<Widget> _screens = const [
-    DashboardScreen(),
-    CopierScreen(),
-    AnalyzerScreen(),
-    CompareScreen(),
+  final List<Widget> _screens = [
+    const DashboardScreen(),
+    const CopierScreen(),
+    const AnalyzerScreen(),
+    const CompareScreen(),
     SentimentsScreen(),
   ];
 

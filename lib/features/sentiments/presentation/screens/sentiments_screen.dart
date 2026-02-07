@@ -1,25 +1,100 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gary_goodger/core/routes/app_routes.dart';
 import 'package:gary_goodger/features/common/presentation/widgets/status_outline_container.dart';
 import 'package:gary_goodger/features/sentiments/presentation/widgets/market_news_widget.dart';
 import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_container/custom_container.dart';
+import 'package:gary_goodger/share/widgets/custom_image/custom_image.dart';
+import 'package:gary_goodger/utils/app_assets/app_assets.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
 import 'package:gary_goodger/utils/app_text/app_strings.dart';
 import 'package:gary_goodger/utils/extension/base_extension.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SentimentsScreen extends StatelessWidget {
-  const SentimentsScreen({super.key});
-
+  SentimentsScreen({super.key});
+  int selectedParentTabIndex = 0;
+  int selectedSubTabIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8F9FB), // Light background
-      appBar: _buildAppBar(),
+      backgroundColor: AppColors.backgroundColor,
       body: Column(
         children: [
-          _buildToggleTabs(), // All Instruments / Watchlist
+          CustomContainer(
+            horizontal: ResponsiveHelper.height(16),
+            vertical: ResponsiveHelper.width(16),
+            height: ResponsiveHelper.height(160),
+            allSides: false,
+            borderColor: AppColors.boarderColor,
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(ResponsiveHelper.borderRadius(8)),
+              bottomRight: Radius.circular(ResponsiveHelper.borderRadius(8))
+            ),
+            child: Column(
+              children: [
+                SizedBox(height: ResponsiveHelper.height(24)),
+                Row(
+                  children: [
+                    CustomImage(imageSrc: AppAssets.logo),
+                    Spacer(),
+
+                    Text(AppText.sentiments, style: context.bodyMedium),
+
+                    Spacer(),
+
+                    CustomImage(imageSrc: AppAssets.notification),
+                    SizedBox(width: ResponsiveHelper.width(16)),
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed(AppRoutes.addAccountScreen);
+                      },
+                      child: CustomImage(imageSrc: AppAssets.menu),
+                    ),
+                  ],
+                ),
+                SizedBox(height: ResponsiveHelper.height(16)),
+                CustomContainer(
+                  backgroundColor: AppColors.grey,
+                  borderColor: AppColors.tabBoarderColor,
+                  horizontal: ResponsiveHelper.width(4),
+                  vertical: ResponsiveHelper.height(4),
+                  radius: ResponsiveHelper.width(10),
+                  child: Row(
+                    children: List.generate(2, (index) {
+                      bool isSelected = selectedParentTabIndex == index;
+                      return Expanded(
+                        child: GestureDetector(
+                          onTap: () {},
+                          child: CustomContainer(
+                            horizontal: ResponsiveHelper.width(4),
+                            vertical: ResponsiveHelper.height(4),
+                            backgroundColor: isSelected
+                                ? AppColors.primary
+                                : AppColors.grey,
+                            child: Text(
+                              "Prop Firms",
+                              textAlign: TextAlign.center,
+                              style: context.bodySmall.copyWith(
+                                fontWeight: FontWeight.w600,
+                                color: isSelected
+                                    ? AppColors.white
+                                    : AppColors.black,
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    }),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          // _buildToggleTabs(), // All Instruments / Watchlist
           Expanded(
             child: SingleChildScrollView(
               padding: ResponsiveHelper.symmetric(horizontal: 16.w),
@@ -375,7 +450,7 @@ class SentimentsScreen extends StatelessWidget {
         prefixIcon: const Icon(Icons.search, color: Colors.grey),
         suffixIcon: const Icon(Icons.mic, color: Colors.grey),
         filled: true,
-        fillColor: Colors.white,
+        fillColor: AppColors.greyShade,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(
             ResponsiveHelper.borderRadius(12),

@@ -34,7 +34,7 @@ class _AccountScreenState extends State<AccountScreen> {
         physics: const BouncingScrollPhysics(),
         slivers: [
           ///appbar=======================================================================
-          const AccountHeader(
+          const DashboardAccountHeader(
             isDashboard: false,
           ),
 
@@ -228,8 +228,8 @@ class _AccountScreenState extends State<AccountScreen> {
 
 /// appbar header===============================================================
 
-class AccountHeader extends StatelessWidget {
-  const AccountHeader({super.key, required this.isDashboard});
+class DashboardAccountHeader extends StatelessWidget {
+  const DashboardAccountHeader({super.key, required this.isDashboard});
 
 
 

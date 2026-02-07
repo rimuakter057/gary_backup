@@ -41,7 +41,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         physics: const BouncingScrollPhysics(),
         slivers: [
           /// AppBar
-          const AccountHeader(
+          const DashboardAccountHeader(
             isDashboard: true,
           ),
 
