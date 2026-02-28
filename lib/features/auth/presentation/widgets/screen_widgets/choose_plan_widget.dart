@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gary_goodger/features/auth/controllers/onboarding_controller.dart';
 import 'package:gary_goodger/features/auth/presentation/widgets/action_text_widget.dart';
 import 'package:gary_goodger/features/auth/presentation/widgets/payment_option_row.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_button/custom_button.dart';
 import 'package:gary_goodger/share/widgets/custom_container/custom_container.dart';
 import 'package:gary_goodger/share/widgets/custom_divider/custom_divider.dart';
@@ -23,10 +24,10 @@ class ChoosePlanWidget extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: MediaQuery.of(context).size.height * 0.9,
-      padding: EdgeInsets.symmetric(horizontal: 24.w),
+      padding: EdgeInsets.symmetric(horizontal: ResponsiveHelper.width(24)),
       decoration: BoxDecoration(
         color: AppColors.backgroundColor,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(35.r)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(ResponsiveHelper.borderRadius(8))),
       ),
       child: SingleChildScrollView(
         child: Column(
@@ -44,7 +45,7 @@ class ChoosePlanWidget extends StatelessWidget {
             /// payment option===============================================================================
             PaymentOptionRow(),
 
-            SizedBox(height: 16.h),
+            SizedBox(height: ResponsiveHelper.spacing(16)),
 
             /// custom container beginner===================================
             _buildBeginnerPopularContainer(
@@ -55,7 +56,7 @@ class ChoosePlanWidget extends StatelessWidget {
               text:
                   "2 Copier Accounts (Master + Slave)\nTC Analyzer (Web + Mobile)\nSave up to 30% vs standalone\nAdd extra accounts for \$8/month each.",
             ),
-            SizedBox(height: 24.h),
+            SizedBox(height:ResponsiveHelper.height(24)),
 
             /// custom container beginner===================================
             _buildBeginnerPopularContainer(
@@ -71,7 +72,7 @@ class ChoosePlanWidget extends StatelessWidget {
                   "5 Copier Accounts\nTC Analyzer (included free after 6 months)\nPriority Support\nAdd extra accounts for \$6/month each.",
             ),
 
-            SizedBox(height: 16.h),
+            SizedBox(height: ResponsiveHelper.height(16)),
 
             /// text section==============================================================
             Row(
@@ -96,7 +97,7 @@ class ChoosePlanWidget extends StatelessWidget {
               },
               title: AppText.start14Day,
             ),
-            SizedBox(height: 8.h),
+            SizedBox(height: ResponsiveHelper.height(8)),
           ],
         ),
       ),
@@ -150,9 +151,9 @@ class ChoosePlanWidget extends StatelessWidget {
                 CustomText(
                   text: totalAmount,
                   color: AppColors.textBlack,
-                  fontSize: 36.sp,
+                  fontSize: ResponsiveHelper.fontSize(36)
                 ),
-                SizedBox(width: 16.w),
+                SizedBox(width: ResponsiveHelper.width(16)),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -162,18 +163,18 @@ class ChoosePlanWidget extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 4.h),
+            SizedBox(height: ResponsiveHelper.height(4)),
             CustomDivider(color: AppColors.dividerColor),
-            SizedBox(height: 4.h),
+            SizedBox(height: ResponsiveHelper.height(4)),
 
             /// column text section==========================================
             CustomText(
-              fontSize: 12.sp,
+              fontSize: ResponsiveHelper.fontSize(12),
               color: AppColors.subPrimary,
               text: text,
             ),
 
-            SizedBox(height: 16.h),
+            SizedBox(height: ResponsiveHelper.height(16)),
           ],
         ),
       ),
@@ -191,7 +192,7 @@ class ChoosePlanWidget extends StatelessWidget {
       child: CustomText(
         text: title,
         color: textColor ?? AppColors.subPrimary,
-        fontSize: 14.sp,
+        fontSize: ResponsiveHelper.fontSize(14)
       ),
     );
   }

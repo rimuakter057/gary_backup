@@ -10,7 +10,10 @@ import 'package:google_fonts/google_fonts.dart';
 class MarketNewsWidget extends StatelessWidget {
   const MarketNewsWidget({
     super.key,
+    required this.isSheet,
   });
+
+  final bool isSheet;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,7 @@ class MarketNewsWidget extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Reuters - 12 minutes ago",
+              Text(isSheet?"Reuters":"Reuters - 12 minutes ago",
                   style: GoogleFonts.inter(
                       fontSize: ResponsiveHelper.fontSize(12),
                       fontWeight: FontWeight.w400,

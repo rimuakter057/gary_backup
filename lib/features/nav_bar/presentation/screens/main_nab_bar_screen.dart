@@ -64,8 +64,8 @@ class _MainNavScreenState extends State<MainNavScreen> {
         color: _currentIndex == index
             ? AppColors.primary
             : AppColors.black,
-        height: ResponsiveHelper.height(28),
-        width: ResponsiveHelper.width(28),
+        height: ResponsiveHelper.iconSize(20),
+        width: ResponsiveHelper.iconSize(20),
       ),
       label: label,
     );

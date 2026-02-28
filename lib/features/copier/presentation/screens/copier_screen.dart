@@ -107,7 +107,7 @@ class _CopierScreenState extends State<CopierScreen> {
                               Get.bottomSheet(
 
                                   TemplateSheetWidget()
-                              );
+                              );;
 
                             },
                             child: CustomContainer(

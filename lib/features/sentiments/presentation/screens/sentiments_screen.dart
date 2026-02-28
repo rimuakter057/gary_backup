@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gary_goodger/core/routes/app_routes.dart';
 import 'package:gary_goodger/features/common/presentation/widgets/status_outline_container.dart';
+import 'package:gary_goodger/features/sentiments/presentation/widgets/custom_sentiments_sheet.dart';
+import 'package:gary_goodger/features/sentiments/presentation/widgets/day_widget.dart';
 import 'package:gary_goodger/features/sentiments/presentation/widgets/market_news_widget.dart';
 import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_container/custom_container.dart';
+import 'package:gary_goodger/share/widgets/custom_divider/custom_divider.dart';
 import 'package:gary_goodger/share/widgets/custom_image/custom_image.dart';
 import 'package:gary_goodger/utils/app_assets/app_assets.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';
@@ -101,6 +104,7 @@ class SentimentsScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  SizedBox(height: ResponsiveHelper.height(8)),
                   _buildSearchBar(),
                   SizedBox(height: ResponsiveHelper.height(15)),
                   _buildCategoryChips(), // All, Forex, Indices etc.
@@ -108,21 +112,56 @@ class SentimentsScreen extends StatelessWidget {
 
                   _sectionTitle("Extreme Watchlist"),
 
-                  ///sentiment card=======================================
-                  _sentimentCard(
-                    pair: "XAUUSD",
-                    cat: "Forex",
-                    buy: 6,
-                    sell: 68,
-                    risk: "HIGH",
-                    change: "+6% vs 24h",
-                    context: context,
+                  ///sentiment card with bottom sheet=======================================
+                  GestureDetector(
+
+                    onTap: (){
+                      Get.bottomSheet(
+                          CustomSentimentsSheet(),
+
+
+
+                      );
+                    },
+
+
+
+                    child: _sentimentCard(
+                      pair: "XAUUSD",
+                      cat: "Forex",
+                      buy: 6,
+                      sell: 68,
+                      risk: "HIGH",
+                      change: "+6% vs 24h",
+                      context: context,
+                    ),
                   ),
 
                   SizedBox(height: ResponsiveHelper.height(20)),
 
+                  _sectionTitle("Other Instruments"),
+
+                  ///sentiment card=======================================
+                  GestureDetector(
+
+                    child: _sentimentCard(
+                      pair: "XAUUSD",
+                      cat: "Forex",
+                      buy: 6,
+                      sell: 68,
+                      risk: "HIGH",
+                      change: "+6% vs 24h",
+                      context: context,
+                    ),
+                  ),
+
+
+
+
                   ///market news card=========================================================================
-                  MarketNewsWidget(),
+                  MarketNewsWidget(
+                    isSheet: false,
+                  ),
 
                   CustomContainer(
                     child: Column(
@@ -353,7 +392,7 @@ class SentimentsScreen extends StatelessWidget {
         color = AppColors.orange;
         break;
       default:
-        color = AppColors.red;
+        color = AppColors.primary;
     }
 
     return StatusOutlineContainer(
