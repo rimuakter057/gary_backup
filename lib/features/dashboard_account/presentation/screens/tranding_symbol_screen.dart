@@ -31,7 +31,7 @@ class _TradingSymbolScreenState extends State<TradingSymbolScreen> {
           CustomAppBarContainer(
             child: Column(
               children: [
-                CustomAppbarWidget(title: AppText.equityProtector),
+                CustomAppbarWidget(title: AppText.tradingSymbols),
                 SizedBox(height: ResponsiveHelper.height(8)),
                 AccountAppbarRowWidget(
 
@@ -172,7 +172,9 @@ class CustomAppbarWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Navigator.pop(context);
+          },
           child: CustomImage(imageSrc: AppAssets.arrowBack),
         ),
         Text(

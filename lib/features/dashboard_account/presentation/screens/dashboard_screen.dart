@@ -5,6 +5,7 @@ import 'package:gary_goodger/features/common/presentation/widgets/high_insights_
 import 'package:gary_goodger/features/common/presentation/widgets/status_outline_container.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/Widgets/account_appbar_row_widget.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/Widgets/account_title.dart';
+import 'package:gary_goodger/features/dashboard_account/presentation/Widgets/dashboard_account_header.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/Widgets/performance_card.dart';
 import 'package:gary_goodger/features/dashboard_account/presentation/Widgets/top_trader_widget.dart';
 
@@ -31,12 +32,13 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   bool isSwitched = true;
-
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
-
+      key: _scaffoldKey,
+      drawer: Drawer(),
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [
