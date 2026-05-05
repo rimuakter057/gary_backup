@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gary_goodger/features/auth/presentation/widgets/bottom_sheet_create_account.dart';
 import 'package:gary_goodger/features/auth/controllers/onboarding_controller.dart';
 import 'package:gary_goodger/features/auth/presentation/widgets/bottom_sheet_login.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_button/custom_button.dart';
 import 'package:gary_goodger/share/widgets/custom_svg_icon/custom_svg_icon.dart';
 import 'package:gary_goodger/share/widgets/custom_text_button/custom_text_button.dart';
@@ -34,11 +35,11 @@ class AuthFlowScreen extends StatelessWidget {
                   ///  logo onboarding  text===================================================
                   CustomSvgIcon(
                     icon: AppAssets.logoOnboarding,
-                    width: 192.w,
-                    height: 22.h,
+                    width: ResponsiveHelper.width(192),
+                    height: ResponsiveHelper.height(22)
                   ),
 
-                  SizedBox(height: 16.h),
+                  SizedBox(height: ResponsiveHelper.spacing(16)),
 
                   ///=============================  Rich Text============================
                   /// compete smarter text=========================================
@@ -75,7 +76,7 @@ class AuthFlowScreen extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
 
-                  SizedBox(height: 24.h),
+                  SizedBox(height: ResponsiveHelper.spacing(24)),
 
                   /// doted indicator ============================================
                   Obx(() {
@@ -89,14 +90,14 @@ class AuthFlowScreen extends StatelessWidget {
 
                           return AnimatedContainer(
                             duration: const Duration(milliseconds: 400),
-                            margin: EdgeInsets.symmetric(horizontal: 4.w),
-                            height: 8.h,
+                            margin: ResponsiveHelper.symmetric(horizontal: 4),
+                            height: ResponsiveHelper.height(8),
                             width: isActive ? 24.w : 8.w,
                             decoration: BoxDecoration(
                               color: isActive
                                   ? AppColors.white
                                   : AppColors.dotedGrey,
-                              borderRadius: BorderRadius.circular(4.r),
+                              borderRadius: BorderRadius.circular(ResponsiveHelper.borderRadius(4)),
                             ),
                           );
                         },
@@ -114,11 +115,11 @@ class AuthFlowScreen extends StatelessWidget {
                 heightFactor: 0.35,
                 widthFactor: 1,
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 24.w),
+                  padding: ResponsiveHelper.symmetric(horizontal: 24),
                   decoration: BoxDecoration(
                     color: AppColors.white,
                     borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(32.r),
+                      top: Radius.circular(ResponsiveHelper.borderRadius(32)),
                     ),
                   ),
                   child: Column(
@@ -136,7 +137,7 @@ class AuthFlowScreen extends StatelessWidget {
                         child: Text(AppText.login),
                       ),
 
-                      SizedBox(height: 20.h),
+                      SizedBox(height: ResponsiveHelper.spacing(20)),
 
                       ///create account button==================================================
                       ElevatedButton(
@@ -150,7 +151,7 @@ class AuthFlowScreen extends StatelessWidget {
                         child: Text(AppText.createAccount),
                       ),
 
-                      SizedBox(height: 18.h),
+                      SizedBox(height: ResponsiveHelper.spacing(18)),
 
                       ///text section==============================================
                       Center(
@@ -159,7 +160,7 @@ class AuthFlowScreen extends StatelessWidget {
                           text: TextSpan(
                             style: GoogleFonts.instrumentSans(
                               color: AppColors.black,
-                              fontSize: 14.sp,
+                              fontSize: ResponsiveHelper.fontSize(14),
                             ),
                             children: [
                               const TextSpan(text: AppText.byContinuing),
@@ -180,7 +181,7 @@ class AuthFlowScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(height: 8.h),
+                      SizedBox(height: ResponsiveHelper.spacing(8)),
                     ],
                   ),
                 ),

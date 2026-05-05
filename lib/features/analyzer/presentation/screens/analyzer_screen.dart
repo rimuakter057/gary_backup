@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gary_goodger/features/analyzer/presentation/widgets/portfolio_gauge.dart';
-import 'package:gary_goodger/features/analyzer/presentation/widgets/status_card.dart';
 import 'package:gary_goodger/features/analyzer/presentation/widgets/tab_widgets/all_insights_tab_widget.dart';
 import 'package:gary_goodger/features/analyzer/presentation/widgets/tab_widgets/broker_execution_tab_widget.dart';
 import 'package:gary_goodger/features/analyzer/presentation/widgets/tab_widgets/heatmap_tab_widget.dart';
@@ -13,9 +11,6 @@ import 'package:gary_goodger/features/analyzer/presentation/widgets/tab_widgets/
 import 'package:gary_goodger/features/analyzer/presentation/widgets/tab_widgets/roi_breakdown_tab_widget.dart';
 import 'package:gary_goodger/features/analyzer/presentation/widgets/tab_widgets/staging_tab_widget.dart';
 import 'package:gary_goodger/features/analyzer/presentation/widgets/tab_widgets/trades_explorer_tab_widget.dart';
-import 'package:gary_goodger/features/common/presentation/widgets/high_insights_container.dart';
-import 'package:gary_goodger/features/dashboard_account/presentation/widgets/performance_card.dart';
-import 'package:gary_goodger/features/dashboard_account/presentation/widgets/state_card.dart';
 import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_container/custom_container.dart';
 import 'package:gary_goodger/utils/app_colors/app_colors.dart';

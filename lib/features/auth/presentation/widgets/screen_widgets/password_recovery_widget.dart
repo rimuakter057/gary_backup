@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gary_goodger/features/auth/controllers/onboarding_controller.dart';
 import 'package:gary_goodger/features/auth/presentation/widgets/action_text_widget.dart';
+import 'package:gary_goodger/helper/responsive_helper/responsive_helper.dart';
 import 'package:gary_goodger/share/widgets/custom_button/custom_button.dart';
 import 'package:gary_goodger/share/widgets/custom_text_field/custom_text_field.dart';
 import 'package:gary_goodger/share/widgets/custom_text_field_parent/custom_text_field_parent.dart';
@@ -21,7 +22,7 @@ class PasswordRecoveryWidget extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: MediaQuery.of(context).size.height * 0.9,
-      padding: EdgeInsets.symmetric(horizontal: 24.w),
+      padding: ResponsiveHelper.symmetric(horizontal: 24),
       decoration: BoxDecoration(
         color: AppColors.backgroundColor,
         borderRadius: BorderRadius.vertical(top: Radius.circular(35.r)),
@@ -38,7 +39,7 @@ class PasswordRecoveryWidget extends StatelessWidget {
                   AppText.passwordRecoveryDesc,
             ),
 
-            SizedBox(height: 32.h),
+            SizedBox(height: ResponsiveHelper.spacing(32)),
 
             ///email field================================================
             CustomContainerBorderParent(
@@ -57,7 +58,7 @@ class PasswordRecoveryWidget extends StatelessWidget {
               ),
             ),
 
-            SizedBox(height: 8.h),
+            SizedBox(height: ResponsiveHelper.spacing(8)),
         ///contact support===================================================================
             ActionTextWidget(
               prefixText: AppText.forgotEmail,
@@ -71,7 +72,7 @@ class PasswordRecoveryWidget extends StatelessWidget {
 
             ),
 
-            SizedBox(height: 172.h),
+            SizedBox(height: ResponsiveHelper.spacing(172)),
 
             /// custom button================================================================
             CustomButton(
@@ -81,7 +82,7 @@ class PasswordRecoveryWidget extends StatelessWidget {
 
               title: AppText.requestPasswordLink,
             ),
-            SizedBox(height: 8.h),
+            SizedBox(height:ResponsiveHelper.spacing(8)),
           ],
         ),
       ),

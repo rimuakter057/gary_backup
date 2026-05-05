@@ -39,8 +39,6 @@ class _CopierScreenState extends State<CopierScreen> {
             TabWidgetCopier(),
             gap,
 
-
-
           ],
         ),
       ),
